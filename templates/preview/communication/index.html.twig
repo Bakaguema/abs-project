@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ===== CSS ===== -->
+    <link rel="stylesheet" href="{{ asset('assets/css/pole.css') }}">
+
+    <!-- ===== BOX ICONS ===== -->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+    <title>Communication • Generation Boomerang</title>
+</head>
+<body>
+<!--===== HEADER =====-->
+<header class="header__pole header__communication">
+    <nav class="nav__pole">
+        <div>
+            <a href="#" class="nav__logo-pole"><img src="{{ asset('assets/img/home/dock/communication.svg') }}" alt="Communication recherche & development"> Communication R&D</a>
+        </div>
+
+        <div class="nav__menu-pole" id="nav-menu">
+            <ul class="nav__list-pole">
+                <li class="nav__item-pole"><a href="#about" class="nav__link-pole nav__link-communication">À propos</a></li>
+                <li class="nav__item-pole"><a href="#discovery" class="nav__link-pole nav__link-communication">Découvrir</a></li>
+                <li class="nav__item-pole"><a href="#contact" class="nav__link-pole nav__link-communication">Contact</a></li>
+                <li class="nav__item-pole"><a href="{{ path('home') }}" class="nav__link-pole nav__link-communication">Generation Boomerang<small>©</small></a></li>
+            </ul>
+        </div>
+
+        <div class="nav__toggle-pole" id="nav-toggle">
+            <i class='bx bx-menu'></i>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <!--===== HOME =====-->
+    <section class="home home__communication" id="home">
+        <div class="home__container grid">
+            <h1 class="home__title"><span>Communication</span><br>recherche <br>& <br>developpement</h1>
+
+        </div>
+    </section>
+
+    <!--===== ABOUT =====-->
+    <section class="about section" id="about">
+        <h2 class="section__title-pole section__title-communication">À la découverte de ...</h2>
+
+        <div class="about__container grid">
+            <div class="about__img">
+                <img src="{{ asset('assets/img/pole/communication/about1.jpg') }}" alt="">
+            </div>
+
+            <div>
+                <h2 class="about__subtitle about__subtitle-communication">Anne-Marie Pinsolle</h2>
+                <span class="about__profession">Expert en Management et Public Relations</span>
+                <p class="about__text">Après une formation littéraire et un DESS de management du CNOF-CSSE,
+                    Anne-Marie PINSOLLE, avec une expérience de plus de 50 ans dans les domaines de
+                    l’immobilier, du bâtiment et de la culture ainsi que dans les domaines de l’information,
+                    de la communication et du « B to B » est reconnue Expert en Management et Public Relations.
+                    <br><br><a href="#about__popup"><i class='bx bx-expand-alt bx-burst' ></i> cliquez pour en voir plus...</a></p>
+
+                <div class="about__social">
+                    <a href="#" class="about__social-icon about__social-iconCommunication"><i class='bx bxl-linkedin' ></i></a>
+                    <a href="#" class="about__social-icon about__social-iconCommunication"><i class='bx bxl-facebook'></i></a>
+                    <a href="#" class="about__social-icon about__social-iconCommunication"><i class='bx bxl-twitter' ></i></a>
+                </div>
+            </div>
+            <div class="about__popup about__popup-communication" id="about__popup">
+                <div class="about__popup-container">
+                    <a href="#about" class="about__popup-close">
+                        <i class='bx bx-x' ></i>
+                    </a>
+                    <div class="about__popup-content">
+                        <h1 class="about__popup-title">VOCATION</h1>
+                        <p>Rassembler autour de l’Excellence, les talents et les expériences des Femmes et des Hommes qui l’accompagnent.</p>
+                        <h1 class="about__popup-title">CONVICTION</h1>
+                        <p>Faire évoluer les mentalités afin d’apporter à chaque citoyen la liberté de choisir. Répondre aux questions sociétales liées à notre monde en mutation. Intégrer au marché de l’immobilier et du Bâtiment une réflexion intergénérationnelle et permanente de recherche et développement au service de l’innovation et du confort d’usage pour tous. = Accompagner les actions, les outils et les services liés aux nouveaux métiers et nouveaux savoirs…</p>
+                        <h1 class="about__popup-title">PRESENTATION DU MEMBRE FONDATEUR</h1>
+                        <p>Anne-Marie Pinsolle pour une certaine idée des Public Relations</p>
+                        <p>Après une formation littéraire et un DESS de management du CNOF-CSSE, Anne-Marie PINSOLLE, avec une expérience de plus de 50 ans dans les domaines de l’immobilier, du bâtiment et de la culture ainsi que dans les domaines de l’information, de la communication et du « B to B » est reconnue Expert en Management et Public Relations.</p>
+                        <p>C’est pourquoi aujourd’hui, elle apporte sa compétence en Management et Public Relations auprès des acteurs et décideurs de la construction, de l’ingénierie, de l’immobilier et de la culture, associant dans sa démarche l’évolution des métiers. Parallèlement à son activité professionnelle elle s’est investie dans les associations liées à l’acte de bâtir et au rayonnement culturel de sites historiques. Elle y a créé un comité scientifique et un comité de pilotage, réunissant différents professionnels qui travaillent sur le confort d’usage pour tous, le transfert de compétences auprès des étudiants de l’immobilier, l’ouverture à l’international, participant ainsi à l’évolution des mentalités et des métiers. « ..Avec du bon sens, de la créativité et de la solidarité, nous participons à l’évolution des mentalités et des métiers…». En 2015, elle crée l'Associations«BUILDING SENIORS»<small>©</small> pour apporter entraide, rêve, compétences, savoir-faire, services, lien social… ainsi naît le Portail "Generation Boomerang<small>©</small>", la passerelle numérique intergénérationnelle entre la savoir des aînés et les compétences des jeunes générations.</p>
+                        <p>Sa conviction, que la conception de tout aménagement, produit, équipement, programme ou service puisse être utilisé par toute personne, sans nécessiter ni d'adaptation ni de</p>
+                        <h1 class="about__popup-title">LA COMMUNICATION R&D SELON ANNE-MARIE PINSOLLE</h1>
+                        <p>La révolution sociétale en cours, la crise sanitaire, entrainent des modifications profondes des modes de travail, bien sur, mais surtout en termes de mobilité, d’environnement et de localisation.</p>
+                        <p>Pour Anne-Marie Pinsolle la Recherche & le Développement passent obligatoirement par l’intergénérationnel et le numérique, entre le savoir des aînés et les compétences des jeunes générations. La révolution sociétale en cours, la crise sanitaire, entrainent des modifications profondes des modes de travail, bien sur, mais surtout en termes de mobilité, d’environnement et de localisation. Sa conviction, c'est que la conception de tout aménagement, produit, équipement, programme ou service puisse être utilisé par toute personne, sans nécessiter ni d'adaptation ni de conception spéciale, et ce quels que soient son sexe, son âge, sa situation ou son handicap. Ce concept existe au Canada, au Japon, deux pays précurseurs et s'appelle UD : Universal Design.</p>
+                        <p>« L'élément fondamental dans l'aboutissement de nos actions étant la communication, je pense qu’il est très important d'adopter un rapprochement entre les générations en regroupant des personnes de bonne volonté, afin de partager nos expériences, en vue de développer une plateforme d’information sur les innovations technologiques, l’évolution de la société et les nouveaux besoins qui en découlent. » Pour terminer cette introduction du « Pôle Communication - Recherche & Développement », je m'appuierai sur la vision de Philippe TROTIN - Accessibility Lead at Microsoft “Je pense que nous allons vers une société où la technologie va se mettre davantage au service de l’humain”</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--===== DISCOVERY =====-->
+    <section class="discovery section" id="discovery">
+        <h2 class="section__title-pole section__title-communication">Découvrir</h2>
+
+        <div class="discovery__container grid">
+            <div class="discovery__img">
+                <img src="{{ asset('assets/img/pole/communication/discovery1.jpg') }}" alt="">
+
+                <div class="discovery__link">
+                    <a href="#" class="discovery__link-name discovery__link-nameCommunication">Projet #1 <br> cliquez pour découvrir</a>
+                </div>
+            </div>
+            <div class="discovery__img">
+                <img src="{{ asset('assets/img/pole/communication/discovery2.jpg') }}" alt="">
+
+                <div class="discovery__link">
+                    <a href="#" class="discovery__link-name discovery__link-nameCommunication">Projet #2 <br> cliquez pour découvrir</a>
+                </div>
+            </div>
+            <div class="discovery__img">
+                <img src="{{ asset('assets/img/pole/communication/discovery3.jpg') }}" alt="">
+
+                <div class="discovery__link">
+                    <a href="#" class="discovery__link-name discovery__link-nameCommunication">Projet #3 <br> cliquez pour découvrir</a>
+                </div>
+            </div>
+            <div class="discovery__img">
+                <img src="{{ asset('assets/img/pole/communication/discovery4.jpg') }}" alt="">
+
+                <div class="discovery__link">
+                    <a href="#" class="discovery__link-name discovery__link-nameCommunication">Projet #4 <br> cliquez pour découvrir</a>
+                </div>
+            </div>
+            <div class="discovery__img">
+                <img src="{{ asset('assets/img/pole/communication/discovery5.jpg') }}" alt="">
+
+                <div class="discovery__link">
+                    <a href="#" class="discovery__link-name discovery__link-nameCommunication">Projet #5 <br> cliquez pour découvrir</a>
+                </div>
+            </div>
+            <div class="discovery__img">
+                <img src="{{ asset('assets/img/pole/communication/discovery6.jpg') }}" alt="">
+
+                <div class="discovery__link">
+                    <a href="#" class="discovery__link-name discovery__link-nameCommunication">Projet #6 <br> cliquez pour découvrir</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--===== CONTACT =====-->
+    <section class="contact section" id="contact">
+        <h2 class="section__title-pole section__title-communication">Contact</h2>
+
+        <div class="contact__container grid">
+            <div class="contact__info">
+                <h3 class="contact__subtitle contact__subtitle-communication">EMAIL</h3>
+                <span class="contact__text">annemarie@generation-boomerang.com</span>
+
+                <h3 class="contact__subtitle contact__subtitle-communication">TÉLÉPHONE</h3>
+                <span class="contact__text">06 07 08 09 00</span>
+
+                <h3 class="contact__subtitle contact__subtitle-communication">ADRESSE</h3>
+                <span class="contact__text">Roubaix</span>
+            </div>
+
+            <form action="" class="contact__form">
+                <div class="contact__inputs">
+                    <input type="text" placeholder="Votre nom" class="contact__input contact__input-communication">
+                    <input type="email" placeholder="votre@email.com" class="contact__input contact__input-communication">
+                </div>
+
+                <textarea name="" id="" cols="0" rows="10" class="contact__input contact__input-communication"></textarea>
+
+                <input type="submit" value="Envoyer" class="contact__button contact__button-communication">
+            </form>
+        </div>
+    </section>
+</main>
+
+<!--===== SCROLL REVEAL =====-->
+<script src="https://unpkg.com/scrollreveal"></script>
+
+<!--===== MAIN JS =====-->
+<script src="{{ asset('assets/js/pole.js') }}"></script>
+</body>
+</html>

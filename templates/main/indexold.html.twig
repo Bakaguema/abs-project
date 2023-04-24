@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Actualité • Generation Boomerang{% endblock %}
+
+{% block content %}
+    <section class="actuality">
+        <div class="actuality__container">
+            <div class="actuality__content">
+                <div class="actuality__title"><h1><span>Bienvenue sur la</span> <br> Generation Boomerang<small>©</small></h1></div>
+                <figure class="actuality__article actuality__details">
+                    <img src="{{ asset('assets/img/main/actuality1.jpg') }}" alt="Article">
+                    <figcaption class="actuality__description actuality__description-article">
+                        <h2>Les articles</h2>
+                        <p>Retrouvez les derniers articles de la Generation Boomerang<small>©</small> et des différents pôle d'actualité.
+                            <br> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi at beatae culpa cum distinctio dolor ea eaque eius expedita hic itaque laudantium nesciunt nihil nulla, porro, quia rem vel vitae?</p>
+                        <a href="{{ path('articles') }}"></a>
+                    </figcaption>
+                </figure>
+                <figure class="actuality__experience actuality__details">
+                    <img src="{{ asset('assets/img/main/actuality2.jpg') }}" alt="Retour Experience">
+                    <figcaption class="actuality__description actuality__description-experience">
+                        <h2>Les retours d'experiences</h2>
+                        <p>Retrouvez les derniers retour d'experiences écrient par la communauté suite à leurs mise en pratique des articles proposés par la Generation Boomerang<small>©</small> et les différents pôle d'actualité.
+                            <br> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi at beatae culpa cum distinctio dolor ea eaque eius expedita ?</p>
+                        <a href="{{ path('experiences') }}"></a>
+                    </figcaption>
+                </figure>
+                <figure class="actuality__pole actuality__details">
+                    <img src="{{ asset('assets/img/main/actuality3.jpg') }}" alt="Pôle activité">
+                    <figcaption class="actuality__description actuality__description-pole">
+                        <h2>Les pôles d'activités</h2>
+                        <p>Retrouvez en détails les différents pôle d'activités en partenariat avec la Generation Boomerang<small>©</small>.
+                            <br> Lorem ipsum dolor sit amet ?</p>
+                        <a href="#"></a>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+    </section>
+{% endblock %}

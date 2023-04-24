@@ -1,0 +1,100 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Articles • Generation Boomerang{% endblock %}
+
+{% block content %}
+
+    <section class="article">
+        <h1 class="section__title">Nos derniers inscrits</h1>
+        <h3 class="section__subtitle">C'est dans un espace que vous allez pouvoir retrouver des utilisateurs.</h3>
+
+
+
+        {% for message in app.flashes('message') %}
+            <h3 class="section__subtitle-alert">{{ message }}</h3>
+        {% endfor %}
+
+        <div class="article__container">
+        <div class="article__menu">
+        {{ form_start(searchForm,{'attr':{'class':'search-user'}}) }}
+            <div class="form__search">
+            {{ form_row(searchForm.query) }}
+            {{ form_row(searchForm.submit) }}
+        </div> 
+        {{ form_end(searchForm) }}
+        </div>
+            <ul class="article__cards">
+
+            {% for user in users %}
+                {# {% for userBlocked in userBlockeds %} #}
+                {# {% if user.userBlocked.user1.id is same as app.user.id and userBlocked.user2.id is same as users.id  %} #}
+                    {# {% elseif userBlocked.user1.id != app.user.id and userBlocked.user2.id != users.id  %} #}
+                        
+                        <li class="article__card">
+                            <div class="article__card-content">
+                                <div>
+                                    <span class="article__card-category"><i class='bx bx-purchase-tag' ></i> {{ user.profil }}</span>
+                                    <span class="article__card-author">{{ user.firstname }} {{ user.lastname }} 
+                                    {% if user.age is same as null %}
+                                        {% else %}
+                                            {{user.age|date()}}
+                                    {% endif %}</span>
+                                <h2 class="article__card-title">{{ user.bio }}</a></h2>
+                                <div class="article__card-button">
+                                    <a href="{{ path('profil', {id: user.id}) }}">voir sa page</a>
+                                </div>
+                                 <div class="article__card RS ">
+                                 {% if user.facebook is same as null %}
+                                    {% else %}
+                                    <i class='bx bxl-facebook-circle'> Facebook : </i> {{ user.facebook }} <br>
+                                {% endif %}
+                                {% if user.linkedin is same as null %}
+                                    {% else %}
+                                        <i class='bx bxl-linkedin-square' > Linkedin : </i>{{ user.linkedin }} <br>
+                                {% endif %}
+                                {% if user.twitter is same as null %}
+                                    {% else %}
+                                        <i class='bx bxl-twitter' > Twitter : </i> {{ user.twitter }} <br>
+                                {% endif %}
+                                {% if user.pinterest is same as null %}
+                                    {% else %}
+                                        <i class='bx bxl-pinterest' > Pinterest : </i>{{ user.pinterest }} <br>
+                                {% endif %}
+                                {% if user.instagram is same as null %}
+                                    {% else %}
+                                        <i class='bx bxl-instagram' > Instagram : </i>{{ user.instagram }} <br>
+                                {% endif %}
+                                {% if user.snapchat is same as null %}
+                                    {% else %}
+                                        <i class='bx bxl-snapchat' > Snapchat : </i>{{ user.snapchat}} <br>
+                                {% endif %}
+                                {% if user.tiktok is same as null %}
+                                    {% else %}
+                                        <i class='bx bxl-tiktok' > Tiktok : </i>{{ user.tiktok }} <br>
+                                {% endif %}
+                                {% if user.youtube is same as null %}
+                                    {% else %}
+                                        <i class='bx bxl-youtube' > Youtube : </i>{{ user.youtube }} 
+                                {% endif %}
+                                
+                                </div>                               
+                            </div>
+                            <figure class="user__img">
+                                <img src="{{ asset('uploads/profiles/' ~ user.picture) }}" alt="{{ user.lastname }}" />
+                            </figure>
+                        </div>
+                    </li>
+                    {# {% endfor %} #}
+                    {# {% endif %} #}
+                    
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block JavaScript %}
+    <script type="text/javascript" src="{{ asset('bundles/fosckeditor/ckeditor.js') }}" charset="utf-8"></script>
+{% endblock %}
+

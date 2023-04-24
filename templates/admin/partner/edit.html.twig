@@ -1,0 +1,103 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Modifier une page partenaire • Generation Boomerang{% endblock %}
+
+{% block content %}
+    <section class="article">
+        <h1 class="section__title">Modifier les informations</h1>
+        <h3 class="section__subtitle">C'est dans cet espace que vous allez pouvoir modifier les informations du partenaire.</h3>
+
+        <div class="article__user-container">
+            <div class="article__add">
+                {{ form_start(form, {'attr' : {'class' : 'article__add-form'} }) }}
+
+                <div class="article__form-categories article__form">
+                    <i class='bx bx-pin'></i>
+                    {{ form_widget(form.name) }}
+                </div>
+                <h2> Résumé </h2>
+                <div class="article__form-content article__form">
+                    <span></span>
+                    {{ form_widget(form.resume) }}
+                </div> 
+                <h2> Parcours du partenaire </h2>
+                <div class="article__form-content article__form">
+                    <span></span>
+                    {{ form_widget(form.parcours) }}
+                </div>
+                <h2> Objectifs du partenaire </h2>
+                <div class="article__form-content article__form">
+                    <span></span>
+                    {{ form_widget(form.rencontres) }}
+                </div>
+
+                <h2 class="section__subtitle"> Lier à un ou plusieurs pôles:</h2>
+                <div class="article__form-title article__form">
+                    <i class='bx bxs-briefcase-alt-2'></i>
+                    {{ form_widget(form.pole) }}
+                </div>
+                <div class="article__form-illustration article__form">
+                    <i class='bx bxs-briefcase-alt-2'></i>
+                    {{ form_widget(form.pole_1) }}
+                </div>
+                <div class="article__form-illustration article__form">
+                    <i class='bx bxs-briefcase-alt-2'></i>
+                    {{ form_widget(form.pole_2) }}
+                </div>
+                <div class="article__form-illustration article__form">
+                    <i class='bx bxs-briefcase-alt-2'></i>
+                    {{ form_widget(form.pole_3) }}
+                </div>
+                <div class="article__form-illustration article__form">
+                    <i class='bx bxs-briefcase-alt-2'></i>
+                    {{ form_widget(form.pole_4) }}
+                </div>
+                <div class="article__form-illustration article__form">
+                    <i class='bx bxs-briefcase-alt-2'></i>
+                    {{ form_widget(form.pole_5) }}
+                </div>
+
+                <div class="article__form-illustration article__form">
+                    <i class='bx bx-image-add' ></i>
+                    {{ form_widget(form.illustration, {'required' : false}) }}
+                </div>
+
+                <div class="article__edit-illustration">
+                        <div class="article__illustration-show">
+                            <img src="{{ asset('/uploads/partner/' ~ partner.illustration) }}" alt="illustration">
+                </div>
+                </div>
+
+                 <div class="article__form-categories article__form">
+                    <i class='bx bx-pin'></i>
+                    {{ form_widget(form.link) }}
+                </div>
+
+                <div class="article__form-categories article__form">
+                    <i class='bx bx-pin'></i>
+                    {{ form_widget(form.profil) }}
+                </div>
+
+                <div class="article__form-categories article__form">
+                    <i class='bx bx-pin'></i>
+                    {{ form_widget(form.facebook) }}
+                </div>
+
+                <div class="article__form-categories article__form">
+                    <i class='bx bx-pin'></i>
+                    {{ form_widget(form.linkedin) }}
+                </div>
+
+                <div class="article__form-categories article__form">
+                    <i class='bx bx-pin'></i>
+                    {{ form_widget(form.twitter) }}
+                </div>
+
+                <button class="article__form-button" type="submit">Mettre à jour</button>
+
+                {{ form_end(form) }}
+            </div>
+        </div>
+   
+</section>
+{% endblock %}

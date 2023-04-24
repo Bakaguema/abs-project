@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ app.user.firstname}}
+	{{ app.user.lastname}}
+	• Generation Boomerang
+{% endblock %}
+
+{% block content %}
+
+	<section class="article m-5">
+		<h1 class="section__title">Mes contacts</h1>
+		<h3 class="section__subtitle">C'est dans cet espace que vous allez pouvoir gérer votre liste de contact.</h3>
+		<div class="article__menu">
+			<a href="{{ path('contact_sending') }}" class="article__menu-back"><i class='bx bx-left-arrow-alt'></i> <span>Mes demandes envoyées</span></a>
+			<a href="{{ path('search') }}" class="article__menu-back"><i class='bx bx-search-alt-2'></i> <span>Rechercher un utilisateur</span> </a>
+            <a href="{{ path('my_contact') }}" class="article__menu-back"> <span>Mes demandes reçues</span> <i class='bx bx-right-arrow-alt'></i></a>
+			</div>
+		<div class="article__table-container">
+			{% for friend in app.session.get('friends') %}
+				{% if friend.user1.id is same as app.user.id and friend.active == 1  %}
+                                 
+					<div class="friend__table" id="{{ friend.user2.id }}">
+						<div class="article__table-left">
+							<div class="article__table-name" >
+								<h3 class="article__name">{{ friend.user2.firstname }} {{friend.user2.lastname}}</h3>
+							</div>
+						</div>
+						<div class="article__card-button">
+							<a href="{{ path('profil', {id: friend.user2.id}) }}">voir sa page</a>
+						</div>
+						<div class="article__table-right">
+						<figure>
+							<img src="{{ asset('uploads/profiles/' ~ friend.user2.picture) }}" alt="{{ friend.user2.lastname }}" class="friend-pic"/>
+						</figure>
+                        </div>
+                        <div class="button">
+						 <div class="article__table-delete">
+                            <a href="{{ path('delete_friend', {id: friend.id}) }}" class="article__delete">
+                        
+							<i class='bx bx-trash'></i>
+							Supprimer </a>
+						</div>
+                        </div>
+					</div>
+				
+                {% elseif friend.user2.id is same as app.user.id and friend.active == 1 %}
+				                  
+					<div class="friend__table" id="{{ friend.user1.id }}">
+						<div class="article__table-left">
+							<div class="article__table-name" >
+								<h3 class="article__name">{{ friend.user1.firstname }} {{friend.user1.lastname}}</h3>
+							</div>
+						</div>
+						<div class="article__card-button">
+							<a href="{{ path('profil', {id: friend.user1.id}) }}">voir sa page</a>
+						</div>
+						<div class="article__table-right">
+						<figure>
+							<img src="{{ asset('uploads/profiles/' ~ friend.user1.picture) }}" alt="{{ friend.user1.lastname }}" class="friend-pic"/>
+						</figure>
+                        </div>
+                        <div class="button">
+						 <div class="article__table-delet">
+                            <a href="{{ path('delete_friend', {id: friend.id}) }}" class="article__delete">
+							<i class='bx bx-trash'></i>Supprimer </a>
+						</div>
+                        </div>
+					</div>
+				
+				{% endif %}
+			{% endfor %}
+		</div>
+	</section>
+
+{% endblock %}

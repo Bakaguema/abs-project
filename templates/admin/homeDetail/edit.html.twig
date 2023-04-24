@@ -1,0 +1,59 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Modifier des description  • Generation Boomerang{% endblock %}
+
+{% block content %}
+    <section class="homeDetail">
+        <h1 class="section__title">Modifier des descriptions</h1>
+        <h3 class="section__subtitle">C'est dans cet espace que vous allez pouvoir modifier des descriptions pour les différents pôles d'activités</h3>
+
+        <div class="article__menu">
+            <a href="{{ path('admin_home_detail') }}" class="article__menu-back"><i class='bx bx-arrow-back' ></i> <span>retour aux descriptions de la page d'accueil</span></a>
+        </div>
+
+        <div class="category__container">
+            <div class="category__add-form">
+                {{ form_start(form) }}
+
+                <div class="form faq__form-content">
+                    <i class='bx bxs-home' ></i>
+                    {{ form_widget(form.generation) }}
+                </div>
+
+                <div class="form faq__form-content">
+                    <i class='bx bxs-briefcase' ></i>
+                    {{ form_widget(form.metier) }}
+                </div>
+
+                <div class="form faq__form-content">
+                    <i class='bx bxs-user-voice' ></i>
+                    {{ form_widget(form.communication) }}
+                </div>
+
+                <div class="form faq__form-content">
+                    <i class='bx bxs-brain' ></i>
+                    {{ form_widget(form.savoir) }}
+                </div>
+
+                <div class="form faq__form-content">
+                    <i class='bx bxs-building-house' ></i>
+                    {{ form_widget(form.immobilier) }}
+                </div>
+
+                <div class="form faq__form-content">
+                    <i class='bx bxs-palette' ></i>
+                    {{ form_widget(form.design) }}
+                </div>
+
+                <div class="form faq__form-content">
+                    <i class='bx bxs-bulb' ></i>
+                    {{ form_widget(form.innovation) }}
+                </div>
+
+                <button class="article__form-button" type="submit">Modifier</button>
+
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </section>
+{% endblock %}

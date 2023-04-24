@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ===== CSS ===== -->
+    <link rel="stylesheet" href="{{ asset('assets/css/pole.css') }}">
+
+    <!-- ===== BOX ICONS ===== -->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+    <title>Design • Generation Boomerang</title>
+</head>
+<body>
+<!--===== HEADER =====-->
+<header class="header__pole header__design">
+    <nav class="nav__pole">
+        <div>
+            <a href="#" class="nav__logo-pole"><img src="{{ asset('assets/img/home/dock/design.svg') }}" alt="UI Design"> UI Design</a>
+        </div>
+
+        <div class="nav__menu-pole" id="nav-menu">
+            <ul class="nav__list-pole">
+                <li class="nav__item-pole"><a href="#about" class="nav__link-pole nav__link-design">À propos</a></li>
+                <li class="nav__item-pole"><a href="#discovery" class="nav__link-pole nav__link-design">Découvrir</a></li>
+                <li class="nav__item-pole"><a href="#contact" class="nav__link-pole nav__link-design">Contact</a></li>
+                <li class="nav__item-pole"><a href="{{ path('home') }}" class="nav__link-pole nav__link-design">Generation Boomerang<small>©</small></a></li>
+            </ul>
+        </div>
+
+        <div class="nav__toggle-pole" id="nav-toggle">
+            <i class='bx bx-menu'></i>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <!--===== HOME =====-->
+    <section class="home home__design" id="home">
+        <div class="home__container grid">
+            <h1 class="home__title">Universal <br>& <br>Inclusive<br><span>Design</span></h1>
+
+        </div>
+    </section>
+
+    <!--===== ABOUT =====-->
+    <section class="about section" id="about">
+        <h2 class="section__title-pole section__title-design">À la découverte de ...</h2>
+
+        <div class="about__container grid">
+            <div class="about__img">
+                <img src="{{ asset('assets/img/pole/design/about1.jpg') }}" alt="">
+            </div>
+
+            <div>
+                <h2 class="about__subtitle about__subtitle-design">Jean-Yves Prodel</h2>
+                <span class="about__profession">Expert en Conception Universelle, formateur et designer CU</span>
+                <p class="about__text">Lorsqu’on parle de Jean-Yves Prodel, on parle de design, on parle d’espaces, et à l’image de son domaine de prédilection, JYP issu de la région parisienne, s’est beaucoup déplacé et a occupé beaucoup d’espaces à travers le monde.
+                    Partons à la rencontre d’un des six membres fondateurs de Generation Boomerang<small>©</small>.
+                    <br><br><a href="#about__popup"><i class='bx bx-expand-alt bx-burst' ></i> cliquez pour en voir plus...</a></p>
+
+                <div class="about__social">
+                    <a href="#" class="about__social-icon about__social-iconDesign"><i class='bx bxl-linkedin' ></i></a>
+                    <a href="#" class="about__social-icon about__social-iconDesign"><i class='bx bxl-facebook'></i></a>
+                    <a href="#" class="about__social-icon about__social-iconDesign"><i class='bx bxl-twitter' ></i></a>
+                </div>
+            </div>
+            <div class="about__popup about__popup-design" id="about__popup">
+                <div class="about__popup-container">
+                    <a href="#about" class="about__popup-close">
+                        <i class='bx bx-x' ></i>
+                    </a>
+                    <div class="about__popup-content">
+                        <h1 class="about__popup-title">À la découverte de Jean-Yves Prodel</h1>
+                        <p>Lorsqu’on parle de Jean-Yves Prodel, on parle de design, on parle d’espaces, et à l’image de son domaine de prédilection, JYP issu de la région parisienne, s’est beaucoup déplacé et a occupé beaucoup d’espaces à travers le monde.
+                            Partons à la rencontre d’un des six membres fondateurs de Generation Boomerang<small>©</small></p>
+                        <h1 class="about__popup-title">Son parcours</h1>
+                        <p>Jean-Yves Prodel a démarré ses études en France, en ile de France sa région d’origine, puis JYP a commencé à voyager, d’abord en dans le nord de la France (Villeneuve d’Ascq), puis au sud (Montpellier), et pour couronner son parcours d’étudiant il part aux États Unis où pendant 5ans il se forme en business et administration.</p>
+                        <p>Après un retour en France pour se rapprocher de sa famille, il travaille en tant que comptable financier;
+                            En 2004 il crée JYP Design, qui deviendra très rapidement la JYP Conseil en Conception Universelle. Où sa principale mission de designer d’espaces, est de concevoir et réaliser des espaces au niveau architectural, et veiller à l’accessibilité pour être en accord avec l’environnement, le bâtiment et l’urbanisme.</p>
+                        <p>Son travail tout au long de sa vie, a été et continue d’être reconnu à travers le monde, en témoignent ses récompenses avec des Awards internationaux: IF AWARD 2020, qu’encore le PROPRIETY AWARD 2019.</p>
+                        <h1 class="about__popup-title">Sa rencontre avec Generation Boomerang</h1>
+                        <p>« J’ai rencontré Anne-Marie dans un salon, où j’étais sur un stand qui présentait une chambre de luxe « accessible », elle m’a parlé de l’association que j’ai tout de suite voulu rejoindre. »</p>
+                        <p>Jean-Yves Prodel, aussi appelé « Le pape », rejoint Generation Boomerang et crée son pole Universal Design, où il s’occupe de son domaine de prédilection.</p>
+                        <h1 class="about__popup-title">Existe-t-il une rupture entre les jeunes et les moins jeunes ?</h1>
+                        <p>A ce sujet, celui que l’on surnomme le pape, est formel « c’est une vraie question de société, mais la réalité c’est que les jeunes font changer les choses, font changer le regard sur le handicap »
+                            Et poursuit, « Nous notre génération ne parlait jamais de ça, c’était un sujet tabou, ça a commencé à changer a partir des années 80 »</p>
+                        <h1 class="about__popup-title">Points à revoir</h1>
+                        <p>Dans l’universal design, on n’échappe pas aux problématiques qu’on rencontre dans notre société, il faut penser à l’environnement, aux lois, aux normes... Pour JYP il faut revenir sur les lois qui pour lui sont trop anciennes (celles sur la mobilité réduite n’ont pas été changées depuis 1975 « même le logo n’a jamais été modifié » conclue-t-il.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--===== DISCOVERY =====-->
+    <section class="discovery section" id="discovery">
+        <h2 class="section__title-pole section__title-design">Découvrir</h2>
+
+        <div class="discovery__container grid">
+            <div class="discovery__img">
+                <img src="{{ asset('assets/img/pole/design/discovery1.jpg') }}" alt="">
+
+                <div class="discovery__link">
+                    <a href="#" class="discovery__link-name discovery__link-nameDesign">Projet #1 <br> cliquez pour découvrir</a>
+                </div>
+            </div>
+            <div class="discovery__img">
+                <img src="{{ asset('assets/img/pole/design/discovery2.jpg') }}" alt="">
+
+                <div class="discovery__link">
+                    <a href="#" class="discovery__link-name discovery__link-nameDesign">Projet #2 <br> cliquez pour découvrir</a>
+                </div>
+            </div>
+            <div class="discovery__img">
+                <img src="{{ asset('assets/img/pole/design/discovery3.jpg') }}" alt="">
+
+                <div class="discovery__link">
+                    <a href="#" class="discovery__link-name discovery__link-nameDesign">Projet #3 <br> cliquez pour découvrir</a>
+                </div>
+            </div>
+            <div class="discovery__img">
+                <img src="{{ asset('assets/img/pole/design/discovery4.jpg') }}" alt="">
+
+                <div class="discovery__link">
+                    <a href="#" class="discovery__link-name discovery__link-nameDesign">Projet #4 <br> cliquez pour découvrir</a>
+                </div>
+            </div>
+            <div class="discovery__img">
+                <img src="{{ asset('assets/img/pole/design/discovery5.jpg') }}" alt="">
+
+                <div class="discovery__link">
+                    <a href="#" class="discovery__link-name discovery__link-nameDesign">Projet #5 <br> cliquez pour découvrir</a>
+                </div>
+            </div>
+            <div class="discovery__img">
+                <img src="{{ asset('assets/img/pole/design/discovery6.jpg') }}" alt="">
+
+                <div class="discovery__link">
+                    <a href="#" class="discovery__link-name discovery__link-nameDesign">Projet #6 <br> cliquez pour découvrir</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--===== CONTACT =====-->
+    <section class="contact section" id="contact">
+        <h2 class="section__title-pole section__title-design">Contact</h2>
+
+        <div class="contact__container grid">
+            <div class="contact__info">
+                <h3 class="contact__subtitle contact__subtitle-design">EMAIL</h3>
+                <span class="contact__text">jeanyves@generation-boomerang.com</span>
+
+                <h3 class="contact__subtitle contact__subtitle-design">TÉLÉPHONE</h3>
+                <span class="contact__text">06 07 08 09 00</span>
+
+                <h3 class="contact__subtitle contact__subtitle-design">ADRESSE</h3>
+                <span class="contact__text">Roubaix</span>
+            </div>
+
+            <form action="" class="contact__form">
+                <div class="contact__inputs">
+                    <input type="text" placeholder="Votre nom" class="contact__input contact__input-design">
+                    <input type="email" placeholder="votre@email.com" class="contact__input contact__input-design">
+                </div>
+
+                <textarea name="" id="" cols="0" rows="10" class="contact__input contact__input-design"></textarea>
+
+                <input type="submit" value="Envoyer" class="contact__button contact__button-design">
+            </form>
+        </div>
+    </section>
+</main>
+
+<!--===== FOOTER =====-->
+<footer class="footer footer__design section">
+    <div class="footer__container grid">
+        <div class="footer__data">
+            <h2 class="footer__title"><img src="{{ asset('assets/img/home/dock/design.svg') }}" alt="UI Design"> UI Design</h2>
+            <p class="footer__text">L'un des six pôles d'activités de la Generation Boomerang<small>©</small></p>
+        </div>
+
+        <div class="footer__data">
+            <h2 class="footer__title">Explorer</h2>
+            <ul>
+                <li><a href="#about" class="footer__link footer__link-design">À propos</a></li>
+                <li><a href="#discovery" class="footer__link footer__link-design">Découvrir</a></li>
+                <li><a href="#contact" class="footer__link footer__link-design">Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="footer__data">
+            <h2 class="footer__title">Suivez-nous</h2>
+            <a href="#" class="footer__social footer__social-design"><i class='bx bxl-facebook' ></i></a>
+            <a href="#" class="footer__social footer__social-design"><i class='bx bxl-instagram' ></i></a>
+            <a href="#" class="footer__social footer__social-design"><i class='bx bxl-twitter' ></i></a>
+        </div>
+
+
+    </div>
+</footer>
+
+<!--===== SCROLL REVEAL =====-->
+<script src="https://unpkg.com/scrollreveal"></script>
+
+<!--===== MAIN JS =====-->
+<script src="{{ asset('assets/js/pole.js') }}"></script>
+</body>
+</html>

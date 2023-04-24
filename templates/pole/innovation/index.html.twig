@@ -1,0 +1,109 @@
+{% extends 'base.html.twig' %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('assets/css/pole.css') }}">
+{% endblock %}
+
+{% block title %}Innovation • Generation Boomerang{% endblock %}
+
+{% block content %}
+    <!--===== HOME =====-->
+    <section class="home home__innovation" id="home">
+        <div class="home__container home__container-pole grid2">
+            <h1 class="home__title2"><img class="ban__pole"src="{{ asset('assets/img/pole/innovation/banniere.png') }}"></h1>
+        </div>
+    </section>
+
+    <!--===== ABOUT =====-->
+    <section class="about section" id="about">
+        <h2 class="section__title-pole section__title-innovation">À la découverte de ...</h2>
+
+        <div class="about__container grid">
+            <div class="about__img">
+                <img src="{{ asset('assets/img/pole/innovation/about1.jpg') }}" alt="">
+            </div>
+
+            <div>
+                <h2 class="about__subtitle about__subtitle-innovation">Patrick Vrignon</h2>
+                <span class="about__profession">Fondateur Groupe BTP Consultants</span>
+                <p class="about__text">Permettre une plus grande réactivité et une analyse plus fiable et pointue des projets, pour des ouvrages sûrs et conformes sur un projet de construction ou de rénovation : solidité de l'ouvrage, sécurité des occupants, accessibilité aux personnes handicapées, sur performance énergétique et acoustique. Faire du numérique la passerelle entre le savoir des aînés et les jeunes générations, apporter l’expérience et la vision du savoir faire et vivre ensemble.
+                    <br><br><a href="#about__popup"><i class='bx bx-expand-alt bx-burst' ></i> cliquez pour en voir plus...</a></p>
+
+                <div class="about__social">
+                    <a href="https://www.linkedin.com/in/patrickvrignon/" target="_blank" class="about__social-icon about__social-iconInnovation"><i class='bx bxl-linkedin' ></i></a>
+                    <a href="#" class="about__social-icon about__social-iconInnovation"><i class='bx bxl-facebook'></i></a>
+                    <a href="#" class="about__social-icon about__social-iconInnovation"><i class='bx bxl-twitter' ></i></a>
+                </div>
+            </div>
+            <div class="about__popup about__popup-innovation" id="about__popup">
+                <div class="about__popup-container">
+                    <a href="#about" class="about__popup-closeInnovation">
+                        <i class='bx bx-x' ></i>
+                    </a>
+                    <div class="about__popup-contentInnovation">
+                        <h1 class="about__popup-title">VOCATION</h1>
+                        <p>Faire face aux enjeux associés à la conception, la construction ou la rénovation des bâtiments, et anticiper les aléas techniques liés à la construction</p>
+                        <h1 class="about__popup-title">CONVICTION</h1>
+                        <p>Permettre une plus grande réactivité et une analyse plus fiable et pointue des projets, pour des ouvrages sûrs et conformes sur un projet de construction ou de rénovation : solidité de l'ouvrage, sécurité des occupants, accessibilité aux personnes handicapées, sur performance énergétique et acoustique. Faire du numérique la passerelle entre le savoir des aînés et les jeunes générations, apporter l’expérience et la vision du savoir faire et vivre ensemble.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+    <h2 class="section__title-pole section__title-innovation">A propos de l'{{ desc.0.name }}</h2>
+    <div class="discovery__container">
+    <h5 class="about__text">{{ desc.0.description }}</h5>
+    </div>
+    </section>
+    <!--===== DISCOVERY =====-->
+    <section class="discovery section" id="discovery">
+        <h2 class="section__title-pole section__title-innovation">Découvrir</h2>
+
+        <div class="discovery__container grid">
+                   {% for article in articles %}
+            <div class="discovery__img">
+            <h5 class="discovery__title">{{ article.title}}</h5> 
+                <img src="{{ asset('uploads/articles/' ~ article.illustrations[0].name) }}" alt="{{ article.title }}" />
+
+                <div class="discovery__link">
+                    <a href="{{ path('article', {slug: article.slug}) }}" class="discovery__link-name discovery__link-nameCommunication">{{ article.content|raw|striptags|raw|u.truncate(100, '...')|raw }} <br> cliquez pour découvrir</a>
+                </div>
+            </div>
+        {% endfor %}
+        </div>        
+        <div class = "pole__paginator">
+            {% do articles.setPageRange(6) %}
+            {{ knp_pagination_render(articles, 'bundles/KnpPaginatorBundle/paginator.html.twig') }}
+        </div> 
+    </section>
+
+    <!--===== CONTACT =====-->
+    {# <section class="contact section" id="contact">
+        <h2 class="section__title-pole section__title-innovation">Contact</h2>
+
+        <div class="contact__container grid">
+            <div class="contact__info">
+                <h3 class="contact__subtitle contact__subtitle-innovation">EMAIL</h3>
+                <span class="contact__text">patrick@generation-boomerang.com</span>
+
+                <h3 class="contact__subtitle contact__subtitle-innovation">TÉLÉPHONE</h3>
+                <span class="contact__text">06 07 08 09 00</span>
+
+                <h3 class="contact__subtitle contact__subtitle-innovation">ADRESSE</h3>
+                <span class="contact__text">Roubaix</span>
+            </div>
+
+            <form action="" class="contact__form">
+                <div class="contact__inputs">
+                    <input type="text" placeholder="Votre nom" class="contact__input contact__input-innovation">
+                    <input type="email" placeholder="votre@email.com" class="contact__input contact__input-innovation">
+                </div>
+
+                <textarea name="" id="" cols="0" rows="10" class="contact__input contact__input-innovation"></textarea>
+
+                <input type="submit" value="Envoyer" class="contact__button-innovation">
+            </form>
+        </div>
+    </section> #}
+{% endblock %}

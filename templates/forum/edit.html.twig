@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier un salon de conversation • Generation Boomerang{% endblock %}
+
+{% block content %}
+    <section class="forum">
+        <h1 class="section__title">Modifier un salon de conversation</h1>
+        <h3 class="section__subtitle">C'est dans cet espace que vous allez pouvoir ajouter un nouveau salon de conversation.</h3>
+
+        <div class="article__menu">
+            <a href="{{ path('forum') }}" class="article__menu-back"><i class='bx bx-arrow-back' ></i> <span>retour aux discutions</span></a>
+        </div>
+        {% if is_granted('ROLE_USER') %}
+        
+        <div class="category__container">
+            <div class="category__add-form">
+                {{ form_start(form) }}
+
+                <div class="form">
+                    <i class='bx bx-message-dots bx-flip-horizontal' ></i>
+                    {{ form_widget(form.name) }}
+                </div>
+
+                <button class="article__form-button" type="submit">Modifier</button>
+
+                {{ form_end(form) }}
+            </div>
+        </div>
+        {% endif %}
+    </section>
+{% endblock %}

@@ -1,0 +1,130 @@
+{% extends 'base.html.twig' %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('assets/css/pole.css') }}">
+{% endblock %}
+
+{% block title %}Évolutions des Métiers • Generation Boomerang{% endblock %}
+
+{% block content %}
+    <!--===== HOME =====-->
+    <section class="home home__metier" id="home">
+        <div class="home__container home__container-pole grid2">
+            <h1 class="home__title2"><img class="ban__pole"src="{{ asset('assets/img/pole/metier/banniere.png') }}"></h1>
+        </div>
+    </section>
+
+    <!--===== ABOUT =====-->
+    <section class="about section" id="about">
+        <h2 class="section__title-pole section__title-metier">À la découverte de ...</h2>
+
+        <div class="about__container grid">
+            <div class="about__img">
+                <img src="{{ asset('assets/img/pole/metier/about1.jpg') }}" alt="">
+            </div>
+
+            <div>
+                <h2 class="about__subtitle about__subtitle-metier">Francis Descamps</h2>
+                <span class="about__profession">Président du conseil de surveillance de la société Descamps Arcature Paris</span>
+                <p class="about__text">Lorsqu'on parle de Francis Descamps, on parle d’innovation, d'évolution des métiers, d’architecture. Sa philosophie : faire évoluer le monde, revaloriser le côté humain, rassembler les personnes et les métiers pour avancer davantage, les anciens ont une expérience à apporter…
+                    <br><br><a href="#about__popup"><i class='bx bx-expand-alt bx-burst' ></i> cliquez pour en voir plus...</a></p>
+
+                <div class="about__social">
+                    <a href="https://www.linkedin.com/in/francis-descamps-b2900520b/" target="_blank" class="about__social-icon about__social-iconMetier"><i class='bx bxl-linkedin' ></i></a>
+                    <a href="#" class="about__social-icon about__social-iconMetier"><i class='bx bxl-facebook'></i></a>
+                    <a href="#" class="about__social-icon about__social-iconMetier"><i class='bx bxl-twitter' ></i></a>
+                </div>
+            </div>
+            <div class="about__popup about__popup-metier" id="about__popup">
+                <div class="about__popup-container">
+                    <a href="#about" class="about__popup-close">
+                        <i class='bx bx-x' ></i>
+                    </a>
+                    <div class="about__popup-content">
+                        <h1 class="about__popup-title">À la découverte de Francis Descamps</h1>
+                        <p>Lorsqu'on parle de Francis Descamps, on parle d’innovation, d'évolution des métiers, d’architecture. Sa philosophie : faire évoluer le monde, revaloriser le côté humain, rassembler les personnes et les métiers pour avancer davantage, les anciens ont une expérience à apporter…
+                            Francis, a beaucoup voyagé et déménagé, grâce à ses parents notamment, qui lui ont transmis le goût de l'aventure.
+                            Partons à la rencontre d’un des six membres fondateurs de Génération Boomerang.</p>
+                        <h1 class="about__popup-title">Son parcours</h1>
+                        <p>Né en 1947, d’un père ingénieur, c’est tout naturellement qu’il a pris le chemin, avec une école d’ingénieur, maths sup maths spé, puis il a commencé l’école des travaux publics qu’il n’a pas terminé.</p>
+                        <p>En 1968, il rejoint l’école des beaux-arts, section architecture (école d’artichecture UP7, située Grands Palais à Paris). En même temps que ses études, il prend des cours à l’ICI (Institut de Construction Industrialisé), qui dépend du CNAM. Grâce à ses 2 cursus (un technique et un artistique), ça lui a permis « de mieux comprendre les besoins des uns et des autres ».</p>
+                        <p>Début des années 70, il crée sa première agence d’architecture.
+                            Parlant couramment espagnol, grâce à ses nombreux voyages, il part au Mexique, pour faire un concours international d'architecture (pour un modèle type de logements sociaux).
+                        </p>
+                        <p>En 1983, il abandonne son poste de chef d’agence à la SER, pour se consacrer totalement à son agence « ARCATURE », qui s'est développée par la suite, puisque que 3 nouvelles agences ce sont  ouvertes (Paris, aux Antilles, et Bar-le-Duc).</p>
+                        <h1 class="about__popup-title">Ses satisfactions</h1>
+                        <p>Avoir voyagé et vécu un peu partout dans le monde, le goût  de l’aventure, de toujours découvrir quelque chose de nouveau : des cultures, des méthodes de travail, des personnalités, des raisonnements, différents dans chaque pays.</p>
+                        <h1 class="about__popup-title">Sa rencontre avec Generation Boomerang</h1>
+                        <p>Membre d’une association internationale « Cobaty », qui a pour but de rassembler les personnes et les métiers différents, de façon à mieux se comprendre, pour avancer davantage. Cette association rassemble environ 5000 membres et plus 140 métiers. Il a été président de cette association pendant 4 ans.
+                            C’est par ce biais la, qu’il a rencontré Anne-Marie, qui était dans la création de son association « Génération Boomerang », et qui lui a proposé de se joindre à elle.
+                            Pour Francis ce qui l’a attiré : « Cobaty était plus le coté théorique et la c’était le coté pratique qui m’attirait ».</p>
+                        <h1 class="about__popup-title">Existe-t-il une rupture entre les jeunes et moins jeunes</h1>
+                        <p>« Il n’y a pas de rupture entre les jeunes et les moins jeunes, c’est un manque d’écoute car les moyens de communication aujourd'hui permettent cet échange ». </p>
+                        <p>« Les jeunes ont  des compétences que les moins jeunes n’ont pas et eux ont une expérience que les jeunes n’ont pas, c’est un complément, un partage d’expérience, de connaissances et de savoir à transmettre ».</p>
+                        <h1 class="about__popup-title">Points à revoir</h1>
+                        <p>« Le manque de partage entre les jeunes et les moins jeunes, les robots peuvent-être un frein à cet échange ».</p>
+                        <p>« On donne trop d'importance aux robots, et on en oublie une chose essentielle, c’est le partage et l’humain ».</p>
+                        <br> <br>
+                        <p class="about__popup-author">Charlotte Feron</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+    <h2 class="section__title-pole section__title-metier">A propos de l'{{ desc.0.name }}</h2>
+    <div class="discovery__container">
+    <h5 class="about__text">{{ desc.0.description }}</h5>
+    </div>
+    </section>
+    <!--===== DISCOVERY =====-->
+    <section class="discovery section" id="discovery">
+        <h2 class="section__title-pole section__title-metier">Découvrir</h2>
+
+        <div class="discovery__container grid">
+                    {% for article in articles %}
+            <div class="discovery__img">
+            <h5 class="discovery__title">{{ article.title}}</h5> 
+                <img src="{{ asset('uploads/articles/' ~ article.illustrations[0].name) }}" alt="{{ article.title }}" />
+
+                <div class="discovery__link">
+                    <a href="{{ path('article', {slug: article.slug}) }}" class="discovery__link-name discovery__link-nameCommunication">{{ article.content|raw|striptags|raw|u.truncate(100, '...')|raw }} <br> cliquez pour découvrir</a>
+                </div>
+            </div>
+        {% endfor %}
+        </div>        
+        <div class = "pole__paginator">
+            {% do articles.setPageRange(6) %}
+            {{ knp_pagination_render(articles, 'bundles/KnpPaginatorBundle/paginator.html.twig') }}
+        </div> 
+    </section>
+
+    <!--===== CONTACT =====-->
+    {# <section class="contact section" id="contact">
+        <h2 class="section__title-pole section__title-metier">Contact</h2>
+
+        <div class="contact__container grid">
+            <div class="contact__info">
+                <h3 class="contact__subtitle contact__subtitle-metier">EMAIL</h3>
+                <span class="contact__text">francis@generation-boomerang.com</span>
+
+                <h3 class="contact__subtitle contact__subtitle-metier">TÉLÉPHONE</h3>
+                <span class="contact__text">06 07 08 09 00</span>
+
+                <h3 class="contact__subtitle contact__subtitle-metier">ADRESSE</h3>
+                <span class="contact__text">Roubaix</span>
+            </div>
+
+            <form action="" class="contact__form">
+                <div class="contact__inputs">
+                    <input type="text" placeholder="Votre nom" class="contact__input contact__input-metier">
+                    <input type="email" placeholder="votre@email.com" class="contact__input contact__input-metier">
+                </div>
+
+                <textarea name="" id="" cols="0" rows="10" class="contact__input contact__input-metier"></textarea>
+
+                <input type="submit" value="Envoyer" class="contact__button contact__button-metier">
+            </form>
+        </div>
+    </section> #}
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}FAQ • Generation Boomerang{% endblock %}
+
+{% block content %}
+    <section class="article">
+        <h1 class="section__title">Gérer les Signalements</h1>
+        <h3 class="section__subtitle">C'est dans cet espace que vous allez pouvoir gérer les différents signalement.</h3>
+
+        <div class="article__menu">
+            <a href="{{ path('admin') }}" class="article__menu-back"><i class='bx bx-arrow-back' ></i> <span>retour à l'administration</span></a>
+        </div>
+
+        {% for message in app.flashes('message') %}
+            <h3 class="section__subtitle-alert">{{ message }}</h3>
+        {% endfor %}
+
+        <div class="article__table-container">
+            {% for signal in signals %}
+                
+                    <div id="card_signal">
+                        <div class="article__table" id="{{ signal.id }}">
+                            <div class="article__table-left">
+                                <div class="article__table-name">
+                                    <h4>Signalé par :</h4> <a href="{{path('profil' , {id:signal.user.id}) }}" class="article__name">{{ signal.user.firstname }} {{ signal.user.lastname }}</a>
+                                    <h5 class="article__user">{{ signal.comment.content }}
+                                    <h5>Commentaire de:<br><a href="{{path('profil' , {id:signal.comment.user.id}) }}" class="article__name">{{ signal.comment.user.firstname }} {{ signal.comment.user.lastname }}</a></h5>
+                                    <h5>Raison : <span class="color1">{{ signal.content }}</span><h5>
+                                    {% if signal.autre %}
+                                        <h5 class="article__user">{{ signal.autre }}</h5>
+                                    {% endif %}
+                                    {% if signal.comment.article is null %}
+                                        <h5 class="article__category">{{ signal.comment.experience }}</h5>
+                                        <a href="{{ path('experience', {slug: signal.comment.experience.slug}) }}#comment__show" class="article__comment-button"><button class="article__form-button">Voir le commentaire</button></a> 
+                                        {% else %} 
+                                        <h5 class="article__category">{{ signal.comment.article }}</h5>
+                                        <a href="{{ path('article', {slug: signal.comment.article.slug}) }}#comment__show" class="article__comment-button"><button class="article__form-button">Voir le commentaire</button></a> 
+                                    {% endif %}
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                {% endfor %}
+        </div>
+    </section>
+
+{% endblock %}

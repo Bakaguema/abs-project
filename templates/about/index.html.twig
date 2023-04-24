@@ -1,0 +1,186 @@
+{% extends 'base.html.twig' %}
+
+{% block css %}
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<link rel="stylesheet" href="{{ asset('assets/css/about.css') }}">
+{% endblock %}
+
+{% block title %}A propos • Generation Boomerang
+{% endblock %}
+
+{% block content %}
+	<main class="main">
+		<section class="home__discover" id="home">
+			<div class="home__discover-container container grid">
+				<img src="{{ asset('assets/img/discover/discover.png') }}" alt="" class="home__discover-img">
+			</div>
+		</section>
+
+		<section class="discover">
+			<div class="discover__container">
+				<header class="discover__header">
+					<h1>Découverte de Generation Boomerang<small>©</small>
+					</h1>
+				</header>
+
+
+				<article class="discover__article discover__article-one">
+					<h2 class="about__title">Présentation de Generation Boomerang<small>©</small>
+					</h2>
+					{# <p>Regardez notre vidéo de présentation pour mieux comprendre ce qu'est Generation Boomerang<small>©</small></p><br> #}
+					<video class="discover__video" src="{{ asset('uploads/interview/home1-620e1923ac6fd.mp4') }}" controls preload></video>
+				</article>
+
+				<article class="discover__article discover__article-two">
+					<h2 class="about__title">Qui sommes nous ?</h2>
+					<p>Generation Boomerang <small>©</small> est impliquée dans divers domaines tel que par exemple, les techniques liées à la recherche, le développement ou l’innovation. Elle fût crée à l'origine afin de réfléchir à l'accompagnement des personnes dans leur parcours d'insertion sociale et professionnelle tout en s’appuyant sur l’expérience des aînés ainsi que sur les compétences des jeunes générations.</p>
+				</article>
+
+				<article class="discover__article discover__article-two">
+					<h2 class="about__title">Notre vision</h2>
+					<p>Il existe aujourd'hui une vraie fracture entre les aînés et les jeunes qui s'isolent de plus en plus. C'est pourquoi nous avons mis en place la plateforme collaborative Generation Boomerang<small>©</small>, afin de rassembler toutes les générations et d'apprendre à mieux communiquer, échanger et vivre ensemble.</p>
+				</article>
+
+				<article class="discover__article discover__article-four">
+					<h2 class="about__title">Notre objectif</h2>
+					<p>Le partage étant au coeur de nos préoccupations, nous avons créé cette plateforme collaborative dont l’objectif est de créer, ainsi que de faire vivre, une communauté intergénérationnelle tout en favorisant les échanges ainsi que l'accompagnement de personnes ou de projets collectifs.</p>
+				</article>
+			</div>
+		</section>
+
+		<section class="about container" id="about">
+			<div class="about__container grid">
+				<img src="{{ asset('assets/img/discover/about.png') }}" alt="" class="about__img">
+
+				<div class="about__data">
+					<h2 class="section__title about__title">
+						Comment ?
+					</h2>
+
+					<h3 class="about__subtitle">Par l'innovation :</h3>
+					<p class="about__description">
+						Mettre l’innovation au service de tous. L’expérience et la vision du savoir au service d’une société inclusive pour mieux vivre ensemble.
+					</p>
+					<h3 class="about__subtitle">Par l'accès numérique :</h3>
+					<p class="about__description">
+						Faire du numérique la passerelle entre le savoir des aînés et les compétences des nouvelles générations grâce au portail Generation Boomerang<small>©</small>.
+					</p>
+				</div>
+			</div>
+			{# ------------------ #}
+			<div class="about__button">
+				<a href="{{ path('register') }}" class="discover__button">Inscrivez-vous</a>
+			</div>
+		</section>
+
+		<section class="steps container">
+			<div class="steps__bg">
+				<h2 class="section__title-center steps__title">
+					Generation Boomerang<small>©</small>
+					<br>
+					Notre mission
+				</h2>
+
+				<div class="steps__container grid">
+					<div class="steps__card">
+						<div class="steps__card-number">01</div>
+						<p class="steps__card-description">
+							Générer du lien social grâce au numérique.
+						</p>
+					</div>
+
+					<div class="steps__card">
+						<div class="steps__card-number">02</div>
+						<p class="steps__card-description">
+							Fédérer les énergies pour accompagner la prévention sur l'ensemble de la population.
+						</p>
+					</div>
+
+					<div class="steps__card">
+						<div class="steps__card-number">03</div>
+						<p class="steps__card-description">
+							Ouvrir un nouvel espace en utilisant le savoir-faire des seniors et les compétences des jeunes générations.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+		<!--==================== POLE ====================-->
+		<section class="pole section container" id="poles">
+			<h2 class="section__title-center">
+				L'équipe
+			</h2>
+
+			<div class="pole__container grid">
+				<article class="pole__card">
+					<a href="{{ path('pole_innovation') }}">
+						<div class="pole__circle"></div>
+
+						<img src="{{ asset('assets/img/discover/pole1.jpg') }}" alt="" class="pole__img">
+
+						<h3 class="pole__title">Patrick Vrignon</h3>
+						<span class="link__inno">Innovation </span>
+					</a>
+				</article>
+
+				<article class="pole__card">
+					<a href="{{ path('pole_savoir') }}">
+						<div class="pole__circle"></div>
+
+						<img src="{{ asset('assets/img/discover/pole2.png') }}" alt="" class="pole__img">
+
+						<h3 class="pole__title">Xavier Tournillon</h3>
+						<span class="link__savoir">Évolution des savoirs</span>
+					</a>
+				</article>
+
+				<article class="pole__card">
+					<a href="{{ path('pole_metier') }}">
+						<div class="pole__circle"></div>
+
+						<img src="{{ asset('assets/img/discover/pole3.png') }}" alt="" class="pole__img">
+
+						<h3 class="pole__title">Francis Descamps</h3>
+						<span class="link__metier">Évolutions des métiers</span>
+					</a>
+				</article>
+
+				<article class="pole__card">
+					<a href="{{ path('pole_design') }}">
+						<div class="pole__circle"></div>
+
+						<img src="{{ asset('assets/img/discover/pole4.png') }}" alt="" class="pole__img">
+
+						<h3 class="pole__title">Jean-Yves Prodel</h3>
+						<span class="link__design">Universal design & Inclusive design</span>
+					</a>
+				</article>
+
+				<article class="pole__card">
+					<a href="{{ path('pole_immobilier') }}">
+						<div class="pole__circle"></div>
+
+						<img src="{{ asset('assets/img/discover/pole5.png') }}" alt="" class="pole__img">
+
+						<h3 class="pole__title">Alain Bechade</h3>
+						<span class="link__immo">Immobilier & silver experience</span>
+					</a>
+				</article>
+
+				<article class="pole__card">
+					<a href="{{ path('pole_communication') }}">
+						<div class="pole__circle"></div>
+
+						<img src="{{ asset('assets/img/discover/pole6.jpg') }}" alt="" class="pole__img">
+
+						<h3 class="pole__title">Anne-Marie Pinsolle</h3>
+						<span class="link__RD">Communication, Recherche & Développement</span>
+					</a>
+				</article>
+			</div>
+		</section>
+	</main>
+
+{% endblock %}

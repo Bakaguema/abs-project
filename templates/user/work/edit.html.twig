@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier un article • Generation Boomerang{% endblock %}
+
+{% block content %}
+    <section class="article">
+        <h1 class="section__title">Modifier une annonce</h1>
+        <h3 class="section__subtitle">C'est dans cet espace que vous allez pouvoir modifier une annonce.</h3>
+
+        <div class="article__user-container">
+            <div class="article__add">
+                {{ form_start(form, {'attr' : {'class' : 'article__add-form'} }) }}
+
+                <div class="article__form-categories article__form">
+                    <i class='bx bx-message-dots'></i>
+                    {{ form_widget(form.name) }}
+                </div>
+
+                <div class="article__form-categories article__form">
+                    <i class='bx bx-pin'></i>
+                    {{ form_widget(form.place) }}
+                </div>                
+
+                <div class="article__form-categories article__form">
+                    <i class='bx bx-time' ></i>
+                    {{ form_widget(form.experience) }}
+                </div>
+
+                <div class="article__form-illustration article__form">
+                    <i class='bx bxs-graduation' ></i>
+                    {{ form_widget(form.diplome) }}
+                </div>
+
+                <div class="article__form-title article__form">
+                    <i class='bx bxs-contact' ></i>
+                    {{ form_widget(form.contact) }}
+                </div>
+
+                <div class="article__form-title article__form">
+                    <i class='bx bx-money'></i>
+                    {{ form_widget(form.revenu) }}
+                </div>
+
+                <h3 class="section__subtitle">Description du poste:</h3>
+                <div class="article__form-content article__form">
+                    <span></span>
+                    {{ form_widget(form.description) }}
+                </div>
+
+                <button class="article__form-button" type="submit">Ajouter</button>
+
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block footer %}
+    <footer class="footer footer__innovation">
+        <div class="footer__container grid">
+            <div class="footer__data">
+                <h2 class="footer__title">Generation Boomerang<small>©</small></h2>
+                <ul>
+                    <li><a href="{{ path('condition') }}" class="footer__link">Conditions d'utilisations</a></li>
+                    <li><a href="#" class="footer__link">Qui sommes-nous ?</a></li>
+                    <li><a href="{{ path('partner') }}" class="footer__link">Nos partenaires</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__data">
+                <h2 class="footer__title">Explorer</h2>
+                <ul>
+                    <li><a href="{{ path('main') }}" class="footer__link">Accueil</a></li>
+                    <li><a href="{{ path('articles') }}" class="footer__link">Articles</a></li>
+                    <li><a href="{{ path('experiences') }}" class="footer__link">Retours d'expérience</a></li>
+                    <li><a href="#" class="footer__link">Pôle d'activités</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__data">
+                <h2 class="footer__title">Suivez-nous</h2>
+                <a href="#" class="footer__social footer__social-innovation"><i class='bx bxl-facebook' ></i></a>
+                <a href="#" class="footer__social footer__social-innovation"><i class='bx bxl-instagram' ></i></a>
+                <a href="#" class="footer__social footer__social-innovation"><i class='bx bxl-twitter' ></i></a>
+            </div>
+
+
+        </div>
+    </footer>
+{% endblock %}

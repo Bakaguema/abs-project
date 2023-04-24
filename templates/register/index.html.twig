@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<meta
+		name="viewport" content="width=device-width, initial-scale=1.0">
+		{# CSS photo de profil #}
+		<link rel="stylesheet" href="{{ asset('assets/css/picture.css') }}">
+		<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+		<link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+		<link rel="shortcut icon" type="image/png" href="{{ asset('assets/img/favicon.png') }}">
+		<title>Connexion • Génération Boomerang</title>
+	</head>
+	<body>
+		<main class='main'>
+			<section class="section">
+
+				{{ form_start(form, {'attr' : {'class' : 'connexion__form-register'} }) }}
+				<h2 class="connexion__form-title">Inscrivez vous</h2>
+
+				<div class="form">
+					<i class='bx bx-user'></i>
+					{{ form_widget(form.firstname) }}
+					<span></span>
+					{{ form_errors(form.firstname) }}
+				</div>
+
+				<div class="form">
+					<i class='bx bx-user'></i>
+					{{ form_widget(form.lastname) }}
+					<span></span>
+					{{ form_errors(form.lastname) }}
+				</div>
+
+				<div class="form">
+					<i class='bx bx-envelope'></i>
+					{{ form_widget(form.email.first) }}
+					<span></span>
+					{{ form_errors(form.email.first) }}
+				</div>
+
+				<div class="form">
+					<i class='bx bx-envelope'></i>
+					{{ form_widget(form.email.second) }}
+					<span></span>
+					{{ form_errors(form.email.second) }}
+				</div>
+
+				<div class="form">
+					<i class='bx bxs-lock'></i>
+					<label>
+						{{ form_widget(form.password.first) }}
+						<span></span>
+						{{ form_errors(form.password.first) }}
+
+						<div class="password-icon">
+							<i data-feather="eye"></i>
+							<i data-feather="eye-off"></i>
+						</div>
+					</label>
+				</div>
+
+				<div class="form">
+					<i class='bx bxs-lock'></i>
+					<label>
+						{{ form_widget(form.password.second) }}
+						<span></span>
+						{{ form_errors(form.password.second) }}
+
+						<div class="password-icon">
+							<i data-feather="eye"></i>
+							<i data-feather="eye-off"></i>
+						</div>
+					</label>
+				</div>
+
+				<div class="form">
+					<i class='bx bxs-briefcase-alt-2'></i>
+					{{ form_widget(form.profil) }}
+				</div>
+				<div class="form">
+					<i class='bx bxs-briefcase-alt-2'></i>
+
+					{{ form_widget(form.pole) }}
+				</div>
+				<div class="form">
+					<i class='bx bxs-image-add'></i>
+					<label>
+						<button id="myBtn">Selectionez votre photo de profil</button>.</label>
+
+				</div>
+
+			</div>
+			<!-- The Modal -->
+			<div
+				id="myModal" class="modal1">
+
+				<!-- Modal content -->
+				<div class="modal-content">
+					<span class="close">&times;</span>
+					<div class="clearfix"></div>
+					<h2>Selectionnez votre photo de profil</h2>
+					<h4 style="padding:6px;">choisissez votre avatar :
+					</h4>
+					<div class="responsive">
+						<div class="gallery">
+							<label>
+								<input type="radio" id="avatar" name="avatar" value="/assets/img/avatars/avatar.png" onchange="loadAvatar()">
+								<img src="/assets/img/avatars/avatar.png" alt="Avatar homme" width="600" height="400">
+							</label>
+						</div>
+					</div>
+					<div class="responsive">
+						<div class="gallery">
+							<label>
+								<input type="radio" id="avatar1" name="avatar" value="/assets/img/avatars/avatar1.png" onchange="loadAvatar()">
+								<img src="/assets/img/avatars/avatar1.png" alt="Avatar femme" width="600" height="400">
+							</label>
+
+						</div>
+					</div>
+					<div class="responsive">
+						<div class="gallery">
+							<label>
+								<input type="radio" id="avatar2" name="avatar" value="/assets/img/avatars/avatar2.png" onchange="loadAvatar()">
+								<img src="/assets/img/avatars/avatar2.png" alt="Avatar homme vieux" width="600" height="400">
+							</label>
+						</div>
+					</div>
+					<div class="responsive">
+						<div class="gallery">
+							<label>
+								<input type="radio" id="avatar3" name="avatar" value="/assets/img/avatars/avatar3.png" onchange="loadAvatar()">
+								<img src="/assets/img/avatars/avatar3.png" alt="Avatar femme vielle" width="600" height="400">
+							</label>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+					<div style="padding:6px;">
+						<h4 style="padding:6px;">Ou importez votre photo :
+						</h4>
+					</div>
+					<div style="padding:6px;" class="responsive">
+						<label id="labelfile" for="register_picture">Cliquez ici pour Importer votre photo de profil</label>
+						{{ form_widget(form.picture) }}
+					</div>
+					<div class="clearfix"></div>
+					<div style="padding:6px;" class="w3-center">
+						<div class="w3-bar">
+							<img src="" id="img-preview" alt="img-preview">
+						</div>
+					</div>
+
+					<div style="padding:6px;" class="w3-center">
+						<div class="w3-bar">
+							<button id="valider" class="w3-button w3-green">Valider</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<div class="register__subtitle">D'autres pôles vous interessent? Faites le nous savoir en complétant ensuite votre profil via votre espace personnel !</div>
+	<div class="connexion__form-condition">
+		<span></span>
+		<label>{{ form_widget(form.conditions) }}<a href="{{ path('condition') }}" target="_blank">Merci d'accepter les conditions d'utilisation</a>.</label>
+	</div>
+	<div class="connexion__form-condition">
+		<span></span>
+		<label>{{ form_widget(form.is_subscribe) }}Souscrire à la newsletter.</label>
+	</div>
+	<div class="connexion__button">
+		<button class="connexion__form-button" type="submit">S'inscrire</button>
+		<a href="{{ path('app_login') }}" class="connexion__form-buttonAlt">Connexion</a>
+	</div>
+	{{ form_end(form) }}<div class="connexion__register-container">
+		<div class="register__content">
+			<div class="connexion__content-register">
+				<div class="connexion__content-text">
+					<h2 class="connexion__content-title">Déjà inscrit ?</h2>
+					<span>Vous avez déjà un compte sur Generation Boomerang<small>©</small>, connectez-vous !</span>
+					<a href="{{ path('app_login') }}" class="connexion__content-button">Connexion</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</html></body></html></section></body></html></main><!-- ICON SCRIPT --><script src="https://unpkg.com/feather-icons"></script><script>feather.replace();
+const eye = document.querySelector(".feather-eye");
+const eyeoff = document.querySelector(".feather-eye-off");
+const passwordField = document.querySelector("input[type=password]");
+eye.addEventListener("click", () => {
+eye.style.display = "none";
+eyeoff.style.display = "block";
+passwordField.type = "text";
+});
+eyeoff.addEventListener("click", () => {
+eyeoff.style.display = "none";
+eye.style.display = "block";
+passwordField.type = "password";
+});</script>{# Gerer photo de profil #}<script src="{{ asset('assets/js/avatar.js') }}"></script></body></html>

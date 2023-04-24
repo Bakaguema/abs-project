@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+    <link rel="shortcut icon" type="image/png" href="{{ asset('assets/img/favicon.png') }}">
+    <title>Connexion • Génération Boomerang</title>
+</head>
+<body>
+<main class='main'>
+    <section>
+
+        {{ form_start(form, {'attr' : {'class' : 'connexion__form-register'} }) }}
+        <h2 class="connexion__form-title">Inscrivez vous</h2>
+
+        <div class="form">
+            <i class='bx bx-user' ></i>
+            {{ form_widget(form.firstname) }}
+            <span></span>
+            {{ form_errors(form.firstname) }}
+        </div>
+
+        <div class="form">
+            <i class='bx bx-envelope' ></i>
+            {{ form_widget(form.email.first) }}
+            <span></span>
+            {{ form_errors(form.email.first) }}
+        </div>
+
+        <div class="form">
+            <i class='bx bx-envelope' ></i>
+            {{ form_widget(form.email.second) }}
+            <span></span>
+            {{ form_errors(form.email.second) }}
+        </div>
+
+        <div class="form">
+            <i class='bx bxs-lock' ></i>
+            {{ form_widget(form.password.first) }}
+            <span></span>
+            {{ form_errors(form.password.first) }}
+        </div>
+
+        <div class="form">
+            <i class='bx bxs-lock' ></i>
+            {{ form_widget(form.password.second) }}
+            <span></span>
+            {{ form_errors(form.password.second) }}
+        </div>
+ 
+        <div class="form">
+            <i class='bx bxs-briefcase-alt-2'></i>
+            {{ form_widget(form.pole) }}
+        </div>
+
+        <div class="form">
+            <i class='bx bx-user' ></i>
+            {{ form_widget(form.lastname) }}
+            <span></span>
+            {{ form_errors(form.lastname) }}
+        </div>
+
+        {# <div class="form">
+            <i class='bx bxs-briefcase-alt-2'></i>
+            {{ form_widget(form.facebook) }}
+        </div>
+
+        <div class="form">
+            <i class='bx bxs-briefcase-alt-2'></i>
+            {{ form_widget(form.linkedin) }}
+        </div>
+
+        <div class="form">
+            <i class='bx bxs-briefcase-alt-2'></i>
+            {{ form_widget(form.twitter) }}
+        </div>
+
+        <div class="form">
+            <i class='bx bxs-briefcase-alt-2'></i>
+            {{ form_widget(form.contact) }}
+        </div>
+
+        <div class="form">
+            <i class='bx bxs-briefcase-alt-2'></i>
+            {{ form_widget(form.link) }}
+        </div>
+
+        <div class="form">
+            <i class='bx bxs-briefcase-alt-2'></i>
+            {{ form_widget(form.presentation) }}
+        </div> #}
+
+        <div class="form">
+            <i class='bx bxs-briefcase-alt-2'></i>
+            {{ form_widget(form.picture) }}
+        </div>
+
+        <div class="formhidden">
+            <i class='bx bx-user' ></i>
+            {{ form_widget(form.profil) }}
+            <span></span>
+            {{ form_errors(form.profil) }}
+        </div>
+        <div class="register__subtitle"> D'autres pôles vous interesse? Faite le nous savoir en completant ensuite votre profil via votre espace personnel ! </div>
+
+        <div class="connexion__form-condition">
+            <span></span>
+            {{ form_widget(form.conditions) }}
+            <label>Merci d'accepter les <a href="{{ path('condition') }}" target="_blank">conditions d'utilisation</a>.</label>
+        </div>
+        <div class="connexion__form-condition">
+            <span></span>
+            {{ form_widget(form.is_subscribe) }}
+            <label>Souscrire à la newsletter.</label>
+        </div>
+        <div class="connexion__button">
+            <button class="connexion__form-button" type="submit">S'inscrire</button>
+            <a href="{{ path('app_login') }}" class="connexion__form-buttonAlt">Connexion</a>
+        </div>
+        {{ form_end(form) }}
+
+
+        <div class="connexion__register-container">
+            <div class="register__content">
+                <div class="connexion__content-register">
+                    <div class="connexion__content-text">
+                        <h2 class="connexion__content-title">Déjà inscrit ?</h2>
+                        <span>Vous avez déjà un compte sur la Generation Boomerang<small>©</small>, connectez-vous !</span>
+                        <a href="{{ path('app_login') }}" class="connexion__content-button">Connexion</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+</body>
+</html>

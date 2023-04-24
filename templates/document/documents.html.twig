@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Documents • Generation Boomerang
+{% endblock %}
+
+{% block content %}
+	<section class="article">
+		<h1 class="section__title">Gérer les documents</h1>
+		<h3 class="section__subtitle">C'est dans cet espace que vous allez pouvoir gérer les différents documents ajoutés.</h3>
+
+		<div class="article__menu">
+			<a href="{{ path('user') }}" class="article__menu-back">
+				<i class='bx bx-arrow-back'></i>
+				<span>retour au profil</span>
+			</a>
+			<a href="{{ path('user_edit_document') }}" class="article__menu-back">
+				<i class='bx bx-arrow-back'></i>
+				<span>Envoyez d'autre documents</span>
+			</a>
+		</div>
+		{% for message in app.flashes('message') %}
+			<h3 class="section__subtitle-alert">{{ message }}</h3>
+		{% endfor %}
+
+		<div class="article__table-container">
+			{% for doc in app.user.documents %}
+				<div class="article__table" id="{{ doc.id }}">
+					<div class="article__table-left">
+						<div class="article__table-name">
+							<h5 class="document__date">
+								<i class='bx bx-time-five'></i>
+								ajouté le
+								{{ doc.createdAt|date('d M Y à H:i') }}</h5>
+							<h5 class="document__user">
+								<i class='bx bx-user'></i>
+								{{ app.user.firstname }}
+								{{ app.user.lastname }}</h5>
+							<h5 class="document__name">
+								<i class='bx bx-news'></i>
+								{{ doc.name }}</h5>
+						</div>
+					</div>
+
+					<div class="article__table-right">
+						<div class="article__table-edit">
+							<a href="{{ asset('uploads/profiles/document/' ~ doc.name) }}" target="_blank" class="article__edit">
+								<i class='bx bx-show-alt'></i>Voir</a>
+						</div>
+						<div class="article__table-delete">
+							<a href="{{ path('supprimerDocument', {id: doc.id}) }}" class="article__delete">
+								<i class='bx bx-trash'></i>
+								supprimer</a>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</section>
+
+{% endblock %}

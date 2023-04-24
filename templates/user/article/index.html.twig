@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Articles • Generation Boomerang{% endblock %}
+
+{% block content %}
+    <section class="article">
+	
+		<div class="articles__paginator">
+            {% do articles.setPageRange(2) %}
+            {{ knp_pagination_render(articles, 'bundles/KnpPaginatorBundle/paginator.html.twig') }}
+        </div> 
+            
+
+        <h1 class="section__title">Les articles de {{ app.user.firstname }}</h1>
+        <h3 class="section__subtitle">C'est dans un espace que vous allez pouvoir retrouver et modifier tout les articles que vous avez créés.</h3>
+
+        <div class="article__menu">
+            <a href="{{ path('user') }}" class="article__menu-back"><i class='bx bx-arrow-back' ></i> <span>retour au profil</span></a>
+            <a href="#" class="article__menu-article article__menu-active">Article</a>
+            <a href="{{ path('user_experience') }}" class="article__menu-experience article__menu-desactive">Retour d'Expérience</a>
+            <a href="{{ path('add_article') }}" class="article__menu-add"><i class='bx bx-plus-medical' ></i> <span>ajouter un article</span></a>
+        </div>
+
+        <div class="article__container">
+
+            <ul class="article__cards">
+                {% for article in articles %}
+                {% if article.users.id is same as users.id %}
+                    <li class="article__card">
+                        <div class="article__card-content">
+                            <div>
+                                <span class="article__card-category"><i class='bx bx-purchase-tag' ></i> {{ article.categories.name }}</span>
+                                <span class="article__card-author">écrit par {{ article.users.firstname }} {{ article.users.lastname }}</span>
+                                <h2 class="article__card-title"><a href="{{ path('article', {slug: article.slug}) }}">{{ article.title }}</a></h2>
+                                <p class="article__card-preview">{{ article.content|striptags('<h1><h2><h3><h4><h5><h6><p>')|u.truncate(200, '...')|raw }}</p>
+                                <div class="article__card-button">
+                                    <a href="{{ path('article', {slug: article.slug}) }}">Lire l'article</a>
+                                </div>
+                                <div class="article__card-option">
+                                    <a href="{{ path('edit_article', {id: article.id}) }}" class="article__card-edit"><i class='bx bxs-edit-alt' ></i> <span>éditer</span></a>
+                                    <a href="{{ path('delete_article', {id: article.id}) }}" class="article__card-delete"><i class='bx bxs-trash' ></i> <span>supprimer</span></a>
+                                </div>
+                            </div>
+                            {% if article.illustrations is empty %}
+                            <figure>
+                                <img src="{{ asset('uploads/profiles/default.jpg') }}" alt="{{ article.title }}" />
+                            </figure>
+                            {% else %}
+                            <figure>
+                                <img src="{{ asset('uploads/articles/' ~ article.illustrations[0].name) }}" alt="{{ article.title }}" />
+                            </figure>
+                            {% endif %}
+                        </div>
+                    </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+			
+        </div>
+	
+    </section>
+
+{% endblock %}
+
+{% block JavaScript %}
+    <script type="text/javascript" src="{{ asset('bundles/fosckeditor/ckeditor.js') }}" charset="utf-8"></script>
+{% endblock %}
+

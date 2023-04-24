@@ -1,0 +1,103 @@
+{% block stylesheets %}
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
+{% endblock %}
+
+<!--========== HEADER ==========-->
+<header class="header" id="header">
+	<div class="header__container">
+		<a href="{{ path("admin")}}"><p class="header__logo"><small>©</small>Pannel D'administration </p></a>
+		<div class="header__link">
+			{% if app.user %}
+				<div class="drop-button">
+					<button class="button__drp"> 
+					<span class="text"><a href="{{ path('user')}}" style="color: var(--first-color);"> {{ app.user.firstname }} {{ app.user.lastname }} </a></span>
+					</button>
+					<button class="button__drp" onclick="toggleDropdown()">
+					<span id="drop" class="drop material-symbols-outlined">
+						expand_more
+					</span>
+					</button>
+					<div id="menu" class="menu">
+					<button class="button__drp"> 
+						<span class="material-symbols-outlined"> person </span>
+						<span class="text"><a href="{{ path('user')}}" style="color: white;">Mon espace</a></span>
+					</button>
+					<button class="button__drp">
+						<span class="material-symbols-outlined"> groups </span>
+						<span class="text" style="color: white;"><a href="{{ path('is_accept')}}" style="color: white;">Mes contacts </a></span>
+					</button>
+					{% if is_granted("ROLE_ADMIN") %}
+					<button class="button__drp">
+						<span class="material-symbols-outlined"> settings </span>
+						<span class="text"><a href="{{ path('admin')}}" style="color: white;">Administration </a></span>
+					</button>
+					{% endif %}
+					{% if is_granted ("ROLE_SUB") == false %}
+					<button class="button__drp" >
+						<span class="bx bxs-donate-heart"> </span>
+						<span class="text"><a href="{{ path('product')}}" style="color: white;">Adhésion</a></span>
+					</button>
+					{% endif %}
+					<button class="button__drp">
+						<span class="material-symbols-outlined"> bookmark </span>
+						<span class="text" style="color: white;"><a href="{{ path('save')}}" style="color: white;">Mes favoris </a></span>
+					</button>
+					<button class="button__drp" >
+						<span class="material-symbols-outlined"> logout </span>
+						<span class="text"><a href="{{ path('app_logout')}}" style="color: white;">Déconnexion</a></span>
+					</button>
+					</div>
+				</div>
+				<div id="mySidenav" class="sidenav">
+  					<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+						<h5 id="mescontacts">Mes contacts: {{app.session.get('totalfriends')}}</h5>
+						{% for friend in app.session.get('friends') %}
+							{% if friend.user1.id is same as app.user.id and friend.active == 1  %}
+								<div class="friend_list" id="{{ friend.user2.id }}">
+									<img src="{{ asset('uploads/profiles/' ~ friend.user2.picture) }}" alt="{{ friend.user2.lastname }}" class="friend-pic"/>
+									<p class="friend__name">{{ friend.user2.firstname }} {{friend.user2.lastname}}</p>
+									<button class="button_connect"></button>
+								</div>
+								{% elseif friend.user2.id is same as app.user.id and friend.active == 1 %}
+									<div class="friend_list" id="{{ friend.user1.id }}">
+										<img src="{{ asset('uploads/profiles/' ~ friend.user1.picture) }}" alt="{{ friend.user1.lastname }}" class="friend-pic"/>
+										<p class="friend__name">{{ friend.user1.firstname }} {{friend.user1.lastname}}</p>
+										<button class="button_connect"></button>
+									</div>
+							{% endif %}
+						{% endfor %}
+			{% endif %}
+					</div>
+				</div>
+			{#	<div class="welcome_text">
+					<p> |
+						<a href="{{ path('user') }}">
+							{{ app.user.firstname }}
+							{{ app.user.lastname}}</a>
+					</p>
+				</div>
+						<div class="friend_list">
+							<img src="{{ asset('uploads/profiles/' ~ app.user.picture) }}" class="friend-pic"/>
+						</div> #}
+			<div class="header__toggle">
+				<i class='bx bx-list-ul' id="header-toggle"></i>
+			</div>
+		</div>
+	</div>
+</header>
+
+{% block JavaScript %}
+<script>
+const menu = document.getElementById("menu"),
+  drop = document.getElementById("drop");
+
+const toggleDropdown = () => {
+  menu.classList.toggle("open");
+  drop.innerHTML = !menu.classList.contains("open")
+    ? "expand_more"
+    : "close";
+};
+
+</script>
+{% endblock %}

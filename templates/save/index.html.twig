@@ -1,0 +1,217 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Favoris • Generation Boomerang{% endblock %}
+
+{% block content %}
+
+    <section class="favorite">
+        <div class="favorite__container">
+            <h1 class="section__title">Les favoris de {{ app.user.firstname }}</h1>
+            <h3 class="section__subtitle">C'est dans un espace que vous allez pouvoir retrouver toute les articles ou retours d'expériences que vous avez choisi de sauvegarder <i class='bx bxs-bookmarks' ></i> pour les lire plus tard.</h3>
+        </div>
+
+        <div class="profil__content">
+            <div class="profil__menu">
+                <div id="article" class="profil__article">
+                    <a href="#Article">
+                        <h5 class="profil__menu-icon"><i class='bx bx-news'></i></h5>
+                    </a>
+                </div>
+                <div id="experience" class="profil__experience">
+                    <a href="#Experience">
+                        <h5 class="profil__menu-icon"><i class='bx bx-comment-detail bx-flip-horizontal' ></i></h5>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="Article" class="profil__content profil__container-content">
+            <div class="article__container">
+                <h1 class="section__title">Les articles</h1>
+                <h3 class="section__subtitle">Retrouvez tout les articles que vous avez sauvegardés pour plus tard.</h3>
+                {% for article in app.user.saves %}
+                    {% set index = loop.index %}
+                    {% if article in app.user.saves and index == 1 %}
+                    <ul class="article__cards">
+                    {% endif %}
+                    <li class="article__card">
+                            <div class="article__card-content">
+                                <div>
+                                    <span class="article__card-category"><i class='bx bx-purchase-tag' ></i> {{ article.article.categories.name }}</span>
+                                    <span class="article__card-author">écrit par <a href="{{ path('profil', {id: article.article.users.id}) }}">{{ article.article.users.firstname }} {{ article.article.users.lastname }}</a></span>
+                                    <h2 class="article__card-title"><a href="{{ path('article', {slug: article.article.slug}) }}">{{ article.article.title }}</a></h2>
+                                    <p class="article__card-preview">{{ article.article.content|striptags|raw|convert_encoding('UTF-8', 'ISO-8859-1')|u.truncate(300, '...') }}</p>
+                                    <div class="article__card-button">
+                                        <a href="{{ path('article', {slug: article.article.slug}) }}">Lire l'article</a>
+                                    </div>
+                                    <div class="article__card-reaction">
+                                        <a href="{{ path('article_like', {id: article.article.id}) }}" class="article__reaction-button article__reaction-like">
+                                            {% if app.user and article.article.isLikedByUser(app.user) %}
+                                                <i class='bx bxs-heart' ></i>
+                                            {% else %}
+                                                <i class='bx bx-heart bx-tada' ></i>
+                                            {% endif %}
+                                            <span class="article__reaction-likeNumber">{{ article.article.likes | length }}</span>
+                                        </a>
+                                        <a href="{{ path('article', {slug: article.article.slug}) }}#comment__new" class="article__reaction-button">
+                                            <i class='bx bx-comment-dots' ></i>
+                                            <span>{{ article.article.comments | length }}</span>
+                                        </a>
+                                        <a href="{{ path('article_save', {id: article.article.id}) }}" class="article__reaction-button article__reaction-save">
+                                            {% if app.user and article.article.isSavedByUser(app.user) %}
+                                                <i class='bx bxs-bookmark' ></i>
+                                            {% else %}
+                                                <i class='bx bx-bookmark' ></i>
+                                            {% endif %}
+                                            <span class="article__reaction-saveNumber">{{ article.article.saves | length }}</span>
+                                        </a>
+                                        <a href="" class="article__reaction-button">
+                                            <i class='bx bx-share-alt' ></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <figure>
+                                    <img src="{{ asset('uploads/articles/' ~ article.article.illustrations[0].name) }}" alt="{{ article.article.title }}" />
+                                </figure>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div id="Experience" class="profil__content profil__container-content">
+            <div class="article__container">
+                <h1 class="section__title">Les retours d'expérience</h1>
+                <h3 class="section__subtitle">Retrouvez tout les retours d'expérience que vous avez sauvegardés pour plus tard.</h3>
+                    {% for experience in app.user.expSaves %}
+                    {% set index = loop.index %}
+                    {% if experience in app.user.expSaves and index == 1 %}
+                    <ul class="article__cards">
+                    {% endif %}
+                        <li class="article__cards">
+                            <div class="article__card-content">
+                                <div>
+                                    <span class="article__card-category"><i class='bx bx-purchase-tag' ></i> {{ experience.experience.article.title }}</span>
+                                    <span class="article__card-author">écrit par <a href="{{ path('profil', {id: experience.experience.user.id}) }}">{{ experience.experience.user.firstname }} {{ experience.experience.user.lastname }}</a></span>
+                                    <h2 class="article__card-title"><a href="{{ path('experience', {slug: experience.experience.slug}) }}">{{ experience.experience.title }}</a></h2>
+                                    <p class="article__card-preview">{{ experience.experience.content|striptags|raw|convert_encoding('UTF-8', 'ISO-8859-1')|u.truncate(300, '...') }}</p>
+                                    <div class="article__card-button">
+                                        <a href="{{ path('experience', {slug: experience.experience.slug}) }}">Lire le retour <br>d'expérience</a>
+                                    </div>
+                                    <div class="article__card-reaction">
+                                        <a href="{{ path('experience_like', {id: experience.experience.id}) }}" class="article__reaction-button article__reaction-like">
+                                            {% if app.user and experience.experience.isLikedByUser(app.user) %}
+                                                <i class='bx bxs-heart' ></i>
+                                            {% else %}
+                                                <i class='bx bx-heart bx-tada' ></i>
+                                            {% endif %}
+                                            <span class="article__reaction-likeNumber">{{ experience.experience.likes | length }}</span>
+                                        </a>
+                                        <a href="{{ path('experience', {slug: experience.experience.slug}) }}#comment__new" class="article__reaction-button">
+                                            <i class='bx bx-comment-dots' ></i>
+                                            <span>{{ experience.experience.comments | length }}</span>
+                                        </a>
+                                        <a href="{{ path('experience_save', {id: experience.experience.id}) }}" class="article__reaction-button article__reaction-save">
+                                            {% if app.user and experience.experience.isSavedByUser(app.user) %}
+                                                <i class='bx bxs-bookmark' ></i>
+                                            {% else %}
+                                                <i class='bx bx-bookmark' ></i>
+                                            {% endif %}
+                                            <span class="article__reaction-saveNumber">{{ experience.experience.saves | length }}</span>
+                                        </a>
+                                        <a href="" class="article__reaction-button">
+                                            <i class='bx bx-share-alt' ></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <figure>
+                                    <img src="{{ asset('uploads/experiences/' ~ experience.experience.illustrations[0].name) }}" alt="{{ experience.experience.title }}" />
+                                </figure>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block JavaScript %}
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        function openTab(tabName) {
+            let i;
+            let tabContent;
+
+            tabContent = document.getElementsByClassName("profil__container-content");
+
+            for (i = 0; i < tabContent.length; i++) {
+                tabContent[i].style.display = "none";
+            }
+
+            document.getElementById(tabName).style.display = "flex";
+        }
+
+        let articleEl = document.getElementById("article");
+        let experienceEl = document.getElementById("experience");
+
+        articleEl.addEventListener("click", function(){openTab("Article")}, false);
+        experienceEl.addEventListener("click", function(){openTab("Experience")}, false);
+
+
+        function onClickBtnLike(event) {
+            event.preventDefault();
+
+            const url = this.href;
+            const likeCount = this.querySelector('span.article__reaction-likeNumber');
+            const icon = this.querySelector('i');
+
+            axios.get(url).then(function (response) {
+                likeCount.textContent = response.data.likes;
+
+                if (icon.classList.contains('bxs-heart')) {
+                    icon.classList.replace('bxs-heart', 'bx-heart');
+                } else {
+                    icon.classList.replace('bx-heart', 'bxs-heart');
+                }
+            }).catch(function (error) {
+                if (error.response.status === 403) {
+                    window.alert("Vous ne pouvez pas aimer un article si vous n'êtes pas connecté.");
+                } else {
+                    window.alert("Une erreur s'est produite, réessayer ultérieurement.");
+                }
+            });
+        }
+        document.querySelectorAll('a.article__reaction-like').forEach(function (link) {
+            link.addEventListener('click', onClickBtnLike)
+        });
+
+        function onClickBtnSave(event) {
+            event.preventDefault();
+
+            const url = this.href;
+            const saveCount = this.querySelector('span.article__reaction-saveNumber');
+            const icon = this.querySelector('i');
+
+            axios.get(url).then(function (response) {
+                saveCount.textContent = response.data.saves;
+
+                if (icon.classList.contains('bxs-bookmark')) {
+                    icon.classList.replace('bxs-bookmark', 'bx-bookmark');
+                } else {
+                    icon.classList.replace('bx-bookmark', 'bxs-bookmark');
+                }
+            }).catch(function (error) {
+                if (error.response.status === 403) {
+                    window.alert("Vous ne pouvez pas sauvegarder un article si vous n'êtes pas connecté.");
+                } else {
+                    window.alert("Une erreur s'est produite, réessayer ultérieurement.");
+                }
+            });
+        }
+        document.querySelectorAll('a.article__reaction-save').forEach(function (link) {
+            link.addEventListener('click', onClickBtnSave)
+        });
+    </script>
+{% endblock %}

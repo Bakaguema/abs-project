@@ -1,0 +1,18 @@
+{% for badge in badges %}
+	<div class="badge-card">
+		<div class="badge-card-header">{{ badge.name }}</div>
+		<button class="bx bxs-cog bx-spin-hover badge-card-edit-btn" id="edit{{badge.id}}"></button>
+		<button class="bx bxs-x-circle bx-tada-hover badge-card-delete-btn" id="del{{badge.id}}"></button>
+		<div class="badge-card-body">
+			<img class="badge-img" src="{{ asset('uploads/badges/'~ badge.image) }}" alt="image of the {{ badge.name }} badge">
+			<div class="badge-card-description">
+				<div class="badge-caption">{{badge.description}}</div>
+				<span class="threshold-nbr">Seuil d'obtention :
+					{{badge.threshold}}
+					{{badge.badgeCategory}}</span>
+			</div>
+		</div>
+	</div>
+{% else %}
+	<em>no badge found</em>
+{% endfor %}

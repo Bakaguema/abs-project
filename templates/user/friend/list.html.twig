@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ app.user.firstname}}
+	{{ app.user.lastname}}
+	• Generation Boomerang
+{% endblock %}
+
+{% block content %}
+
+	<section class="article">
+		<h1 class="section__title">Les contacts de {{user.firstname}} {{user.lastname}}</h1>
+
+        <div class="article__container">
+        <div class="article__menu">
+        {{ form_start(searchForm,{'attr':{'class':'search-user'}}) }}
+            <div class="form__search">
+            {{ form_row(searchForm.query) }}
+            {{ form_row(searchForm.submit) }}
+        </div> 
+        {{ form_end(searchForm) }}
+        </div>
+
+		<div class="article__table-container">
+			{% for friend in friends %}
+				{% if friend.user1.id == user.id %}
+                {% if friend.active == 1 %}                   
+					<div class="friend__table" id="{{ friend.user2.id }}">
+						<div class="article__table-left">
+							<div class="article__table-name" >
+								<h3 class="article__name">{{ friend.user2.firstname }} {{friend.user2.lastname}} </h3>
+                                <span class="article__card-category"><i class='bx bx-purchase-tag' ></i>{{friend.user2.profil}}<br> {{friend.user2.metier}}</span>
+							</div>
+						</div>
+						<div class="article__card-button">
+							<a href="{{ path('profil', {id: friend.user2.id}) }}">voir sa page</a>
+						</div>
+						<div class="article__table-right">
+						<figure>
+							<img src="{{ asset('uploads/profiles/' ~ friend.user2.picture) }}" alt="{{ friend.user2.lastname }}" class="friend-pic"/>
+						</figure>
+                        </div>
+                        <p>{{friend.user2.bio}}</p>
+					</div>
+				{% endif %}
+                {% elseif friend.user2.id is same as user.id %}
+					{% if friend.active == 1 %}                   
+					<div class="friend__table" id="{{ friend.user1.id }}">
+						<div class="article__table-left">
+							<div class="article__table-name" >
+								<h3 class="article__name">{{ friend.user1.firstname }} {{friend.user1.lastname}}</h3>
+                                <span class="article__card-category"><i class='bx bx-purchase-tag' ></i>{{friend.user1.profil}}<br>{{friend.user1.metier}} </span>
+							</div>
+						</div>
+						<div class="article__card-button">
+							<a href="{{ path('profil', {id: friend.user1.id}) }}">voir sa page</a>
+						</div>
+						<div class="article__table-right">
+						<figure>
+							<img src="{{ asset('uploads/profiles/' ~ friend.user1.picture) }}" alt="{{ friend.user1.lastname }}" class="friend-pic"/>
+						</figure>
+                        </div>
+                        <p>{{friend.user1.bio}}</p>
+					</div>
+				
+                {% endif %}
+				{% endif %}
+			{% endfor %}
+		</div>
+	</section>
+
+{% endblock %}

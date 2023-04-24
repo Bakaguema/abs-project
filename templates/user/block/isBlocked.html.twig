@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ app.user.firstname}}
+	{{ app.user.lastname}}
+	• Generation Boomerang
+{% endblock %}
+
+{% block content %}
+
+	<section class="article">
+		<h1 class="section__title">Les utilisateurs bloqués</h1>
+		<h3 class="section__subtitle">C'est dans cet espace que vous allez pouvoir gérer votre liste d'utilisateurs bloqués.</h3>
+		<div class="article__table-container">
+			{% for userBlock in userBlocks %}
+			    {% if userBlock.user1.id is same as app.user.id %}
+                    {% if userBlock.active != 0 %}
+					<div class="article__table-left">
+			    		<div class="article__table-name" >
+		    				<h3 class="nameColor">{{ userBlock.user2.firstname }} {{userBlock.user2.lastname}}</h3>
+						</div>
+					    <div class="article__table-right">
+						    <figure>
+							    <img src="{{ asset('uploads/profiles/' ~ userBlock.user2.picture) }}" alt="{{ userBlock.user2.lastname }}" class="friend-pic"/>
+						    </figure>
+                        </div>
+                        <div class="button">
+			                <div class="article__table-delete">
+                                <a href="{{ path('deblock_user', {id: userBlock.id}) }}" class="article__delete">
+							    <i class='bx bx-trash'></i>
+							    Débloquer </a>
+						    </div>
+                        </div>
+					</div>
+                    {% endif %} 
+				{% endif %} 
+                {# {% elseif userBlock.user2.id is same as app.user.id %}
+					{% if userBlock.active == 1 %}                   
+					<div class="friend__table" id="{{ userBlock.user1.id }}">
+						<div class="article__table-left">
+							<div class="article__table-name" >
+								<h3 class="article__name">{{ userBlock.user1.firstname }} {{userBlock.user1.lastname}}</h3>
+							</div>
+						</div>
+						<div class="article__card-button">
+							<a href="{{ path('profil', {id: userBlock.user1.id}) }}">voir sa page</a>
+						</div>
+						<div class="article__table-right">
+						<figure>
+							<img src="{{ asset('uploads/profiles/' ~ userBlock.user1.picture) }}" alt="{{ userBlock.user1.lastname }}" class="friend-pic"/>
+						</figure>
+                        </div>
+                        <div class="button">
+						 <div class="article__table-delet">
+                            <a href="{{ path('delete_friend', {id: userBlock.id}) }}" class="article__delete">
+							<i class='bx bx-trash'></i>supprimer </a>
+						</div>
+                        </div>
+					</div>
+				
+                {% endif %} #}
+				{# {% endif %} #}
+			{% endfor %}
+		</div>
+	</section>
+
+{% endblock %}

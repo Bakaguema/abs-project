@@ -1,0 +1,30 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Modifier une catégorie • Generation Boomerang{% endblock %}
+
+{% block content %}
+    <section class="category">
+        <h1 class="section__title">Modifier une catégorie</h1>
+        <h3 class="section__subtitle">C'est dans cet espace que vous allez pouvoir modifier une catégorie.</h3>
+
+        <div class="article__menu">
+            <a href="{{ path('category') }}" class="article__menu-back"><i class='bx bx-arrow-back' ></i> <span>retour aux catégories</span></a>
+        </div>
+
+        <div class="category__container">
+            <div class="category__add-form">
+                {{ form_start(form) }}
+
+                <div class="form">
+                    <i class='bx bx-purchase-tag' ></i>
+                    {{ form_widget(form.name) }}
+                </div>
+
+                <button class="article__form-button" type="submit">Mettre à jour</button>
+
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </section>
+{% endblock %}
+

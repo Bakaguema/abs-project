@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vos documents • Generation Boomerang{% endblock %}
+
+{% block content %}
+    <section class="account">
+        <h1 class="section__title">Ajouter un document</h1>
+        <h3 class="section__subtitle">C'est dans cet espace que vous allez pouvoir ajouter et recevoir des documents.</h3>
+
+        <div class="article__menu">
+            <a href="{{ path('user') }}" class="article__menu-back">
+                <i class='bx bx-arrow-back' ></i>
+                <span>retour au profil</span>
+                <a href="{{ path('documents') }}" class="article__menu-back">
+                <i class='bx bx-arrow-back' ></i>
+                <span>Gérer vos documents</span>
+            </a>
+        </div>
+
+        {% for message in app.flashes('message') %}
+            <h3 class="section__subtitle-alert">{{ message }}</h3>
+        {% endfor %}
+
+        <div class="account__container">
+            <div class="account__password-form">
+                {{ form_start(form) }}
+                <div class="form">
+                    <i class='bx bxs-paper-plane'></i>
+                    {{ form_widget(form.document) }}
+                </div>
+                <button class="article__form-button" type="submit">Envoyer</button>
+
+                {{ form_end(form) }}
+            </div>
+        </div>
+        
+        <div class="show__document">
+        <a href="{{ asset('uploads/profiles/document/' ~ app.user.document) }}" target="_blank"><i class='bx bx-show-alt'></i>Voir le document importé</a>
+        </div>
+        
+
+    </section>
+{% endblock %}

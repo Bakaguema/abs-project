@@ -1,0 +1,110 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Abonnements • Generation Boomerang{% endblock %}
+
+{% block content %}
+    <section class="product__section">
+        <h1 class="section__title">Adhésion</h1>
+        <h3 class="section__subtitle">C'est dans cet espace que vous allez pouvoir souscrire à l'abonnement de Generation Boomerang<small>©</small>.</h3>
+        <div class="product__container">
+            {% if app.user %}
+                {% for product in products %}
+                    <div class="product__card-container">
+                        <div class="product__card">
+                            <div class="product__card-body">
+                                <span class="product__card-subtitle">{{ product.subtitle }}</span>                           
+                                <h2 class="product__card-name">{{ product.name }}</h2>
+                                <span class="product__card-description">{{ product.description }}
+
+                                    {% if (product.name is same as 'demandeur d\'emploi') %} <br>
+                                        <small> *Simple et gratuit! En nous adressant votre attestation pôle emploi via <br><a href="{{ path('user_edit_document') }}">votre espace personnel </a> </small>                           
+                            
+                                    {% endif %}
+                                    {% if (product.name is same as 'Etudiants') %} <br>
+                                        <small> En nous adressant votre attestation étudiante via <a href="{{ path('user_edit_document') }}">votre espace personnel </a> </small>
+                                    {% endif %}
+                                </span>
+                                <div class="product__card-content">
+                                    {% if (product.name is same as 'Partenariats') %}
+                                    Nous contacter
+                                    {% else %}
+                                    {{ product.price|number_format(2, '€', '.') }} / an</a>                                
+                                    <iframe id="haWidget" allowtransparency="true" src="https://www.helloasso.com/associations/association-building-seniors-abs-ca-tient-la-route/adhesions/generation-boomerang/widget-bouton" style="width: 100%; height: 100px; border: none;padding-top:2rem"></iframe>
+                                    {% endif %}                                
+                                </div>
+                            </div>
+                            <img src="uploads/products/{{ product.illustration }}" alt="Abonnement Generation Boomerang" class="product__card-img" />
+                        </div>
+                    <div class="product__card-shadow"></div>
+                    </div>
+                {% endfor %}
+
+            {% else %}
+                {% for product in products %}
+                    <div class="product__card-container">
+                        <div class="product__card">
+                            <div class="product__card-body">
+                                <span class="product__card-subtitle">{{ product.subtitle }}</span>                           
+                                <h2 class="product__card-name">{{ product.name }}</h2>
+                                <span class="product__card-description">{{ product.description }}
+
+                                    {% if (product.name is same as 'demandeur d\'emploi') %} <br>
+                                        <small> *Simple et gratuit! En nous adressant votre attestation pôle emploi <br><a href="{{ path('user_edit_document') }}">votre espace personnel </a> </small>                           
+                            
+                                    {% endif %}
+                                    {% if (product.name is same as 'Etudiant') %} <br>
+                                        <small> *Ce pack peut être obtenu sous condition de nous envoyer votre attestation étudiante via <a href="{{ path('user_edit_document') }}">votre espace personnel </a> </small>
+                                    {% endif %}
+                                </span>
+                                <div class="product__card-content">
+                                    {% if (product.name is same as 'Entreprise') %}
+                                    Nous contacter
+                                    {% else %}
+                                    {{ product.price|number_format(2, '€', '.') }} / an</a>                                
+                                    <br><br><a href="{{ path('app_login') }}" class="account__button-up">Adhérer</a>
+                                    {% endif %}                                
+                                </div>
+                            </div>
+                            <img src="uploads/products/{{ product.illustration }}" alt="Abonnement Generation Boomerang" class="product__card-img" />
+                        </div>
+                        <div class="product__card-shadow"></div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </section>
+{% endblock %}
+{% block footer %}
+    <footer class="footer footer__innovation">
+        <div class="footer__container grid">
+            <div class="footer__data">
+                <h2 class="footer__title">Generation Boomerang<small>©</small></h2>
+                <ul>
+                    <li><a href="{{ path('condition') }}" class="footer__link">Conditions d'utilisations</a></li>
+                    <li><a href="#" class="footer__link">Qui sommes-nous ?</a></li>
+                    <li><a href="{{ path('partner') }}" class="footer__link">Nos partenaires</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__data">
+                <h2 class="footer__title">Explorer</h2>
+                <ul>
+                    <li><a href="{{ path('main') }}" class="footer__link">Accueil</a></li>
+                    <li><a href="{{ path('articles') }}" class="footer__link">Articles</a></li>
+                    <li><a href="{{ path('experiences') }}" class="footer__link">Retours d'expérience</a></li>
+                    <li><a href="#" class="footer__link">Pôle d'activités</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__data">
+                <h2 class="footer__title">Suivez-nous</h2>
+                <a href="#" class="footer__social footer__social-innovation"><i class='bx bxl-facebook' ></i></a>
+                <a href="#" class="footer__social footer__social-innovation"><i class='bx bxl-instagram' ></i></a>
+                <a href="#" class="footer__social footer__social-innovation"><i class='bx bxl-twitter' ></i></a>
+            </div>
+
+
+        </div>
+    </footer>
+{% endblock %}
+

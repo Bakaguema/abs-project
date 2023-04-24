@@ -1,0 +1,1227 @@
+/*===== GOOGLE FONTS =====*/
+
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&display=swap");
+
+/*===== VARIABLES CSS =====*/
+
+:root {
+  --header-height: 3rem;
+  --font-medium: 500;
+  /*communication*/
+  --communication-first-color: hsl(31, 84%, 68%);
+  --communication-dark-color: hsl(31, 84%, 68%);
+  /*design*/
+  --design-first-color: hsl(266, 36%, 72%);
+  --design-dark-color: hsl(266, 36%, 72%);
+  /*immobilier*/
+  --immobilier-first-color: hsl(128, 52%, 68%);
+  --immobilier-dark-color: hsl(128, 52%, 68%);
+  /*innovation*/
+  --innovation-first-color: hsl(52, 92%, 58%);
+  --innovation-dark-color: hsl(52, 92%, 58%);
+  /*metier*/
+  --metier-first-color: hsl(214, 68%, 68%);
+  --metier-dark-color: hsl(214, 68%, 68%);
+  /*savoir*/
+  --savoir-first-color: hsl(0, 83%, 70%);
+  --savoir-dark-color: hsl(0, 83%, 70%);
+  /*condition*/
+  --condition-first-color: hsl(188, 17%, 63%);
+  --condition-dark-color: hsl(188, 17%, 63%);
+  /*partenaire*/
+  --partenaire-first-color: hsl(75, 17%, 66%);
+  --partenaire-dark-color: hsl(75, 17%, 66%);
+  --white-color: hsl(240, 100%, 99%);
+  --text-color: hsl(193, 6%, 44%);
+  --body-font: "Sora", sans-serif;
+  --big-font-size: 4.25rem;
+  --h2-font-size: 1.25rem;
+  --normal-font-size: 0.938rem;
+  --small-font-size: 0.813rem;
+  --mb-1: 0.5rem;
+  --mb-2: 1rem;
+  --mb-3: 1.5rem;
+  --mb-4: 2rem;
+  --z-fixed: 100;
+}
+
+@media screen and (min-width: 768px) {
+  :root {
+    --big-font-size: 6.5rem;
+    --h2-font-size: 2rem;
+    --normal-font-size: 1rem;
+    --small-font-size: 0.875rem;
+  }
+}
+
+/*===== BASE =====*/
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: var(--header-height) 0 0 0;
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-medium);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+button {
+  background: none;
+  border: none;
+  color: var(--text-color);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/*===== CLASS CSS ===== */
+
+.section {
+  padding: 3rem 0;
+}
+
+.section__title-pole {
+  position: relative;
+  font-size: var(--h2-font-size);
+  margin: var(--mb-4) 0;
+  text-align: center;
+}
+
+.section__title-pole::after {
+  position: absolute;
+  content: "";
+  width: 32px;
+  height: 0.18rem;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 2rem;
+}
+
+.section__title-communication {
+  color: var(--communication-dark-color);
+}
+
+.section__title-communication::after {
+  background-color: var(--communication-first-color);
+}
+
+.section__title-design {
+  color: var(--design-dark-color);
+}
+
+.section__title-design::after {
+  background-color: var(--design-first-color);
+}
+
+.section__title-immobilier {
+  color: var(--immobilier-dark-color);
+}
+
+.section__title-immobilier::after {
+  background-color: var(--immobilier-first-color);
+}
+
+.section__title-innovation {
+  color: var(--innovation-dark-color);
+}
+
+.section__title-innovation::after {
+  background-color: var(--innovation-first-color);
+}
+
+.section__title-metier {
+  color: var(--metier-dark-color);
+}
+
+.section__title-metier::after {
+  background-color: var(--metier-first-color);
+}
+
+.section__title-savoir {
+  color: var(--savoir-dark-color);
+}
+
+.section__title-savoir::after {
+  background-color: var(--savoir-first-color);
+}
+
+.section__title-condition {
+  color: var(--condition-dark-color);
+}
+
+.section__title-condition::after {
+  background-color: var(--condition-first-color);
+}
+
+.section__title-partenaire {
+  color: var(--partenaire-dark-color);
+}
+
+.section__title-partenaire::after {
+  background-color: var(--partenaire-first-color);
+}
+
+.grid {
+  max-width: 1024px;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-column-gap: 2rem;
+  width: calc(100% - 2rem);
+  margin-left: var(--mb-2);
+  margin-right: var(--mb-2);
+}
+
+.header__communication {
+  background-color: var(--communication-first-color);
+}
+
+.header__design {
+  background-color: var(--design-first-color);
+}
+
+.header__immobilier {
+  background-color: var(--immobilier-first-color);
+}
+
+.header__innovation {
+  background-color: var(--innovation-first-color);
+}
+
+.header__metier {
+  background-color: var(--metier-first-color);
+}
+
+.header__savoir {
+  background-color: var(--savoir-first-color);
+}
+
+.header__condition {
+  background-color: var(--condition-first-color);
+}
+
+.header__partenaire {
+  background-color: var(--partenaire-first-color);
+}
+
+/*===== NAV =====*/
+
+.nav__pole {
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+@media screen and (min-width: 919px) {
+  .nav__toggle-pole {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 918px) {
+  .header__pole {
+    left: 0;
+  }
+  .nav__menu-pole {
+    position: fixed;
+    top: var(--header-height);
+    right: -100%;
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+    background-color: rgba(255, 255, 255, 0.3);
+    transition: 0.5s;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+}
+
+.nav__item-pole {
+  margin-bottom: var(--mb-4);
+}
+
+.nav__link-pole,
+.nav__link-poleInnovation {
+  position: relative;
+}
+
+.nav__link-communication {
+  color: var(--communication-dark-color);
+}
+
+.nav__link-design {
+  color: var(--design-dark-color);
+}
+
+.nav__link-immobilier {
+  color: var(--immobilier-dark-color);
+}
+
+.nav__link-innovation {
+  color: var(--innovation-dark-color);
+}
+
+.nav__link-metier {
+  color: var(--metier-dark-color);
+}
+
+.nav__link-savoir {
+  color: var(--savoir-dark-color);
+}
+
+.nav__link-condition {
+  color: var(--condition-dark-color);
+}
+
+.nav__link-partenaire {
+  color: var(--partenaire-dark-color);
+}
+
+.nav__logo-pole {
+  display: flex;
+  align-items: center;
+  color: var(--white-color);
+  margin: 0 0 0 2rem;
+}
+
+.nav__logo-pole img {
+  width: 40px;
+  margin: 0 1rem 0 0;
+}
+
+.nav__logo-poleInnovation {
+  display: flex;
+  align-items: center;
+  color: var(--innovation-dark-color);
+}
+
+.nav__logo-poleInnovation img {
+  width: 40px;
+  margin: 0 1rem 0 0;
+}
+
+.nav__toggle-pole {
+  color: var(--white-color);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+
+.pole__paginator {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 3rem;
+}
+/*===== HOME =====*/
+
+.home {
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+}
+
+.home__communication {
+  background-color: var(--communication-first-color);
+}
+
+.home__design {
+  background-color: var(--design-first-color);
+}
+
+.home__immobilier {
+  background-color: var(--immobilier-first-color);
+}
+
+.home__innovation {
+  background-color: var(--innovation-first-color);
+}
+
+.home__metier {
+  background-color: var(--metier-first-color);
+}
+
+.home__savoir {
+  background-color: var(--savoir-first-color);
+}
+
+.home__condition {
+  background-color: var(--condition-first-color);
+}
+
+.home__partenaire {
+  background-color: var(--partenaire-first-color);
+}
+
+.home__container {
+  height: calc(100vh - var(--header-height));
+  row-gap: 5rem;
+}
+
+.home__title {
+  align-self: center;
+  font-size: var(--big-font-size);
+  color: var(--white-color);
+  line-height: 1.1;
+  text-transform: uppercase;
+  margin: 0 0 0 5rem;
+  text-shadow: 0 20px 25px rgb(0 0 0 / 50%);
+}
+
+.home__title2 {
+  align-self: center;
+
+  margin-top: 4rem;
+  margin-right: 0;
+  width: 100vw;
+}
+
+.grid2 {
+  display: grid;
+  width: 100%;
+}
+
+.ban__pole {
+  width: 100%;
+}
+
+/* ===== ABOUT =====*/
+
+.about__container {
+  justify-items: center;
+  row-gap: 2rem;
+  text-align: center;
+}
+
+.about__img {
+  display: flex;
+  justify-content: center;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.about__img-partner {
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.about__img img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.about__subtitle {
+  font-size: var(--h2-font-size);
+  margin-bottom: var(--mb-1);
+}
+
+.about__subtitle-condition {
+  font-size: var(--h2-font-size);
+  margin: 2rem 7rem;
+  text-align: center;
+  font-style: italic;
+}
+
+.about__subtitle-communication {
+  color: var(--communication-first-color);
+}
+
+.about__subtitle-design {
+  color: var(--design-first-color);
+}
+
+.about__subtitle-immobilier {
+  color: var(--immobilier-first-color);
+}
+
+.about__subtitle-innovation {
+  color: var(--innovation-dark-color);
+}
+
+.about__subtitle-metier {
+  color: var(--metier-first-color);
+}
+
+.about__subtitle-savoir {
+  color: var(--savoir-first-color);
+}
+
+.about__subtitle-condition {
+  color: var(--condition-first-color);
+}
+
+.about__subtitle-partenaire {
+  color: var(--partenaire-first-color);
+}
+
+.about__profession {
+  display: block;
+  margin-bottom: var(--mb-4);
+}
+
+.about__text {
+  margin-bottom: var(--mb-4);
+}
+
+.about__text-condition {
+  margin: 0 10rem 2rem 10rem;
+}
+
+.about__text button {
+  width: 100%;
+}
+
+.about__social-icon {
+  font-size: 1.4rem;
+  margin: 0 var(--mb-1);
+}
+
+.about__social-iconCommunication:hover {
+  color: var(--communication-first-color);
+}
+
+.about__social-iconDesign:hover {
+  color: var(--design-first-color);
+}
+
+.about__social-iconImmobilier:hover {
+  color: var(--immobilier-first-color);
+}
+
+.about__social-iconInnovation:hover {
+  color: var(--innovation-first-color);
+}
+
+.about__social-iconMetier:hover {
+  color: var(--metier-first-color);
+}
+
+.about__social-iconSavoir:hover {
+  color: var(--savoir-first-color);
+}
+
+.about__social-iconPartenaire:hover {
+  color: var(--partenaire-first-color);
+}
+
+.about__popup:not(:target) {
+  display: none;
+}
+
+.about__popup:target {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.about__popup::before {
+  content: "";
+  box-sizing: border-box;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 50%;
+}
+
+.about__popup::after {
+  content: "";
+  width: 0;
+  height: 2px;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  margin-top: -1px;
+}
+
+.about__popup-communication::before {
+  background-color: var(--communication-first-color);
+}
+
+.about__popup-communication::after {
+  background-color: var(--communication-first-color);
+}
+
+.about__popup-design::before {
+  background-color: var(--design-first-color);
+}
+
+.about__popup-design::after {
+  background-color: var(--design-first-color);
+}
+
+.about__popup-immobilier::before {
+  background-color: var(--immobilier-first-color);
+}
+
+.about__popup-immobilier::after {
+  background-color: var(--immobilier-first-color);
+}
+
+.about__popup-innovation::before {
+  background-color: var(--innovation-first-color);
+}
+
+.about__popup-innovation::after {
+  background-color: var(--innovation-first-color);
+}
+
+.about__popup-metier::before {
+  background-color: var(--metier-first-color);
+}
+
+.about__popup-metier::after {
+  background-color: var(--metier-first-color);
+}
+
+.about__popup-savoir::before {
+  background-color: var(--savoir-first-color);
+}
+
+.about__popup-savoir::after {
+  background-color: var(--savoir-first-color);
+}
+
+.about__popup-partenaire::before {
+  background-color: var(--partenaire-first-color);
+}
+
+.about__popup-partenaire::after {
+  background-color: var(--partenaire-first-color);
+}
+
+.about__popup-container {
+  box-sizing: border-box;
+  padding: 5% 15%;
+  height: calc(100vh - 40px);
+  margin: auto;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+.about__popup-content {
+  color: var(--white-color);
+  text-align: justify;
+  margin: 2rem 0;
+}
+
+.about__popup-contentInnovation {
+  color: var(--innovation-dark-color);
+  text-align: justify;
+  margin: 2rem 0;
+}
+
+.about__popup-title {
+  font-size: 1.5rem;
+  margin: 2rem 0 0.25rem 0;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.about__popup-author {
+  text-align: right;
+}
+
+.about__popup-close {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 4rem;
+  position: fixed;
+  top: 4rem;
+  right: 1.5rem;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  color: var(--white-color);
+}
+
+.about__popup-closeInnovation {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 4rem;
+  position: fixed;
+  top: 4rem;
+  right: 6rem;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  color: var(--innovation-dark-color);
+}
+
+.about__popup-close span {
+  font-size: var(--small-font-size);
+  margin: 0;
+}
+
+.about__popup::before {
+  will-change: height, top;
+  animation: open-animation 0.6s cubic-bezier(0.83, 0.04, 0, 1.16) 0.65s both;
+}
+
+.about__popup::after {
+  will-change: width, opacity;
+  animation: line-animation 0.6s cubic-bezier(0.83, 0.04, 0, 1.16) both;
+}
+
+@keyframes line-animation {
+  0% {
+    width: 0;
+    opacity: 1;
+  }
+  99% {
+    width: 100%;
+    opacity: 1;
+  }
+  100% {
+    width: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes open-animation {
+  0% {
+    height: 0;
+    top: 50%;
+  }
+  100% {
+    height: 100vh;
+    top: 0;
+  }
+}
+
+.about__popup-container {
+  animation: fade 0.5s ease-out 1.3s both;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* ===== DISCOVERY =====*/
+
+.discovery {
+  background-color: var(--white-color);
+}
+
+.discovery__container {
+  width: 80%;
+  justify-items: center;
+  row-gap: 2rem;
+  margin: 0 auto;
+}
+
+.discovery__title {
+  color: black;
+  font-size: medium;
+  margin: 0;
+  padding: 0;
+  height: 3rem;
+  text-align: center;
+}
+
+.discovery__img {
+  position: relative;
+  overflow: hidden;
+}
+
+.discovery__img img {
+  border-radius: 0.5rem;
+  width: 100%;
+  height: 15rem;
+  object-fit: cover;
+}
+
+.discovery__link {
+  position: absolute;
+  bottom: -100%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(56, 55, 55, 0.6);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: 0.3s;
+}
+
+.discovery__img:hover .discovery__link {
+  bottom: 0;
+}
+
+.discovery__link-name {
+  text-align: center;
+}
+
+.discovery__link-nameCommunication {
+  color: var(--communication-dark-color);
+}
+
+.discovery__link-nameDesign {
+  color: var(--design-dark-color);
+}
+
+.discovery__link-nameImmobilier {
+  color: var(--immobilier-dark-color);
+}
+
+.discovery__link-nameInnovation {
+  color: var(--innovation-dark-color);
+}
+
+.discovery__link-nameMetier {
+  color: var(--metier-dark-color);
+}
+
+.discovery__link-nameSavoir {
+  color: var(--savoir-dark-color);
+}
+
+.discovery__link-namePartenaire {
+  color: var(--partenaire-dark-color);
+}
+
+/* ===== CONTACT =====*/
+
+.contact {
+  display: none;
+}
+
+.contact__container {
+  row-gap: 2rem;
+}
+
+.contact__subtitle {
+  font-size: var(--normal-font-size);
+}
+
+.contact__subtitle-communication {
+  color: var(--communication-first-color);
+}
+
+.contact__subtitle-design {
+  color: var(--design-first-color);
+}
+
+.contact__subtitle-immobilier {
+  color: var(--immobilier-first-color);
+}
+
+.contact__subtitle-innovation {
+  color: var(--innovation-dark-color);
+}
+
+.contact__subtitle-metier {
+  color: var(--metier-first-color);
+}
+
+.contact__subtitle-savoir {
+  color: var(--savoir-first-color);
+}
+
+.contact__subtitle-partenaire {
+  color: var(--partenaire-first-color);
+}
+
+.contact__text {
+  display: inline-block;
+  margin-bottom: var(--mb-2);
+}
+
+.contact__form {
+  width: 100%;
+  display: block;
+  grid-column: auto;
+  grid-row: auto;
+  padding: 0;
+}
+
+.contact__inputs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 1rem;
+}
+
+.contact__input {
+  width: 100%;
+  padding: 0.8rem;
+  outline: none;
+  font-size: var(--normal-font-size);
+  margin-bottom: var(--mb-4);
+  border-radius: 0.5rem;
+}
+
+.contact__input-communication {
+  border: 1.5px solid var(--communication-first-color);
+}
+
+.contact__input-design {
+  border: 1.5px solid var(--design-first-color);
+}
+
+.contact__input-immobilier {
+  border: 1.5px solid var(--immobilier-first-color);
+}
+
+.contact__input-innovation {
+  border: 1.5px solid var(--innovation-first-color);
+}
+
+.contact__input-metier {
+  border: 1.5px solid var(--metier-first-color);
+}
+
+.contact__input-savoir {
+  border: 1.5px solid var(--savoir-first-color);
+}
+
+.contact__input-partenaire {
+  border: 1.5px solid var(--partenaire-first-color);
+}
+
+.contact__button {
+  display: block;
+  color: var(--white-color);
+  padding: 0.75rem 2.5rem;
+  margin: 0 auto 0 auto;
+  border-radius: 0.5rem;
+  border: none;
+  outline: none;
+  font-size: var(--normal-font-size);
+  cursor: pointer;
+}
+
+.contact__button-communication {
+  background-color: var(--communication-first-color);
+}
+
+.contact__button-design {
+  background-color: var(--design-first-color);
+}
+
+.contact__button-immobilier {
+  background-color: var(--immobilier-first-color);
+}
+
+.contact__button-innovation {
+  display: block;
+  color: var(--black-color);
+  padding: 0.75rem 2.5rem;
+  margin: 0 auto 0 auto;
+  border-radius: 0.5rem;
+  border: none;
+  outline: none;
+  font-size: var(--normal-font-size);
+  cursor: pointer;
+  background-color: var(--innovation-dark-color);
+}
+
+.contact__button-metier {
+  background-color: var(--metier-first-color);
+}
+
+.contact__button-savoir {
+  background-color: var(--savoir-first-color);
+}
+
+.contact__button-partenaire {
+  background-color: var(--partenaire-first-color);
+}
+
+/* ===== FOOTER=====*/
+
+.footer__communication {
+  background-color: var(--communication-dark-color);
+}
+
+.footer__design {
+  background-color: var(--design-dark-color);
+}
+
+.footer__immobilier {
+  background-color: var(--immobilier-dark-color);
+}
+
+.footer__innovation {
+  background-color: var(--innovation-dark-color);
+}
+
+.footer__metier {
+  background-color: var(--metier-dark-color);
+}
+
+.footer__savoir {
+  background-color: var(--savoir-dark-color);
+}
+
+.footer__condition {
+  background-color: var(--condition-dark-color);
+}
+
+.footer__partenaire {
+  background-color: var(--condition-dark-color);
+}
+
+.footer__container {
+  row-gap: 2rem;
+}
+
+.footer__title {
+  display: flex;
+  align-items: center;
+  font-size: var(--normal-font-size);
+  color: var(--white-color);
+  margin-bottom: var(--mb-2);
+  text-transform: uppercase;
+}
+
+.footer__title img {
+  width: 40px;
+  margin: 0 1rem 0 0;
+}
+
+.footer__link {
+  padding: 0.25rem 0;
+}
+
+.footer__link-communication:hover {
+  color: var(--communication-first-color);
+}
+
+.footer__link-design:hover {
+  color: var(--design-first-color);
+}
+
+.footer__link-immobilier:hover {
+  color: var(--immobilier-first-color);
+}
+
+.footer__link-innovation:hover {
+  color: var(--innovation-first-color);
+}
+
+.footer__link-metier:hover {
+  color: var(--metier-first-color);
+}
+
+.footer__link-savoir:hover {
+  color: var(--savoir-first-color);
+}
+
+.footer__link-condition:hover {
+  color: var(--condition-first-color);
+}
+
+.footer__link-partenaire:hover {
+  color: var(--partenaire-first-color);
+}
+
+.footer__social {
+  font-size: 1.4rem;
+  margin-right: var(--mb-1);
+}
+
+.footer__social-communication:hover {
+  color: var(--communication-first-color);
+}
+
+.footer__social-design:hover {
+  color: var(--design-first-color);
+}
+
+.footer__social-immobilier:hover {
+  color: var(--immobilier-first-color);
+}
+
+.footer__social-innovation:hover {
+  color: var(--innovation-first-color);
+}
+
+.footer__social-metier:hover {
+  color: var(--metier-first-color);
+}
+
+.footer__social-savoir:hover {
+  color: var(--savoir-first-color);
+}
+
+.footer__social-condition:hover {
+  color: var(--condition-first-color);
+}
+
+.footer__social-partenaire:hover {
+  color: var(--partenaire-first-color);
+}
+
+/* ===== MEDIA QUERIES =====*/
+
+@media (max-width: 800px) {
+  .home {
+    height: 55vh;
+  }
+  .home__title {
+    margin: 0;
+  }
+  .home__container {
+    height: calc(64vh - var(--header-height));
+    text-align: center;
+  }
+  #discovery {
+    height: auto;
+  }
+  .contact {
+    display: block;
+  }
+  .contact__inputs {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .home {
+    height: 55vh;
+  }
+  body {
+    margin: 0;
+  }
+  .section {
+    padding-top: 4rem;
+  }
+  .section__title-pole {
+    margin-bottom: 3rem;
+  }
+  .section__title-pole::after {
+    width: 64px;
+    top: 3rem;
+  }
+  .nav__pole {
+    height: calc(var(--header-height) + 1rem);
+  }
+  .nav__list-pole {
+    display: flex;
+  }
+  .nav__item-pole {
+    margin-left: var(--mb-4);
+    margin-bottom: 0;
+  }
+  .nav__link-pole {
+    color: var(--white-color);
+  }
+  .nav__link-pole:hover {
+    color: var(--white-color);
+  }
+  .nav__link-poleInnovation {
+    color: var(--innovation-dark-color);
+  }
+  .nav__link-poleInnovation:hover {
+    color: var(--innovation-dark-color);
+  }
+  .home__container {
+    height: 100vh;
+    grid-template-rows: 10fr 1fr;
+    row-gap: 0;
+  }
+  .about__container {
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    text-align: initial;
+    padding: 4rem 0;
+  }
+  .about__img {
+    width: 200px;
+    height: 200px;
+  }
+  .discovery__container {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    column-gap: 2rem;
+  }
+  .contact {
+    display: block;
+  }
+  .contact__container {
+    grid-template-columns: repeat(1, 1fr);
+    justify-items: center;
+    margin-bottom: 20px;
+  }
+  .contact__form {
+    width: 380px;
+  }
+  .footer__container {
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .grid {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .contact__container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .grid {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .contact__container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

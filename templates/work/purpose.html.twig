@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Déposer une recherche d'emploi • Generation Boomerang{% endblock %}
+
+{% block content %}
+
+    <section class="article">
+        <h1 class="section__title">Recherche d'emploi</h1>
+        <h3 class="section__subtitle">Vous pouvez vous rendre disponible aux offres d'emploi ici</h3>
+
+        <div class="article__menu">
+            <a href="{{ path('works') }}" class="article__menu-back"><i class='bx bx-arrow-back' ></i> <span>Retourner à la recherche</span></a>
+        </div>
+
+        <div class="article__user-container">
+            <div class="article__add">
+                {{ form_start(form, {'attr' : {'class' : 'article__add-form'} }) }}
+
+                <div class="article__form-work">
+                    <i class='bx bx-message-dots'></i>
+                    {{ form_widget(form.name) }}
+                </div>
+
+                <div class="article__form-work">
+                    <i class='bx bx-pin'></i>
+                    {{ form_widget(form.place) }}
+                </div>
+
+                <div class="article__form-work">
+                    <i class='bx bx-star'></i>
+                    {{ form_widget(form.domaine) }}
+                </div>
+
+                <div class="article__form-work">
+                    <i class='bx bx-time' ></i>
+                    {{ form_widget(form.datedispo) }}
+                </div>
+
+                <div class="article__form-work">
+                    <i class='bx bx-briefcase-alt-2'></i>
+                    {{ form_widget(form.contrat, {'attr':{'style':'color: var(--text-color-light);'}}) }}
+                </div>
+
+                <div class="article__form-work">
+                    <i class='bx bx-phone'></i>
+                    {{ form_widget(form.contact) }}
+                </div>
+                
+
+
+                <h3 class="section__subtitle">Votre CV :</h3>
+                <div class="article__form-content article__form">   
+                    <span></span>
+                    {{ form_widget(form.cv) }}
+                </div>
+
+                <h3 class="section__subtitle">Decrivez vous en quelques lignes :</h3>
+                <div class="article__form-content article__form">
+                    <span></span>
+                    {{ form_widget(form.description) }}
+                </div>
+
+                <button class="article__form-button" type="submit">Ajouter</button>
+
+                {{ form_end(form) }}
+            </div>
+        </div>    
+    </section>
+{% endblock %}
+{% block JavaScript %}
+    <script type="text/javascript" src="{{ asset('bundles/fosckeditor/ckeditor.js') }}" charset="utf-8"></script>
+{% endblock %}
+

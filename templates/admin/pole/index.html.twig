@@ -1,0 +1,43 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Pôle d'activité • Generation Boomerang{% endblock %}
+
+{% block content %}
+    <section class="category">
+        <h1 class="section__title">Gérer les poles d'activités</h1>
+        <h3 class="section__subtitle">C'est dans cet espace que vous allez pouvoir gérer les différentes pôles d'activités.</h3>
+        {% if is_granted("ROLE_ADMIN") %}
+        <div class="article__menu">
+            <a href="{{ path('admin') }}" class="article__menu-back"><i class='bx bx-arrow-back' ></i> <span>retour à l'administration</span></a>
+            <a href="{{ path('add_pole') }}" class="article__menu-add"><i class='bx bx-plus-medical' ></i> <span>ajouter un pôle d'activité</span></a>
+        </div>
+        {% endif %}
+        {% for message in app.flashes('message') %}
+            <h3 class="section__subtitle-alert">{{ message }}</h3>
+        {% endfor %}
+
+        <div class="category__container">
+            {% for pole in poles %}
+            {% if is_granted("ROLE_ADMIN") or pole.admin == user %}
+                <div class="category__table">
+                    <div class="category__table-left">
+                        <div class="category__table-name">
+                            <h3 class="category__name"><i class='bx bx-pin'></i> {{ pole.name }}</h3>
+                        </div>
+                    </div>
+                    <div class="category__table-right">
+                        <div class="category__table-edit">
+                            <a href="{{ path('edit_pole', {id: pole.id}) }}" class="category__edit"><i class='bx bx-edit-alt' ></i> éditer</a>
+                        </div>
+                        {% if is_granted("ROLE_ADMIN") %}
+                        <div class="category__table-delete">
+                            <a href="{{ path('delete_pole', {id: pole.id}) }}" class="category__delete"><i class='bx bx-trash' ></i> supprimer</a>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}

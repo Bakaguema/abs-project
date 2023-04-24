@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="{{ asset('assets/css/swiper-bundle.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/home.css') }}">
+    <link rel="shortcut icon" type="image/png" href="{{ asset('assets/img/favicon.png') }}">
+    <title>Génération Boomerang</title>
+
+</head>
+<body>
+
+<!--========== MAIN ==========-->
+    <main class='main'>
+                {% for homeDetail in homeDetails %}
+                    <!--========== GÉNÉRATION BOOMERANG ==========-->
+                    <section class="swiper-slide section">
+                        <div id="container-right" >
+                            <div class="home__container container">
+                                <hr class="hrHome">
+                                <div class="home__data">
+                                    <div id="divVideo">
+                                        <video id="video" autoplay  loop muted class="video-js vjs-default-skin"> 
+                                            <source src="{{ asset('assets/video/video2.mov') }}" type="video/mp4" >
+                                        </video>
+                                    </div>
+                                    <p class="home__description" id="desc">
+                                    {% for homeDetail in homeDetails %}
+                                    {{homeDetail.generation}}
+                                        {# Bienvenue sur notre portail ! Nous avons le profond plaisir de vous compter parmi nos beta testeurs.<br>
+                                        Au cours de cette expérience, vous aurez pour mission d'observer de façon objective <br>les perfections,
+                                        imperfections, les points sombres de notre portail.<br>
+                                        Parce que vous êtes spécial, votre avis compte ! #}
+                                    </p>
+                                    {% endfor %}
+                                    <div class="home__button__container">
+                                        <a href="{{ path('about') }}" class="home__button">Découvrir</a>
+                                        <a href="{{ path('app_login') }}" class="home__button">Connectez vous</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>    
+                    </section>
+                {% endfor %}
+        <!--========== CUBE ==========-->
+                    <div id="container-left">
+                        <div class="home__cube">
+                            <div class="home__cube-container">
+                                <a href="{{ path('preview_metier') }}" class="home__cube-face home__cube-front" style="background: url({{ asset('assets/img/home/cube/metiers.jpg') }}); background-size: cover;" ></a>  
+                                <a href="{{ path('preview_communication') }}" class="home__cube-face home__cube-back" style="background: url({{ asset('assets/img/home/cube/communication.jpg') }}); background-size: cover;"></a>
+                                <a href="{{ path('preview_savoir') }}" class="home__cube-face home__cube-right" style="background: url({{ asset('assets/img/home/cube/savoirs.jpg') }}); background-size: cover;"></a>
+                                <a href="{{ path('preview_immobilier') }}" class="home__cube-face home__cube-left" style="background: url({{ asset('assets/img/home/cube/immobilier.jpg') }}); background-size: cover;"></a>
+                                <a href="{{ path('preview_design') }}" class="home__cube-face home__cube-top" style="background: url({{ asset('assets/img/home/cube/design.jpg') }}); background-size: cover;"></a>
+                                <a href="{{ path('preview_innovation') }}" class="home__cube-face home__cube-bottom" style="background: url({{ asset('assets/img/home/cube/innovation.jpg') }}); background-size: cover;"></a>
+                            </div>
+                        </div>
+        <!--========== DOCK ==========-->
+                        <div class="home__dock gallery-thumbs">
+                            <div class="home__dock-mobile">
+                                <span><i class='bx bx-left-arrow-alt'></i> Gliser pour explorer <i class='bx bx-right-arrow-alt' ></i></span>
+                            </div>
+                            <div class="home__dock-container ">
+                                <div class="home__dock-metier  detailsPole ft" id="front">
+                                    <a href="{{ path('preview_metier') }}">
+                                        <img src="{{ asset('assets/img/home/dock/metiers.svg') }}" alt="metier" class="home__dock-img home__dock-imgMetier"  ><br>
+                                        <span id="text-metier"  class="home__dock-metierTitle">Évolution des Métiers</span><br>
+                                        <input type="button" value="voir le pôle" id="bouton-metier">
+                                    </a>
+                                </div>
+                                <div class="home__dock-communication  detailsPole rt" id="back">
+                                    <a href="{{ path('preview_communication') }}">
+                                        <img src="{{ asset('assets/img/home/dock/communication.svg') }}" alt="communication" class="home__dock-img home__dock-imgCommunication" ><br>
+                                        <span id="text-communication" class="home__dock-communicationTitle">Communication R & D</span><br>
+                                        <input type="button" value="voir le pôle" id="bouton-communication">
+                                    </a>
+                                </div>
+                                <div class="home__dock-savoir  detailsPole bk" id="right">
+                                    <a href="{{ path('preview_savoir') }}">
+                                        <img src="{{ asset('assets/img/home/dock/savoirs.svg') }}" alt="savoirs" class="home__dock-img" ><br>
+                                        <span id="text-savoir" class="home__dock-savoirTitle">Évolution des savoirs</span><br>
+                                        <input type="button" value="voir le pôle" id="bouton-savoir">
+                                    </a>
+                                </div>
+                                <div class="home__dock-immobilier  detailsPole lt" id="left">
+                                    <a href="{{ path('preview_immobilier') }}">
+                                        <img src="{{ asset('assets/img/home/dock/immobilier.svg') }}" alt="immobilier" class="home__dock-img" ><br>
+                                        <span id="text-immobilier" class="home__dock-immobilierTitle">Immobilier & Silver Experience</span><br>
+                                        <input type="button" value="voir le pôle" id="bouton-immobilier">
+                                    <a>
+                                </div>
+                                <div class="home__dock-design  detailsPole tp" id="top">
+                                    <a href="{{ path('preview_design') }}">
+                                        <img src="{{ asset('assets/img/home/dock/design.svg') }}" alt="design" class="home__dock-img" id="img-design"><br>
+                                        <span id="text-design" class="home__dock-designTitle">Universal Design</span><br>
+                                        <input type="button" value="voir le pôle" id="bouton-design">
+                                    <a>
+                                </div>
+                                <div class="home__dock-innovation  detailsPole bm" id="bottom">
+                                    <a href="{{ path('preview_innovation') }}">
+                                        <img src="{{ asset('assets/img/home/dock/innovation.svg') }}" alt="innovation" class="home__dock-img" id="img-innovation" ><br>
+                                        <span id="text-innovation" class="home__dock-innovationTitle">Innovation</span><br>
+                                        <input type="button" value="voir le pôle" id="bouton-innovation">
+                                    </a>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+        <div class="wave"></div>
+    </main>
+<div class="wave"></div>
+<script src="{{asset('assets/js/cube.js')}}" ></script>
+<script src="https://unpkg.com/scrollreveal"></script>
+<script src="{{ asset('assets/js/others/gsap.min.js') }}"></script>
+<script src="{{ asset('assets/js/others/swiper-bundle.min.js') }}"></script>
+<script src="{{ asset('assets/js/home.js') }}"></script>
+</body>
+</html>

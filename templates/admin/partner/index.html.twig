@@ -1,0 +1,88 @@
+{% extends 'admin.html.twig' %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('assets/css/pole.css') }}">
+{% endblock %}
+
+{% block title %}Partenaires • Generation Boomerang{% endblock %}
+
+{% block content %}
+    <section class="article">
+        <h1 class="section__title">Les partenaires</h1>
+        <h3 class="section__subtitle">C'est dans un espace que vous allez pouvoir retrouver et modifier nos partenaires.</h3>
+
+        <div class="article__menu">
+            <a href="{{ path('admin') }}" class="article__menu-back"><i class='bx bx-arrow-back' ></i> <span>retour au profil</span></a>
+            <a href="{{ path('admin_add_partner') }}" class="article__menu-add"><i class='bx bx-plus-medical' ></i> <span>ajouter un partenaire</span></a>
+        </div>
+
+
+        <div class="about__container grid">
+
+        {% for partner in partners %}
+            <div class="about__img-partner">
+                <img src="{{ asset('uploads/partner/' ~ partner.illustration) }}" alt="">
+            </div>
+
+            <div>
+                <h2 class="about__subtitle about__subtitle-partenaire">{{partner.name}}<small>©</small></h2>
+                <span class="about__profession">Mieux vivre ensemble</span>
+                <p class="about__text">{{partner.resume|striptags('<p><div><body><br>')|u.truncate(300, '...')|raw}}
+                
+                <div class="article__card-option">
+                                    <a href="{{ path('admin_edit_partner', {id: partner.id}) }}" class="article__card-edit"><i class='bx bxs-edit-alt' ></i> <span>éditer</span></a>
+                                    {# <a href="{{ path('delete_article', {id: partner.id}) }}" class="article__card-delete"><i class='bx bxs-trash' ></i> <span>supprimer</span></a> #}
+                                </div>
+
+                    <br><br><a href="#about__popup"><i class='bx bx-expand-alt bx-burst' ></i> cliquez pour en voir plus...</a></p>
+
+                <div class="about__social">
+		{% if partner.facebook != null %}
+			<a href="{{ partner.facebook }}" class="profil__social-icon" target="_blank">
+				<i class='bx bxl-facebook'></i>
+			</a>
+		{% endif %}
+		{% if partner.twitter != null %}
+			<a href="{{partner.twitter }}" class="profil__social-icon" target="_blank">
+				<i class='bx bxl-twitter'></i>
+			</a>
+		{% endif %}
+		{% if partner.linkedin != null %}
+			<a href="{{ partner.linkedin }}" class="profil__social-icon" target="_blank">
+				<i class='bx bxl-linkedin'></i>
+			</a>
+		{% endif %}
+                </div>
+            </div>
+            <div class="about__popup about__popup-partenaire" id="about__popup">
+                <div class="about__popup-container">
+                    <a href="#about" class="about__popup-close">
+                        <i class='bx bx-x' ></i>
+                    </a>
+                    <div class="about__popup-content">
+                        <h1 class="about__popup-title">À la découverte de la Generation Boomerang<small>©</small></h1>
+                        <p>{{partner.resume}}</p>
+                        <h1 class="about__popup-title">Notre parcours</h1>
+                        <p>{{partner.parcours}}</p>
+                        <h1 class="about__popup-title">Nos rencontres</h1>
+                        <p>{{partner.rencontres}}</p>
+                    </div>
+                </div>
+
+                <div class="article__card-option">
+                                    <a href="{{ path('admin_edit_partner', {id: partner.id}) }}" class="article__card-edit"><i class='bx bxs-edit-alt' ></i> <span>éditer</span></a>
+                                    {# <a href="{{ path('delete_article', {id: partner.id}) }}" class="article__card-delete"><i class='bx bxs-trash' ></i> <span>supprimer</span></a> #}
+                                </div>
+
+            </div>
+
+        {% endfor %}
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block JavaScript %}
+    <script type="text/javascript" src="{{ asset('bundles/fosckeditor/ckeditor.js') }}" charset="utf-8"></script>
+{% endblock %}
+

@@ -1,0 +1,52 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Discussions • Generation Boomerang{% endblock %}
+
+{% block content %}
+    <section class="article">
+        <h1 class="section__title">Gérer les salons de discussions</h1>
+        <h3 class="section__subtitle">C'est dans cet espace que vous allez pouvoir gérer les différents salon de discussions.</h3>
+
+        <div class="article__menu">
+            <a href="{{ path('admin') }}" class="article__menu-back"><i class='bx bx-arrow-back' ></i> <span>retour à l'administration</span></a>
+        </div>
+
+        {% for message in app.flashes('message') %}
+            <h3 class="section__subtitle-alert">{{ message }}</h3>
+        {% endfor %}
+
+        <div class="article__table-container">
+            {% for forum in forums %}
+                <div class="article__table">
+                    <div class="article__table-left">
+                        <div class="article__table-active">
+                            {% if forum.active == 0 %}
+                                <a href="{{ path('admin_active_forum', {id: forum.id}) }}">
+                                    <i class='bx bx-message-alt' ></i>
+                                    <span>non actif</span>
+                                </a>
+                            {% else %}
+                                <a href="{{ path('admin_active_forum', {id: forum.id}) }}">
+                                    <i class='bx bxs-message-alt-check' ></i>
+                                    <span>actif</span>
+                                </a>
+                            {% endif %}
+                        </div>
+                        <div class="article__table-name">
+                            <h5 class="article__date"><i class='bx bx-time-five' ></i> créé le {{ forum.createdAt|date('d M Y à H:i') }}</h5>
+                            <h3 class="article__name"><i class='bx bx-comment-dots bx-flip-horizontal' ></i> {{ forum.name }}</h3>
+                            <h5 class="article__user"><i class='bx bx-user'></i> {{ forum.user.firstname }} {{ forum.user.lastname }}</h5>
+                            <h5 class="article__category"><i class='bx bx-news'></i>{{ forum.message | length }} messages</h5>
+                        </div>
+                    </div>
+                    <div class="article__table-right">
+                        <div class="article__table-delete">
+                            <a href="{{ path('admin_delete_forum', {id: forum.id}) }}" class="article__delete"><i class='bx bx-trash' ></i> supprimer</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+{% endblock %}

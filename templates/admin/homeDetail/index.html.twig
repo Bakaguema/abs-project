@@ -1,0 +1,115 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Les descriptions • Generation Boomerang{% endblock %}
+
+{% block content %}
+    <section class="article">
+        <h1 class="section__title">Gérer les descriptions</h1>
+        <h3 class="section__subtitle">C'est dans cet espace que vous allez pouvoir gérer les minis descriptions des différents pôle d'activités.</h3>
+
+        <div class="article__menu">
+            <a href="{{ path('admin') }}" class="article__menu-back"><i class='bx bx-arrow-back' ></i> <span>retour à l'administration</span></a>
+        </div>
+
+        {% for message in app.flashes('message') %}
+            <h3 class="section__subtitle-alert">{{ message }}</h3>
+        {% endfor %}
+
+        <div class="article__table-container">
+            {% for homeDetail in homeDetails %}
+                <div class="article__table" id="{{ homeDetail.id }}">
+                    <div class="article__table-left">
+                        <div class="article__table-name">
+                            <h3 class="article__name"><i class='bx bxs-home' ></i> Generation Boomerang</h3>
+                            <h5 class="article__user">{{ homeDetail.generation }}</h5>
+                        </div>
+                    </div>
+                    <div class="article__table-right">
+                        <div class="article__table-edit">
+                            <a href="{{ path('edit_home_detail', {id: homeDetail.id}) }}" class="article__edit"><i class='bx bx-edit-alt' ></i> éditer</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="article__table" id="{{ homeDetail.id }}">
+                    <div class="article__table-left">
+                        <div class="article__table-name">
+                            <h3 class="article__name"><i class='bx bxs-briefcase' ></i> Évolution des métiers</h3>
+                            <h5 class="article__user">{{ homeDetail.metier }}</h5>
+                        </div>
+                    </div>
+                    <div class="article__table-right">
+                        <div class="article__table-edit">
+                            <a href="{{ path('edit_home_detail', {id: homeDetail.id}) }}" class="article__edit"><i class='bx bx-edit-alt' ></i> éditer</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="article__table" id="{{ homeDetail.id }}">
+                    <div class="article__table-left">
+                        <div class="article__table-name">
+                            <h3 class="article__name"><i class='bx bxs-user-voice' ></i> Communication, recherche & developpement</h3>
+                            <h5 class="article__user">{{ homeDetail.communication }}</h5>
+                        </div>
+                    </div>
+                    <div class="article__table-right">
+                        <div class="article__table-edit">
+                            <a href="{{ path('edit_home_detail', {id: homeDetail.id}) }}" class="article__edit"><i class='bx bx-edit-alt' ></i> éditer</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="article__table" id="{{ homeDetail.id }}">
+                    <div class="article__table-left">
+                        <div class="article__table-name">
+                            <h3 class="article__name"><i class='bx bxs-brain' ></i> Évolution des savoirs</h3>
+                            <h5 class="article__user">{{ homeDetail.savoir }}</h5>
+                        </div>
+                    </div>
+                    <div class="article__table-right">
+                        <div class="article__table-edit">
+                            <a href="{{ path('edit_home_detail', {id: homeDetail.id}) }}" class="article__edit"><i class='bx bx-edit-alt' ></i> éditer</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="article__table" id="{{ homeDetail.id }}">
+                    <div class="article__table-left">
+                        <div class="article__table-name">
+                            <h3 class="article__name"><i class='bx bxs-building-house' ></i> Immobilier, silver & experience</h3>
+                            <h5 class="article__user">{{ homeDetail.immobilier }}</h5>
+                        </div>
+                    </div>
+                    <div class="article__table-right">
+                        <div class="article__table-edit">
+                            <a href="{{ path('edit_home_detail', {id: homeDetail.id}) }}" class="article__edit"><i class='bx bx-edit-alt' ></i> éditer</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="article__table" id="{{ homeDetail.id }}">
+                    <div class="article__table-left">
+                        <div class="article__table-name">
+                            <h3 class="article__name"><i class='bx bxs-palette' ></i> Universal & inclusive design</h3>
+                            <h5 class="article__user">{{ homeDetail.design }}</h5>
+                        </div>
+                    </div>
+                    <div class="article__table-right">
+                        <div class="article__table-edit">
+                            <a href="{{ path('edit_home_detail', {id: homeDetail.id}) }}" class="article__edit"><i class='bx bx-edit-alt' ></i> éditer</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="article__table" id="{{ homeDetail.id }}">
+                    <div class="article__table-left">
+                        <div class="article__table-name">
+                            <h3 class="article__name"><i class='bx bxs-bulb' ></i> Innovation</h3>
+                            <h5 class="article__user">{{ homeDetail.innovation }}</h5>
+                        </div>
+                    </div>
+                    <div class="article__table-right">
+                        <div class="article__table-edit">
+                            <a href="{{ path('edit_home_detail', {id: homeDetail.id}) }}" class="article__edit"><i class='bx bx-edit-alt' ></i> éditer</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+{% endblock %}

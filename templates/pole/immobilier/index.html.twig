@@ -1,0 +1,134 @@
+{% extends 'base.html.twig' %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('assets/css/pole.css') }}">
+{% endblock %}
+
+{% block title %}Immobilier & Silver Experience • Generation Boomerang{% endblock %}
+
+{% block content %}
+    <!--===== HOME =====-->
+    <section class="home home__immobilier" id="home">
+       <div class="home__container home__container-pole grid2">
+            <h1 class="home__title2"><img class="ban__pole"src="{{ asset('assets/img/pole/immobilier/banniere.png') }}"></h1>
+        </div>
+    </section>
+
+    <!--===== ABOUT =====-->
+    <section class="about section" id="about">
+        <h2 class="section__title-pole section__title-immobilier">À la découverte de ...</h2>
+
+        <div class="about__container grid">
+            <div class="about__img">
+                <img src="{{ asset('assets/img/pole/immobilier/about1.png') }}" alt="">
+            </div>
+
+            <div>
+                <h2 class="about__subtitle about__subtitle-immobilier">Alain Bechade</h2>
+                <span class="about__profession">Professeur Emérite du Conservatoire National des Arts et Métiers</span>
+                <p class="about__text">Lorsqu'on parle d’ Alain Bechade, on parle d'immobilier et de silver expérience : comme tout commence par l’observation selon lui.
+                    Comme il faut douter de tout, il faut se poser les bonnes questions, observer, puis analyser et enfin agir.
+                    <br><br><a href="#about__popup"><i class='bx bx-expand-alt bx-burst' ></i> cliquez pour en voir plus...</a></p>
+
+                <div class="about__social">
+                    <a href="https://www.linkedin.com/in/alain-bechade-aaab071b/" target="_blank" class="about__social-icon about__social-iconImmobilier"><i class='bx bxl-linkedin' ></i></a>
+                    <a href="#" class="about__social-icon about__social-iconImmobilier"><i class='bx bxl-facebook'></i></a>
+                    <a href="#" class="about__social-icon about__social-iconImmobilier"><i class='bx bxl-twitter' ></i></a>
+                </div>
+            </div>
+            <div class="about__popup about__popup-immobilier" id="about__popup">
+                <div class="about__popup-container">
+                    <a href="#about" class="about__popup-close">
+                        <i class='bx bx-x' ></i>
+                    </a>
+                    <div class="about__popup-content">
+                        <h1 class="about__popup-title">A la découverte d’Alain Bechade</h1>
+                        <p>Lorsqu'on parle d’ Alain Bechade, on parle d'immobilier et de silver expérience : comme tout commence par l’observation selon lui.
+                            Comme il faut douter de tout, il faut se poser les bonnes questions, observer, puis analyser et enfin agir.</p>
+                        <p>Il est actuellement, professeur émérite du CNAM, administrateur de l'observatoire régional de l'immobilier d'entreprise en Île-de-France mais également gestionnaire forestier.</p>
+                        <p>Alain Bechade est le 1er français à avoir été Président Europe et France des Chartered Surveyors, la RICS (Royal Institution of Chartered Surveyors), qui est une  organisation professionnelle internationale et indépendante. Elle offre une qualification et des normes mondialement reconnues sur les marchés de l’immobilier, de la construction et de l’infrastructure. </p>
+                        <p>Partons à la rencontre d’un des six membres fondateurs de « Generation Boomerang » ©.</p>
+                        <h1 class="about__popup-title">Son parcours</h1>
+                        <p>Né en 1946 à Paris, Alain Bechade fait des études de droit (Doctorat), son service militaire (Officier), puis commence comme juriste au sein d'entreprises.</p>
+                        <p>Il voyage alors beaucoup, notamment à Alger, pour négocier des contrats internationaux, en tant que juriste commercial dans le groupe Thomson pendant 1 an et demi.</p>
+                        <p>En 1976, il rentre chez « Bourdais », société de conseil d'immobilier d’entreprise, aujourd'hui CBRE, pendant 9 ans ou il finit directeur général.</p>
+                        <p>En 1985, il est démarché par un jeune promoteur (Bernard Arnault), ils créent ensemble une filiale de promotion d'immobilier d’entreprise « Ferinel industries ».</p>
+                        <p>En 1994, il rachète une société de promotion « Interconstruction », qui était en difficulté lors de la crise Il reprend les rênes de la société et la mène au succès.</p>
+                        <p>En 2001, il est appelé au poste de Président d’Auguste Thouard, qu’il développe en Europe notamment et qui deviendra BNP Paribas Real estate.</p>
+                        <p>L'année de sa retraite privée en 2008, il est nommé professeur titulaire de chaire, au Conservatoire National des Arts et des Métiers, et directeur de l’ICH (le plus grand institut de l'immobilier à l’époque), ou il enseigne également un cours qu’il a créé « économie immobilière »</p>
+                        <p>En 2014, atteint par la limite d’âge, il est nommé professeur émérite, il publie également un ouvrage « économie immobilière ».</p>
+                        <h1 class="about__popup-title">Sa rencontre avec « Generation Boomerang » ©</h1>
+                        <p>Anne-Marie Pinsolle l’a contacté, pour lui proposer d'intégrer l'association et de représenter l’un des six pôles. Pour Alain, le but était de « comment faire le lien et transmettre l’expérience » et « comment former les jeunes ».</p>
+                        <h1 class="about__popup-title">Existe-t-il une rupture entre les jeunes et les moins jeunes</h1>
+                        <p>L’échange, le partage et la transmission de savoir sont essentiels, il n’y a pas de réelle rupture, seulement des évolutions.
+                            « On pense tout réinventer, mais il faut  regarder comment nos anciens ont réagi face à des situations non pas identiques mais similaires ; c'est très important ».
+                            Toujours se poser la question : « pourquoi est-ce qu’on est dans cette situation ? »
+                            La connaissance, l’observation, l'analyse et les solutions sont les maîtres mots de ce lien entre générations.</p>
+                        <h1 class="about__popup-title">Points à revoir </h1>
+                        <p>Ce qu’il tire de ces expériences : il a connu 3 crises qui ont frappées l'immobilier (années 90, début des années 2000, et 2008, crise financière). Il a connu la forte inflation, la tertiarisation de l'immobilier d’entreprise, le manque d'attrait pour les investisseurs et la financiarisation des méthodes.</p>
+                        <p>Aujourd’hui, il faut répondre à un problème sanitaire et de prophylaxie (fonctionnalités, normes d'hygiène dans les immeubles), Or au 19ème siècle les mêmes problèmes se sont posés.</p>
+                        <p>Rentrer donc dans l’analyse après l'observation : l'observation permet l’analyse, l'analyse permet la compréhension, et la compréhension permet les solutions (Claude Bernard). Savoir donc analyser au-delà des approches marketing ou lobbyistes.</p>
+                        <br><br>
+                        <p class="about__popup-author">Charlotte Feron</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+    <h2 class="section__title-pole section__title-immobilier">A propos de l'{{ desc.0.name }}</h2>
+    <div class="discovery__container">
+    <h5 class="about__text">{{ desc.0.description }}</h5>
+    </div>
+    </section>
+    <!--===== DISCOVERY =====-->
+    <section class="discovery section" id="discovery">
+        <h2 class="section__title-pole section__title-immobilier">Découvrir</h2>
+
+        <div class="discovery__container grid">
+                   {% for article in articles %}
+            <div class="discovery__img">
+            <h5 class="discovery__title">{{ article.title}}</h5> 
+                <img src="{{ asset('uploads/articles/' ~ article.illustrations[0].name) }}" alt="{{ article.title }}" />
+                
+                <div class="discovery__link">
+                    <a href="{{ path('article', {slug: article.slug}) }}" class="discovery__link-name discovery__link-nameCommunication">{{ article.content|raw|striptags|raw|u.truncate(100, '...')|raw }} <br> cliquez pour découvrir</a>
+                </div>
+            </div>
+        {% endfor %}
+        </div>        
+        <div class = "pole__paginator">
+            {% do articles.setPageRange(6) %}
+            {{ knp_pagination_render(articles, 'bundles/KnpPaginatorBundle/paginator.html.twig') }}
+        </div> 
+    </section>
+
+    <!--===== CONTACT =====-->
+    {# <section class="contact section" id="contact">
+        <h2 class="section__title-pole section__title-immobilier">Contact</h2>
+
+        <div class="contact__container grid">
+            <div class="contact__info">
+                <h3 class="contact__subtitle contact__subtitle-immobilier">EMAIL</h3>
+                <span class="contact__text">alain@generation-boomerang.com</span>
+
+                <h3 class="contact__subtitle contact__subtitle-immobilier">TÉLÉPHONE</h3>
+                <span class="contact__text">06 07 08 09 00</span>
+
+                <h3 class="contact__subtitle contact__subtitle-immobilier">ADRESSE</h3>
+                <span class="contact__text">Roubaix</span>
+            </div>
+
+            <form action="" class="contact__form">
+                <div class="contact__inputs">
+                    <input type="text" placeholder="Votre nom" class="contact__input contact__input-immobilier">
+                    <input type="email" placeholder="votre@email.com" class="contact__input contact__input-immobilier">
+                </div>
+
+                <textarea name="" id="" cols="0" rows="10" class="contact__input contact__input-immobilier"></textarea>
+
+                <input type="submit" value="Envoyer" class="contact__button contact__button-immobilier">
+            </form>
+        </div>
+    </section> #}
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Ajouter une F.A.Q • Generation Boomerang{% endblock %}
+
+{% block content %}
+    <section class="category">
+        <h1 class="section__title">Ajouter une question / réponse</h1>
+        <h3 class="section__subtitle">C'est dans cet espace que vous allez pouvoir ajouter une nouvelle question /réponse.</h3>
+
+        <div class="article__menu">
+            <a href="{{ path('admin_faq') }}" class="article__menu-back"><i class='bx bx-arrow-back' ></i> <span>retour aux questions / réponses</span></a>
+        </div>
+
+        <div class="category__container">
+            <div class="category__add-form">
+                {{ form_start(form) }}
+
+                <div class="form">
+                    <i class='bx bx-question-mark'></i>
+                    {{ form_widget(form.question) }}
+                </div>
+
+                <div class="form">
+                    <i class='bx bx-info-circle' ></i>
+                    {{ form_widget(form.title) }}
+                </div>
+
+                <div class="form faq__form-content">
+                    <i class='bx bx-info-circle' ></i>
+                    {{ form_widget(form.response) }}
+                </div>
+
+                <div class="form">
+                    <i class='bx bxs-hand-up' ></i>
+                    {{ form_widget(form.linkName) }}
+                </div>
+
+                <div class="form">
+                    <i class='bx bxs-hand-right' ></i>
+                    {{ form_widget(form.linkUrl) }}
+                </div>
+
+                <button class="article__form-button" type="submit">Ajouter</button>
+
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </section>
+{% endblock %}
+

@@ -1,0 +1,135 @@
+.access_wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: auto;
+  margin: 4% 4% 8% 4%;
+}
+
+/*************************** LEFT CONTAINER *****************************/
+
+.access_container_left {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  font-size: 18px;
+}
+
+.access_title {
+  font-size: 60px;
+  margin-bottom: 3%;
+}
+
+.access_img {
+  width: 80%;
+}
+
+.access_description {
+  text-align: justify;
+  width: 80%;
+  margin-top: 8%;
+}
+
+/************************* RIGHT CONTAINER **********************/
+
+.access_container_right {
+  width: 60%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+/*************************** CARD *********************************/
+
+.access__card {
+  width: 400px;
+  height: 500px;
+  margin-bottom: 3%;
+  padding: 30px;
+  -webkit-box-shadow: -2px 5px 15px 5px #858585;
+  box-shadow: -2px 5px 15px 5px #858585;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.access__card__title {
+  font-size: 30px;
+  margin: 20px 0px;
+}
+
+.access__card__body {
+  margin: 30px 0px;
+  font-size: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.access__card__footer {
+  margin-top: 15px;
+}
+
+/**************************MEDIA QUERIES****************************/
+@media screen and (min-width: 1023px) {
+  .access_wrapper {
+    margin: 10% 4% 8% 4%;
+  }
+}
+
+@media (max-width: 1350px) {
+  .access_wrapper {
+    flex-wrap: wrap;
+  }
+  .access_container_left,
+  .access_container_right {
+    width: 100%;
+    margin-bottom: 5%;
+  }
+  .access_container_right {
+    margin: 5%;
+  }
+}
+
+@media (max-width: 700px) {
+  .access_description {
+    text-align: center;
+    width: 100%;
+  }
+}
+
+@media (max-width: 410px) {
+  .access_title {
+    margin-top: 11%;
+    font-size: 40px;
+  }
+}
+
+/************************************************************* telephone portable *************************************************************/
+@media (max-width: 299px) {
+  .access_title {
+    margin-top: 12%;
+    font-size: 35px;
+  }
+}
+
+@media (max-width: 480px) {
+  .access_container_left,
+  .access_container_right {
+    width: 100%;
+    margin-top: 65px;
+  }
+}
+
+/************************************************************* tablette *************************************************************/
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .access_wrapper {
+    flex-wrap: wrap;
+    margin-top: 100px;
+  }
+}
+
+/************************************************************* Ecrant 4K *************************************************************/

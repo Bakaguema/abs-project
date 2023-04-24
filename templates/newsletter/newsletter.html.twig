@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Abonnement newsletter
+{% endblock %}
+
+{% block body %}
+	{% block content %}
+<section class="article">
+        <h1 class="section__title">Abonnement newsletter</h1>
+        <h3 class="section__subtitle">En vous abonnant à la newsletter, Vous serez ainsi informé de nos dernières actualités. </h3>
+		<div class="account__container">
+			
+			<div class="account__container">
+            <div class="account__password-form">
+                {{ form_start(form) }}
+                <div class="form">
+                    <i class='bx bx-news'></i>
+					<p>Souhaitez-vous vous abonner à la Newsletter ?{{ form_widget(form.is_subscribe) }}</p>
+                    
+                </div>
+                <button class="article__form-button" type="submit">S'abonner</button>
+
+                {{ form_end(form) }}
+            </div>
+        </div>
+</section>
+		{% endblock %}
+	{% endblock %}

@@ -1,0 +1,121 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ app.user.firstname}}
+	{{ app.user.lastname}}
+	• Generation Boomerang
+{% endblock %}
+
+{% block content %}
+	<section class="article">
+		<h1 class="section__title">Nos derniers inscrits</h1>
+		<h3 class="section__subtitle">C'est dans un espace que vous allez pouvoir retrouver des utilisateurs.</h3>
+		{% for message in app.flashes('message') %}
+			<h3 class="section__subtitle-alert">{{ message }}</h3>
+		{% endfor %}
+		<link
+		rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css" integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin=""/>
+		<!-- Make sure you put this AFTER Leaflet's CSS -->
+		<script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js" integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
+		<style>
+			#map {
+				height: 700px;
+				max-width: 1000px;
+				margin: auto;
+			}
+		</style>
+		<div class="article__container">
+			<div class="article__menu">
+				{{ form_start(searchForm,{'attr':{'class':'search-user'}}) }}
+				<div class="form__search">
+					{{ form_widget(searchForm.query) }}
+				</div>
+
+				<div class="form">
+					<i class='bx bxs-briefcase-alt-2'></i>
+					{{ form_widget(searchForm.region) }}
+				</div>
+				{% if searchForm.departement is defined %}
+					<div class="form">
+						<i class='bx bxs-briefcase-alt-2'></i>
+						{{ form_widget(searchForm.departement) }}
+					</div>
+				{% endif %}
+				{% if searchForm.city is defined %}
+					<div class="form">
+						<i class='bx bxs-briefcase-alt-2'></i>
+						{{ form_widget(searchForm.city) }}
+					</div>
+				{% endif %}
+				{% if searchForm.rayon is defined %}
+				<div class="form">
+					<i class='bx bxs-briefcase-alt-2'></i>
+					{{ form_widget(searchForm.rayon) }}
+				</div>
+			{% endif %}
+
+
+				<button class="article__form-button" type="submit">Mettre à jour</button>
+			{{ form_end(searchForm) }}
+			</div><div id="map"> </div>
+
+			<script>
+				const map = L.map('map');
+// Initializes map
+map.setView([
+46.980, 2
+], 6);
+// Sets initial coordinates and zoom level
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution: '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(map);
+// Sets map data source and associates with map
+let marker;	
+{% for user in users %}
+{% if user.city != null %}
+marker = L.marker([{{ user.city.gpslat }}, {{ user.city.gpslng }}]).addTo(map);
+{% endif %}
+{% endfor %}
+// Set map focus to current user position
+			</script>
+			<div class="article__table-container">
+				{% for user in users %}
+					{% if user.profil is same as "recherche d'expérience" or user.profil is same as "junior" %}
+						<div class="friend__table searchuser" id="{{ user.id }}">
+						{% elseif user.profil is same as "recherche d'apprenant" or user.profil is same as "senior" %}
+							<div class="friend__table searchuser2" id="{{ user.id }}">
+							{% else %}
+								<div class="friend__table" id="{{ user.id }}">
+								{% endif %}
+								<div class="article__table-left">
+									<div class="article__table-name">
+										<h3>{{ user.firstname }}
+											{{user.lastname}}
+										</h3>
+										<span class="profil-user article__card-category">
+											<i class='bx bx-purchase-tag'></i>
+											{{user.profil}}<br>
+											{{user.metier}}</span>
+									</div>
+								</div>
+								<div class="article__card-button">
+									
+								</div>
+								<div class="article__table-right">
+								<a href="{{ path('profil', {id: user.id}) }}">
+									<figure>
+										<img src="{{ asset('uploads/profiles/' ~ user.picture) }}" alt="{{ user.lastname }}" class="friend-pic"/>
+									</figure>
+								</a>
+								</div>
+								{# <p class="profil-user">{{user.bio}}</p> #}
+								{# {% if user.profil is same as "recherche d'expérience" or user.profil is same as "junior" %}
+																																																																								<img class="logo" src="{{ asset('uploads/profiles/bluemerang.png')}}"/>
+																																																																							{% elseif user.profil is same as "recherche d'apprenant" or user.profil is same as "senior" %}
+																																																																								<img class="logo" src="{{ asset('uploads/profiles/boomerange.png')}}"/>
+																																																																							{% else %}
+																																																																						{% endif %} #}
+							</div>
+						{% endfor %}
+
+					</div>
+				</section>
+			{% endblock %}

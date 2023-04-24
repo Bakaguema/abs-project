@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+    <link rel="shortcut icon" type="image/png" href="{{ asset('assets/img/favicon.png') }}">
+    <title>Mot de pass oublié • Génération Boomerang</title>
+</head>
+<body>
+<!--========== MAIN ==========-->
+<main class='main'>
+    <section>
+        <div class="connexion__container">
+            <div class="connexion__content">
+                <div class="connexion__content-register">
+                    <div class="connexion__content-text">
+                        {% if notification %}
+                            <h2 class="connexion__content-title">À vous de jouer !</h2>
+                            <span>{{ notification }}</span>
+                        {% else %}
+                            <h2 class="connexion__content-title">La mémoire vous est revenue ?</h2>
+                            <span>Ne perdez pas de temps et connectez-vous dès à présent pour profiter de notre platforme !</span>
+                            <a href="{{ path('app_login') }}" class="connexion__content-button">Connexion</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <form method="post" class="connexion__form-connexion">
+            <h2 class="connexion__form-title">Réinitialiser votre mot de passe</h2>
+
+            {% for message in app.flashes('notice') %}
+                <div class="connexion__form-subtitle">{{ message }}</div>
+            {% endfor %}
+
+            <div class="connexion__form">
+                <div class="form">
+                    <i class='bx bx-user' ></i>
+                    <input type="email"  name="email" id="inputEmail" class="form-control" autocomplete="email" placeholder="votre@email.com" required autofocus>
+                </div>
+            </div>
+
+            <div class="connexion__button">
+                <button class="connexion__form-button" type="submit">Réinitialiser</button>
+            </div>
+        </form>
+
+    </section>
+</main>
+</body>
+</html>

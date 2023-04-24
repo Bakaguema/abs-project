@@ -1,0 +1,110 @@
+<!--========== NAV ==========-->
+<div class="nav" id="navbar">
+	<nav class="nav__container">
+		<div>
+			<a href="{{ path('main') }}" class="nav__link nav__logo">
+				<img src="{{ asset('assets/img/logo.png') }}" class="nav__logo-img" alt="Logo Génération Boomerang">
+				<span class="nav__logo-name">Generation Boomerang<small>©</small>
+				</span>
+			</a>
+
+			<div class="nav__list">
+				<div class="nav__items">
+
+					<div class="header__mode ">
+						<i class='bx bxs-moon' id="header-mode"></i>
+					</div>
+					{% if is_granted("ROLE_ADMIN") %}
+					
+					<div class="nav__dropdown">
+						<p  class="nav__link">
+							<i class='bx bx-user nav__icon'></i>
+							<span class="nav__name">Utilisateurs</span>
+						</p>
+						<div class="nav__dropdown-collapse">
+							<div class="nav__dropdown-content">
+								<a href="{{ path('admin_user') }}" class="nav__dropdown-item">Liste des Utilisateurs</a>
+								<a href="{{ path('admin_user-create') }}" class="nav__dropdown-item">Création Utilisateurs abonnées</a>
+								<a href="{{ path('admin_user-ban') }}" class="nav__dropdown-item">Compte banni</a>
+								<a href="{{ path('admin_forum') }}" class="nav__dropdown-item">Discussions</a>
+							</div>
+						</div>
+					</div>
+					<div class="nav__dropdown">
+						<p class="nav__link">
+							<i class='bx bx-gift nav__icon'></i>
+							<span class="nav__name">Coupons</span>
+						</p>
+						<div class="nav__dropdown-collapse">
+							<div class="nav__dropdown-content">
+								<a href="{{ path('admin_user-dashboard') }}" class="nav__dropdown-item">Liste des Coupons</a>
+								<a href="{{ path('admin_user-code') }}" class="nav__dropdown-item">Créer un Coupon</a>
+							</div>
+						</div>
+					</div>
+					<div class="nav__dropdown">
+						<p class="nav__link">
+							<i class='bx bx-edit nav__icon'></i>
+							<span class="nav__name">Publications</span>
+						</p>
+						<div class="nav__dropdown-collapse">
+							<div class="nav__dropdown-content">
+								<a href="{{ path('admin_article') }}" class="nav__dropdown-item">Articles</a>
+								<a href="{{ path('admin_experience') }}" class="nav__dropdown-item">Retours d'expériences</a>
+								<a href="{{ path('admin_comment') }}" class="nav__dropdown-item">Commentaires</a>
+							</div>
+						</div>
+					</div>
+					<div class="nav__dropdown">
+						<p class="nav__link">
+							<i class='bx bxs-parking nav__icon'></i>
+							<span class="nav__name">Partenaires</span>
+						</p>
+						<div class="nav__dropdown-collapse">
+							<div class="nav__dropdown-content">
+								<a href="{{ path('admin_article') }}" class="nav__dropdown-item">Nouveaux Partenaire</a>
+								<a href="{{ path('admin_experience') }}" class="nav__dropdown-item">Modifier Partenaire</a>
+							</div>
+						</div>
+					</div>
+					<div class="nav__dropdown">
+						<p class="nav__link">
+							<i class='bx bx-dialpad-alt nav__icon'></i>
+							<span class="nav__name">Autres</span>
+						</p>
+						<div class="nav__dropdown-collapse">
+							<div class="nav__dropdown-content">
+								<a href="{{ path('category') }}" class="nav__dropdown-item">Les catégories</a>
+								<a href="{{ path('admin_faq') }}" class="nav__dropdown-item">Foire Aux Questions</a>
+								<a href="{{ path('admin_home_detail') }}" class="nav__dropdown-item">Détails page d'accueil</a>
+								<a href="{{ path('admin_product') }}" class="nav__dropdown-item">Abonnements</a>
+								<a href="{{ path('export') }}" class="nav__dropdown-item">Update newsletter</a>
+							</div>
+						</div>
+					</div>
+					<a href="{{ path('admin_pole') }}" class="nav__link">
+						<i class='bx bx-food-menu nav__icon'></i>
+						<span class="nav__name">Pôles</span>
+					</a>
+					<a href="{{ path('admin_signalement') }}" class="nav__link">
+						<i class='bx bx-no-entry nav__icon' ></i>
+						<span class="nav__name">Signalements</span>
+					</a>
+					<a href="{{ path('admin_stats') }}" class="nav__link">
+						<i class='bx bx-stats nav__icon' ></i>
+						<span class="nav__name">Statistiques</span>
+					</a>
+					<a href="{{ path('admin_badge') }}" class="nav__link">
+						<i class='bx bx-trophy nav__icon' ></i>
+						<span class="nav__name">Badges</span>
+					</a>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+		{# <a href="{{ path('app_logout') }}" class="nav__link nav__logout">
+			<i class='bx bx-log-out nav__icon'></i>
+			<span class="nav__name">Déconnexion</span>
+		</a> #}
+	</nav>
+</div>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+    <link rel="shortcut icon" type="image/png" href="{{ asset('assets/img/favicon.png') }}">
+    <title>Réinitialier votre mot de passe • Génération Boomerang</title>
+</head>
+<body>
+<!--========== MAIN ==========-->
+<main class='main'>
+    <section>
+        <div class="connexion__container">
+            <div class="connexion__content">
+                <div class="connexion__content-register">
+                    <div class="connexion__content-text">
+                        <h2 class="connexion__content-title">La mémoire vous est revenue ?</h2>
+                        <span>Ne perdez pas de temps et connectez-vous dès à présent pour profiter de notre platforme !</span>
+                        <a href="{{ path('app_login') }}" class="connexion__content-button">Connexion</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{ form_start(form, {'attr' : {'class' : 'connexion__form-connexion'} }) }}
+            <h2 class="connexion__form-title">Réinitialiser votre mot de passe</h2>
+
+            <div class="form">
+                <i class='bx bxs-lock-open' ></i>
+                {{ form_widget(form.new_password.first) }}
+                <span></span>
+                {{ form_errors(form.new_password.first) }}
+            </div>
+
+            <div class="form">
+                <i class='bx bxs-lock-open' ></i>
+                {{ form_widget(form.new_password.second) }}
+                <span></span>
+                {{ form_errors(form.new_password.second) }}
+            </div>
+
+            <button class="connexion__form-button" type="submit">Mettre à jour</button>
+
+        {{ form_end(form) }}
+
+    </section>
+</main>
+</body>
+</html>

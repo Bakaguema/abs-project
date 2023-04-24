@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+            <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+            <link rel="shortcut icon" type="image/png" href="{{ asset('assets/img/favicon.png') }}">
+            <title>Connexion • Génération Boomerang</title>
+        </head>
+        <body>
+        <!--========== MAIN ==========-->
+        <main class='main'>
+            <section >
+                <div class="connexion__container">
+                    <div class="connexion__content">
+                        <div class="connexion__content-register">
+                            <div class="connexion__content-text">
+                                <h2 class="connexion__content-title">Pas encore inscrit ?</h2>
+                                <span>Ne perdez pas de temps et inscrivez-vous dès à présent pour découvrir et profiter de notre plateforme !</span>
+                                <a href="{{ path('register') }}" class="connexion__content-button">Inscription</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                    <form method="post" class="connexion__form-connexion">
+
+                        <h2 class="connexion__form-title">Connectez vous</h2>
+
+                        {% if error %}
+                            <div class="connexion__form-subtitle">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        {% endif %}
+
+                        {% for message in app.flashes('notice') %}
+                            <div class="connexion__form-subtitle">{{ message }}</div>
+                        {% endfor %}
+
+                        <div class="connexion__form">
+                            <div class="form">
+                                <i class='bx bx-user' ></i>
+                                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" placeholder="votre@email.com" required autofocus>
+                            </div>
+                            <div class="form">
+                                <i class='bx bxs-lock' ></i>
+                                <label>
+                                    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" placeholder="Votre mot de passe" required>
+                               
+                                    <div class="password-icon">
+                                        <i data-feather="eye"></i>
+                                        <i data-feather="eye-off"></i>
+                                    </div>
+                                </label>
+                                <span></span> 
+                                <span><a href="{{ path('reset_password') }}">Vous avez oublié votre mot de passe ? </a></span>
+
+                            </div>
+                        </div>
+
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                        <div class="connexion__button">
+                            <button class="connexion__form-button" type="submit">Connexion</button>
+                            <a href="{{ path('register') }}" class="connexion__form-buttonAlt">Inscription</a>
+                        </div>
+                    </form>
+
+            </section>
+        </main>
+        <!-- ICON SCRIPT -->
+                <script src="https://unpkg.com/feather-icons"></script>
+                <script>
+                feather.replace();
+
+                const eye = document.querySelector(".feather-eye");
+                const eyeoff = document.querySelector(".feather-eye-off");
+                const passwordField = document.querySelector("input[type=password]");
+
+
+                eye.addEventListener("click", () => {
+                eye.style.display = "none";
+                eyeoff.style.display = "block";
+                passwordField.type = "text";
+                });
+
+                eyeoff.addEventListener("click", () => {
+                eyeoff.style.display = "none";
+                eye.style.display = "block";
+                passwordField.type = "password";
+                });
+                </script>
+                
+    </body>
+</html>

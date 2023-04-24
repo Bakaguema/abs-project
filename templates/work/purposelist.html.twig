@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les demandes d'emplois de nos adhérents!{% endblock %}
+
+{% block content %}
+<section class="article">
+                {{ form_start(searchForm,{'attr':{'class':'search_article'}}) }}
+                <div class="form__search">
+                {{ form_row(searchForm.query) }}
+                {{ form_row(searchForm.submit) }}
+            </div> 
+            {{ form_end(searchForm) }}
+            
+    <div class="article__container-work">
+        <ul class="article__cards-work">
+            {% for purpose in purposes %}
+            <li class="article__card">
+                <div class="article__card-content">
+                    <div>
+                    <h2 class="work__card-title"><a href="{{ path('purposeshow', {slug: purpose.slug}) }}">{{
+                                purpose.name }}</a></h2>
+                        <span><i class='bx bx-pin'></i> {{ purpose.place }}</span>
+                        <span class="article__card-author"> par <a
+                                href="{{ path('profil', {id: purpose.users.id}) }}">{{ purpose.users.firstname }} {{
+                                purpose.users.lastname }}</a></span>
+                        <p class="article__card-preview">{{ purpose.description|u.truncate(1000, '...')|raw }}</p>
+                        <div class="article__card-button-work">
+                            <a href="{{ path('purposeshow', {slug: purpose.slug}) }}">Voir plus</a>
+                        </div>
+                    </div>
+                    <figure>
+                        <img src="{{ asset('uploads/profiles/' ~ purpose.users.picture)}}" alt="{{ purpose.name }}" />
+                    </figure>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+{% endblock %}

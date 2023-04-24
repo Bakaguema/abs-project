@@ -1,0 +1,46 @@
+{% extends 'admin.html.twig' %}
+{% block title %}FAQ • Generation Boomerang{% endblock %}
+
+{% block content %}
+    <section class="article">
+        <h1 class="section__title">Gérer les Bannissement</h1>
+        <h3 class="section__subtitle">C'est dans cet espace que vous allez pouvoir gérer les différents comptes banni.</h3>
+
+        <div class="article__menu">
+            <a href="{{ path('admin') }}" class="article__menu-back"><i class='bx bx-arrow-back' ></i> <span>retour à l'administration</span></a>
+        </div>
+
+        {% for message in app.flashes('message') %}
+            <h3 class="section__subtitle-alert">{{ message }}</h3>
+        {% endfor %}
+
+        <div class="article__table-container">
+        
+            {% for user in users %}
+                {% if user.deletedAt != null %}
+                    <div id="card_signal">
+                        <div class="article__table" id="{{ user.id }}">
+                            <div class="article__table-left">
+                                <div class="article__table-name">
+                                
+                                    <div class="account__profil-img" style="background:url({{ asset('uploads/profiles/' ~ user.picture ) }}) no-repeat center center; background-size: cover;"></div>
+                                    <div style="text-align:center";>
+                                        <p>{{ user.firstname }} {{ user.lastname }}</p><br>
+                                        <p>{{user.email}}</p><br>
+                                        <p>A été banni le {{user.deletedAt | date("d/m/Y")}}</p>
+                                    </div>
+                                    <div>
+                                        
+                                        <a href="{{ path('admin_user-unban', {id: user.id}) }}"><button id="unban_button">Débannir le compte</button></a>
+                                            
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+        </div>
+    </section>
+
+{% endblock %}

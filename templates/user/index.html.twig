@@ -1,0 +1,218 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ app.user.firstname}} {{ app.user.lastname}} • Generation Boomerang{% endblock %}
+
+{% block content %}
+
+
+
+    <section class="account__profil-section">
+        
+            <div class="account__slider-container">
+                <div class="account__left-slide">
+                    <div class="account__left-content" style="background-color: hsl(266, 24%, 21%)">
+                        <h1><i class='bx bxs-group' ></i></h1>
+                        <p>retrouvez vos contact</p>
+                    </div>
+                    <div class="account__left-content" style="background-color: hsl(338, 30%, 21%)">
+                        <h1><i class='bx bxs-bookmarks' ></i></h1>
+                        <p>retrouvez vos articles et retours d'expérience favoris</p>
+                    </div>
+                    <div class="account__left-content" style="background-color: hsl(200, 26%, 21%)">
+                        <h1><i class='bx bxs-cog'></i></h1>
+                        <p>réglages</p>
+                    </div>
+                    <div class="account__left-content" style="background-color: hsl(213, 29%, 27%)">
+                        <div class="account__profil-img" style="background:url({{ asset('uploads/profiles/' ~ app.user.picture ) }}) no-repeat center center; background-size: cover;">
+                            <a href="{{ path('user_edit_picture') }}"><i class='bx bxs-camera' ></i></a>
+                        </div>
+                        
+                        
+                        <h1>{{ app.user.firstname}} {{ app.user.lastname}}</h1>
+
+                        {# Mise en place des Badges #}
+                        <div class="account__left-badge">
+                            
+                            {% if articles | length > 8 %}
+                                <img src="{{ asset('assets/img/badge/trophee2.png') }} " class="account__badge-img" title="Articles écrit" >
+                                {% elseif articles | length > 4 %}
+                                <img src="{{ asset('assets/img/badge/trophee.png') }} " class="account__badge-img" title="Articles écrit" >
+                            {% endif %}
+                            {% if experiences | length > 5 %}
+                                <img src="{{ asset('assets/img/badge/medaille2.png') }} " class="account__badge-img" title="Retour experiences" >
+                                {% elseif experiences | length > 2 %}
+                                <img src="{{ asset('assets/img/badge/medaille.png') }} " class="account__badge-img" title="Retour experiences" >
+                            {% endif %} 
+                        <a href="{{ path('user_realisations') }}">Mes réalisations</a>
+                        </div>
+                {# Progress bar completion du profil #}  
+                
+                        <div class="progress_bar">
+                                <progress max="100" value="{{ pbar }}" title="{{ pbar }}%"></progress>
+                        </div>
+                    
+                    </div>
+                </div>
+
+                <div class="account__right-slide">
+                    <div class="account__right-content" style="background-image: url({{ asset('assets/img/user/profil1.jpg') }});">
+                        <div class="account__right-button" style="background-color: hsl(213, 29%, 27%)">
+
+                                <a href="{{ path('user_article') }}">
+                                    <i class='bx bx-show'></i>
+                                    <span>Voir mes articles<br>et retour d'experience</span>
+                                </a>
+                                <a href="{{ path('add_article') }}">
+                                    <i class='bx bx-plus-medical' ></i>
+                                    <span>Ajouter un article</span>
+                                </a>
+                                
+                                <a href="{{ path('add_experience') }}">
+                                    <i class='bx bx-plus-medical' ></i>
+                                    <span>Ajouter un retour <br>d'expérience</span>
+                                </a>
+
+                                <a href="{{ path('user_article') }}">
+                                    <i class='bx bxs-edit-alt' ></i>
+                                    <span>Modifier ou supprimer <br> un article / un retour d'expérience</span>
+                                </a>
+                        
+                                {% if is_granted("ROLE_POLE") %}
+                                <a href="{{ path('add_interview') }}">
+                                    <i class='bx bx-plus-medical' ></i>
+                                    <span>Ajouter une interview</span>
+                                </a>
+                                <a href="{{ path('user_interview') }}">
+                                    <i class='bx bxs-edit-alt' ></i>
+                                    <span>Modifier ou supprimer une interview</span>
+                                </a>
+                                {% endif %}
+                                <a href="{{ path('user_annonce') }}">
+                                    <i class='bx bxs-edit-alt' ></i>
+                                    <span>Modifier ou supprimer une annonce</span>
+                                </a>
+
+                            <a href="">
+                                <i class='bx bxs-bell' ></i>
+                                <span>Notifications</span>
+                            </a>
+                            {% if app.user.redeem == null %}
+                            <a href="{{ path('code_redeem_user') }}">
+                                <i class='bx bxs-gift' ></i>
+                                <span>Code Cadeau</span>
+                            </a>
+                            {% endif %}
+                            {% if is_granted("ROLE_MODO") %}
+                                <a href="{{ path('admin') }}" target="_blank">
+                                    <i class='bx bx-bar-chart bx-flashing' ></i>
+                                    <span>{% if is_granted("ROLE_ADMIN") %}Administration / {% endif %} Modération</span>
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="account__right-content" style="background-image: url({{ asset('assets/img/user/profil2.jpg') }});">
+                        <div class="account__right-button" style="background-color: hsl(200, 26%, 21%)">
+                            <a href="{{ path('user_edit_picture') }}">
+                                <i class='bx bxs-user-circle' ></i>
+                                <span>Changer votre <br>photo de profil</span>
+                            </a>
+                            <a href="{{ path('user_edit_document') }}">
+                                <i class='bx bxs-file' ></i>
+                                <span>Envoyez vos documents</span>
+                            </a>
+                            <a href="{{ path('documents') }}">
+                                <i class='bx bxs-file-find' ></i>
+                                <span>Voir vos documents</span>
+                            </a>
+                            {% if user.profil is same as 'partenaire' %}  
+                            <a href="{{ path('partner_edit_bio') }}">
+                                <i class='bx bxs-message-rounded-dots bx-flip-horizontal' ></i>
+                                <span>Ajouter / Modifier vos <br>informations</span>
+                            </a>
+                            {% else %}                                               
+                            <a href="{{ path('user_edit_bio') }}">
+                                <i class='bx bxs-message-rounded-dots bx-flip-horizontal' ></i>
+                                <span>Modifier vos <br>informations</span>
+                            </a>
+                            {% endif %} 
+                            <a href="{{ path('edit_mail') }}">
+                                <i class='bx bxs-envelope' ></i>
+                                <span>Modifier votre <br>adresse mail</span>
+                            </a>
+                            <a href="{{ path('edit_password') }}">
+                                <i class='bx bxs-lock' ></i>
+                                <span>Modifier votre <br>mot de passe</span>
+                            </a>
+                            <a href="{{ path('condition') }}" target="_blank">
+                                <i class='bx bx-search-alt' ></i>
+                                <span>Voir les <br>conditions d'utilisation</span>
+                            </a>
+                            <a href="{{ path('app_logout') }}">
+                                <i class='bx bx-log-out' ></i>
+                                <span>Déconnexion</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="account__right-content" style="background-image: url({{ asset('assets/img/user/profil3.jpg') }});">
+                        <div class="account__right-button" style="background-color: hsl(338, 30%, 21%)">
+                            <a href="{{ path('save') }}">
+                                <i class='bx bxs-bookmarks' ></i>
+                                <span>Voir mes <br>favoris</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="account__right-content" style="background-image: url({{ asset('assets/img/user/profil4.jpg') }});">
+                        <div class="account__right-button" style="background-color: hsl(266, 24%, 21%)">
+                            <a href="">
+                                <i class='bx bx-loader' ></i>
+                                <span>C'est pour bientôt !</span>
+                            </a>
+                            <a href="{{ path('block_user') }}">
+                                <i class='bx bxs-user-x'></i>
+                                <span>Les utilisateurs bloqués</span>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="account__button">
+                    <button class="account__button-down">
+                        <i class='bx bx-down-arrow-alt'></i>
+                    </button>
+                    <button class="account__button-up">
+                        <i class='bx bx-up-arrow-alt' ></i>
+                    </button>
+               
+                </div>
+            </div>
+    </section>
+{% endblock %}
+
+{% block JavaScript %}
+    <script>
+        const sliderContainer = document.querySelector(".account__slider-container");
+        const slideRight = document.querySelector(".account__right-slide");
+        const slideLeft = document.querySelector(".account__left-slide");
+        const upButton = document.querySelector(".account__button-up");
+        const downButton = document.querySelector(".account__button-down");
+        const slidesLength = slideRight.querySelectorAll(".account__right-content").length;
+        let activeSlideIndex = 0;
+        slideLeft.style.top = `-${(slidesLength - 1) * 100}vh`;
+        const changeSlide = (direction) => {
+          const sliderHeight = sliderContainer.clientHeight;
+          if (direction === "up") {
+              activeSlideIndex++;
+              if (activeSlideIndex > slidesLength -1) activeSlideIndex = 0;
+          } else if (direction === "down") {
+              activeSlideIndex--;
+              if (activeSlideIndex < 0) activeSlideIndex = slidesLength - 1;
+          }
+          slideRight.style.transform = `translateY(-${activeSlideIndex * sliderHeight}px)`;
+          slideLeft.style.transform = `translateY(${activeSlideIndex * sliderHeight}px)`;
+        };
+        upButton.addEventListener("click", () => changeSlide("up"));
+        downButton.addEventListener("click", () => changeSlide("down"));
+    </script>
+{% endblock %}

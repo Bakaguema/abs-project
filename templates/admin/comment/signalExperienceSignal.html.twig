@@ -1,0 +1,34 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Modifier un commentaire • Generation Boomerang{% endblock %}
+{% block content %}
+    <section class="article">
+        <h1 class="section__title">Signaler un commentaire</h1>
+        <h3 class="section__subtitle">C'est dans cet espace que vous allez pouvoir signaler un commentaire</h3>
+
+        <div class="article__menu">
+            <a href="{{ path('experiences') }}" class="article__menu-back"><i class='bx bx-arrow-back' ></i> <span>retour aux articles</span></a>
+        </div>
+        {% for message in app.flashes('message') %}
+            <h3 class="section__subtitle-alert">{{ message }}</h3>
+        {% endfor %}
+        <div class="article__user-container">
+            <div class="article__add">
+                {{ form_start(form, {'attr' : {'class' : 'article__add-form'} }) }}
+                <div id="signal_form">
+                <div class="article__modal-content-signaler article__form">
+                    <span></span>
+                    {{ form_widget(form.content) }}
+                </div>
+                <div class="article__modal-content-signaler article__form">
+                    <span></span>
+                    {{ form_widget(form.autre) }}
+                </div>
+                </div>
+                <button class="article__form-button" type="submit">Signaler</button>
+                
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,161 @@
+{% extends 'base.html.twig' %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('assets/css/pole.css') }}">
+{% endblock %}
+
+{% block title %}Partenaires • Generation Bomomerang{% endblock %}
+
+{% block content %}
+    <!--===== HOME =====-->
+    <section class="home home__partenaire" id="home">
+        <div class="home__container home__container-pole grid">
+            <h1 class="home__title">Nos <br><span>Partenaires</span></h1>
+
+        </div>
+    </section>
+
+    <!--===== ABOUT =====-->
+    <section class="about" id="about">
+    {# {{ form_start(searchForm,{'attr':{'class':'search_article'}}) }}
+                <div class="form__search">
+                {{ form_row(searchForm.query) }}
+                {{ form_row(searchForm.submit) }}
+            </div> 
+            {{ form_end(searchForm) }} #}
+        <h2 class="section__title-pole section__title-partenaire">À la découverte de ...</h2>
+
+        <div class="about__container grid">
+
+        {% for partner in partners %}
+            <div class="about__img-partner">
+                <a href="{{partner.link}}" target="_blank"><img src="{{ asset('uploads/partner/' ~ partner.illustration) }}" alt=""></a>
+            </div>
+
+            <div>
+                <h2 class="about__subtitle about__subtitle-partenaire">{{partner.name}}<small>©</small></h2>
+                <span class="about__profession">Mieux vivre ensemble</span>
+                <p class="about__text">{{partner.resume|striptags('<p><div><body><br>')|u.truncate(300, '...')|raw}}
+                    <br><br><a href="#about__popup"><i class='bx bx-expand-alt bx-burst' ></i> cliquez pour en voir plus...</a></p>
+
+                <div class="about__social">
+		{% if partner.facebook != null %}
+			<a href="{{ partner.facebook }}" class="profil__social-icon" target="_blank">
+				<i class='bx bxl-facebook'></i>
+			</a>
+		{% endif %}
+		{% if partner.twitter != null %}
+			<a href="{{ partner.twitter }}" class="profil__social-icon" target="_blank">
+				<i class='bx bxl-twitter'></i>
+			</a>
+		{% endif %}
+		{% if partner.linkedin != null %}
+			<a href="{{ partner.linkedin }}" class="profil__social-icon" target="_blank">
+				<i class='bx bxl-linkedin'></i>
+			</a>
+		{% endif %}
+                </div>
+            </div>
+            <div class="about__popup about__popup-partenaire" id="about__popup">
+                <div class="about__popup-container">
+                    <a href="#about" class="about__popup-close">
+                        <i class='bx bx-x' ></i>
+                    </a>
+                    <div class="about__popup-content">
+                        <h1 class="about__popup-title">À la découverte de la Generation Boomerang<small>©</small></h1>
+                        {{partner.resume|striptags('<div><body><br>')|raw }}
+                        <h1 class="about__popup-title">Notre parcours</h1>
+                        {{partner.parcours|striptags('<div><body><br>')|raw }}
+                        <h1 class="about__popup-title">Nos objectifs</h1>
+                        {{partner.rencontres|striptags('<div><body><br>')|raw }}<br><br>
+                        {% if partner.profil is same as null %}
+                        {% else %}
+                        <a  class="partnerlink" href="{{partner.profil}}" target="_blank">Voir sa page</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+        {% endfor %}
+        </div>
+
+    <!--===== DISCOVERY =====-->
+    <div class="discovery" id="discovery">
+        <h2 class="section__title-pole section__title-partenaire">Découvrir nos partenaires</h2>
+
+        <div class="discovery__container grid">
+            <div class="discovery__img">
+                <img src="{{ asset('assets/img/partner/discovery1.jpg') }}" alt="">
+
+                <div class="discovery__link">
+                    <a href="#" class="discovery__link-name discovery__link-namePartenaire">La Nasa <br> cliquez pour découvrir</a>
+                </div>
+            </div>
+            <div class="discovery__img">
+                <img src="{{ asset('assets/img/partner/discovery2.jpg') }}" alt="">
+
+                <div class="discovery__link">
+                    <a href="#" class="discovery__link-name discovery__link-namePartenaire">Starbucks <br> cliquez pour découvrir</a>
+                </div>
+            </div>
+            <div class="discovery__img">
+                <img src="{{ asset('assets/img/partner/discovery3.jpg') }}" alt="">
+
+                <div class="discovery__link">
+                    <a href="#" class="discovery__link-name discovery__link-namePartenaire">Coca-Cola <br> cliquez pour découvrir</a>
+                </div>
+            </div>
+            <div class="discovery__img">
+                <img src="{{ asset('assets/img/partner/discovery4.jpg') }}" alt="">
+
+                <div class="discovery__link">
+                    <a href="#" class="discovery__link-name discovery__link-namePartenaire">Toyota <br> cliquez pour découvrir</a>
+                </div>
+            </div>
+            <div class="discovery__img">
+                <img src="{{ asset('assets/img/partner/discovery5.jpg') }}" alt="">
+
+                <div class="discovery__link">
+                    <a href="#" class="discovery__link-name discovery__link-namePartenaire">Linkedin <br> cliquez pour découvrir</a>
+                </div>
+            </div>
+            <div class="discovery__img">
+                <img src="{{ asset('assets/img/partner/discovery6.jpg') }}" alt="">
+
+                <div class="discovery__link">
+                    <a href="#" class="discovery__link-name discovery__link-namePartenaire">Une start up <br> cliquez pour découvrir</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--===== CONTACT =====-->
+    <div class="contact" id="contact">
+        <h2 class="section__title-pole section__title-partenaire">Contact</h2>
+
+        <div class="contact__container grid">
+            <div class="contact__info">
+                <h3 class="contact__subtitle contact__subtitle-partenaire">EMAIL</h3>
+                <span class="contact__text">contact@generation-boomerang.com</span>
+
+                <h3 class="contact__subtitle contact__subtitle-partenaire">TÉLÉPHONE</h3>
+                <span class="contact__text">06 07 08 09 00</span>
+
+                <h3 class="contact__subtitle contact__subtitle-partenaire">ADRESSE</h3>
+                <span class="contact__text">Roubaix</span>
+            </div>
+
+            <form action="" class="contact__form">
+                <div class="contact__inputs">
+                    <input type="text" placeholder="Votre nom" class="contact__input contact__input-partenaire">
+                    <input type="email" placeholder="votre@email.com" class="contact__input contact__input-partenaire">
+                </div>
+
+                <textarea name="" id="" cols="0" rows="10" class="contact__input contact__input-partenaire"></textarea>
+
+                <input type="submit" value="Envoyer" class="contact__button contact__button-partenaire">
+            </form>
+        </div>
+        </div>
+    </section>
+{% endblock %}

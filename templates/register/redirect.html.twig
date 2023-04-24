@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscrivez-vous • Generation Boomerang{% endblock %}
+
+{% block content %}        
+    <section class="article">
+    <div class="article__container">
+		<div class="home__discover-container container grid">
+			<img src="{{ asset('assets/img/discover/discover.png') }}" alt="" class="home__discover-img">
+		</div>
+        <h1 class="registration__title"> Afin d'accéder à ce contenu, inscrivez-vous: <br>
+            <a class="link-registration" href="{{ path('register') }}"> En cliquant ici! </a><br><br>
+            Déjà Inscrit?<br>
+            <a class="link-registration" href="{{ path('app_login') }}"> Connectez-vous! </a>
+        </h1>
+    </div>
+    </section>
+{% endblock %}

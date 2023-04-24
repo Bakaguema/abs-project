@@ -1,0 +1,39 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Catégories • Generation Boomerang{% endblock %}
+
+{% block content %}
+    <section class="category">
+        <h1 class="section__title">Gérer les catégories</h1>
+        <h3 class="section__subtitle">C'est dans cet espace que vous allez pouvoir gérer les différentes catégories.</h3>
+
+        <div class="article__menu">
+            <a href="{{ path('admin') }}" class="article__menu-back"><i class='bx bx-arrow-back' ></i> <span>retour à l'administration</span></a>
+            <a href="{{ path('add_category') }}" class="article__menu-add"><i class='bx bx-plus-medical' ></i> <span>ajouter une catégorie</span></a>
+        </div>
+
+        {% for message in app.flashes('message') %}
+            <h3 class="section__subtitle-alert">{{ message }}</h3>
+        {% endfor %}
+
+        <div class="category__container">
+            {% for category in categories %}
+                <div class="category__table">
+                    <div class="category__table-left">
+                        <div class="category__table-name">
+                            <h3 class="category__name"><i class='bx bx-tag' ></i> {{ category.name }}</h3>
+                        </div>
+                    </div>
+                    <div class="category__table-right">
+                        <div class="category__table-edit">
+                            <a href="{{ path('edit_category', {id: category.id}) }}" class="category__edit"><i class='bx bx-edit-alt' ></i> éditer</a>
+                        </div>
+                        <div class="category__table-delete">
+                            <a href="{{ path('delete_category', {id: category.id}) }}" class="category__delete"><i class='bx bx-trash' ></i> supprimer</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}

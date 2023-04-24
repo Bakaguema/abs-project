@@ -1,0 +1,305 @@
+{% block stylesheets %}
+	<link rel="preconnect" href="https://fonts.googleapis.com"/>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0"/>
+{% endblock %}
+
+<!--========== HEADER ==========-->
+<header class="header" id="header">
+	<div class="header__container">
+		<div>
+			<span
+				class="header__mode" >
+
+				{# IMG LOGO #}
+				<a href="{{ path('about') }}" class="header__logo">
+					<img src="{{ asset('assets/img/logo.png') }}" alt="CoolBrand" id="imgLogo">
+				</a>
+
+				{# Dark mode ico  #}
+				<i class='bx bxs-moon' id="header-mode"></i>
+			</span>
+		</div>
+		<nav class="navbar navbar-expand-lg navbar-light ">
+			<div
+				class="container-fluid ">
+
+				{# Boutton hamburger #}
+				<button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="collapse navbar-collapse" id="navbarCollapse">
+					<div class="navbar-nav ">
+						{# A PROPO #}
+						{# <a class="nav__link" href="{{ path('about') }}">A propos</a> #}
+
+						{# ACCESSIBILITE #}
+							<div class="nav-item dropdown "> <a href="#" class="nav-link dropdown-toggle nav__link" data-bs-toggle="dropdown">Accessibilité</a>
+							<div class="dropdown-menu">
+								<a class="dropdown-item" href="{{ path('accessibilite') }}">
+									<i class="bx bx-error-circle nav__icon"></i>Information
+								</a>
+								<a class="dropdown-item" href="#">
+									<i class="bx bx-handicap nav__icon" id="daltonie-mode"></i>Daltonien
+								</a>
+								<a class="dropdown-item" href="#">
+									<i class=" bx bx-font nav__icon" id="dyslexie-mode"></i>Dyslexie
+								</a>
+							</div>
+						</div>
+						{% if app.user %}
+							{# ACTUALITE #}
+							<div class="nav-item dropdown">
+								<a href="#" class="nav-link dropdown-toggle nav__link" data-bs-toggle="dropdown">Actualité</a>
+								<div class="dropdown-menu">
+									<a class="dropdown-item" href="{{ path('main') }}">
+										<i class='bx bx-news nav__icon'></i>Actualité
+									</a>
+									<a class="dropdown-item" href="{{ path('articles') }}">
+										<i class='bx bx-message-alt-detail nav__icon'></i>Articles
+									</a>
+									<a class="dropdown-item" href="{{ path('experiences') }}">
+										<i class='bx bx-message-alt-edit nav__icon'></i>Retour d'expérience
+									</a>
+								</div>
+							</div>
+						{% else %}
+							<div class="nav-item dropdown">
+								<a href="#" class="nav-link dropdown-toggle nav__link" data-bs-toggle="dropdown">Actualité</a>
+								<div class="dropdown-menu">
+									<a class="dropdown-item" href="{{ path('registration') }}">
+										<i class='bx bx-news nav__icon'></i>Actualité
+									</a>
+									<a class="dropdown-item" href="{{ path('registration') }}">
+										<i class='bx bx-message-alt-detail nav__icon'></i>Articles
+									</a>
+									<a class="dropdown-item" href="{{ path('registration') }}">
+										<i class='bx bx-message-alt-edit nav__icon'></i>Retour d'expérience
+									</a>
+								</div>
+							</div>
+						{% endif %}
+						{# POLES #}
+						<div class="nav-item dropdown">
+							<a href="#" class="nav-link dropdown-toggle nav__link" data-bs-toggle="dropdown">Pôles</a>
+							<div class="dropdown-menu">
+								<a href="{{ path('pole_metier') }}" class="dropdown-item">
+									<img class="nav__pole nav__icon" src="{{ asset('assets/img/home/dock/metiers.svg') }}" alt="metier">Evolution des metiers
+								</a>
+								<a href="{{ path('pole_communication') }}" class="dropdown-item">
+									<img class="nav__pole nav__icon" src="{{ asset('assets/img/home/dock/communication.svg') }}" alt="communication">Communication Recherche
+									{# <br> #}
+									est Développement
+								</a>
+								<a href="{{ path('pole_savoir') }}" class="dropdown-item">
+									<img class="nav__pole nav__icon" src="{{ asset('assets/img/home/dock/savoirs.svg') }}" alt="savoirs">Evolution des Savoirs
+								</a>
+								<a href="{{ path('pole_immobilier') }}" class="dropdown-item">
+									<img class="nav__pole nav__icon" src="{{ asset('assets/img/home/dock/immobilier.svg') }}" alt="immobilier">Immobilier
+									{# <br> #}
+									Silver Experience
+								</a>
+								<a href="{{ path('pole_design') }}" class="dropdown-item">
+									<img class="nav__pole nav__icon" src="{{ asset('assets/img/home/dock/design.svg') }}" alt="design">Universal Design et
+									{# <br> #}
+									Inclusive Design
+								</a>
+								<a href="{{ path('pole_innovation') }}" class="dropdown-item">
+									<img class="nav__pole nav__icon" src="{{ asset('assets/img/home/dock/innovation.svg') }}" alt="metier">Innovation
+								</a>
+							</div>
+						</div>
+						{% if app.user %}
+							{# EMPLOIS #}
+							<div class="nav-item dropdown">
+								<a href="#" class="nav-link dropdown-toggle nav__link" data-bs-toggle="dropdown">Emplois</a>
+								<div class="dropdown-menu">
+									<a class="dropdown-item" href="{{ path('works') }}">
+										<i class='bx bxs-contact nav__icon'></i>Emplois
+									</a>
+									<a class="dropdown-item" href="{{path('hiring')}}">
+										<i class='bx bx-file nav__icon'></i>Déposez votre annonce
+									</a>
+									<a class="dropdown-item" href="{{ path('purpose') }}">
+										<i class='bx bx-file nav__icon'></i>Déposer votre recherche d'emploi
+									</a>
+									<a class="dropdown-item" href="{{ path('purposes') }}">
+										<i class='bx bx-user-pin nav__icon'></i>Les candidats
+									</a>
+								</div>
+							</div>
+						{% else %}
+							<div class="nav-item dropdown">
+								<a href="#" class="nav-link dropdown-toggle nav__link" data-bs-toggle="dropdown">Emplois</a>
+								<div class="dropdown-menu">
+									<a class="dropdown-item" href="{{ path('registration') }}">
+										<i class='bx bxs-contact nav__icon'></i>Emplois
+									</a>
+									<a class="dropdown-item" href="{{path('registration')}}">
+										<i class='bx bx-file nav__icon'></i>Déposez votre annonce
+									</a>
+									<a class="dropdown-item" href="{{ path('registration') }}">
+										<i class='bx bx-file nav__icon'></i>Déposer votre recherche d'emploi
+									</a>
+									<a class="dropdown-item" href="{{ path('registration') }}">
+										<i class='bx bx-user-pin nav__icon'></i>Les candidats
+									</a>
+								</div>
+							</div>
+						{% endif %}
+
+						{# MEDIA #}
+						<div class="nav-item dropdown">
+							<a href="#" class="nav-link dropdown-toggle nav__link" data-bs-toggle="dropdown">Média</a>
+							<div class="dropdown-menu">
+								<a class="dropdown-item" href="https://www.batiradio.com/">
+									<i class='bx bx-radio nav__icon'></i>Bati radio
+								</a>
+
+								<a class="dropdown-item" href="#">
+									<i class='bx bx-collection nav__icon'></i>Médiathèque
+								</a>
+
+								<a class="dropdown-item" href="{{ path('medias') }}">
+									<i class='bx bxs-camera-movie nav__icon'></i>Nos interviews
+								</a>
+							</div>
+						</div>
+					</div>
+					{# PARTENAIRE #}
+					<a class="nav-link nav__link" href="{{ path('partner') }}">
+						Partenaires
+					</a>
+					{% if app.user %}
+						<button onclick="openNav()" style="color: var(--first-color-);">
+							<span class="material-symbols-outlined">
+								group
+							</span>
+						</button>
+						<a class="dropdown-item" href="{{ path('forum') }}">
+							<i class='bx bx-envelope nav__icon'></i>
+						</a>
+					{% endif %}
+
+
+					{% if app.user %}
+						<div class="drop-button">
+							<button class="button__drp">
+								<span class="text">
+									<a href="{{ path('user')}}" style="color: var(--first-color);">
+										{{ app.user.firstname }}
+										{{ app.user.lastname }}
+									</a>
+								</span>
+							</button>
+							<button class="button__drp" onclick="toggleDropdown()">
+								<span id="drop" class="drop material-symbols-outlined">
+									expand_more
+								</span>
+							</button>
+							<div id="menu" class="menu">
+								<button class="button__drp">
+									<span class="material-symbols-outlined">
+										person
+									</span>
+									<span class="text">
+										<a href="{{ path('user')}}" style="color: white;">Mon espace</a>
+									</span>
+								</button>
+								<button class="button__drp">
+									<span class="material-symbols-outlined">
+										groups
+									</span>
+									<span class="text" style="color: white;">
+										<a href="{{ path('is_accept')}}" style="color: white;">Mes contacts
+										</a>
+									</span>
+								</button>
+								{% if is_granted("ROLE_ADMIN") %}
+									<button class="button__drp">
+										<span class="material-symbols-outlined">
+											settings
+										</span>
+										<span class="text">
+											<a href="{{ path('admin')}}" style="color: white;">Administration
+											</a>
+										</span>
+									</button>
+								{% endif %}
+								{% if is_granted ("ROLE_SUB") == false %}
+									<button class="button__drp">
+										<span class="bx bxs-donate-heart"></span>
+										<span class="text">
+											<a href="{{ path('product')}}" style="color: white;">Adhésion</a>
+										</span>
+									</button>
+								{% endif %}
+								<button class="button__drp">
+									<span class="material-symbols-outlined">
+										bookmark
+									</span>
+									<span class="text" style="color: white;">
+										<a href="{{ path('save')}}" style="color: white;">Mes favoris
+										</a>
+									</span>
+								</button>
+								<button class="button__drp">
+									<span class="material-symbols-outlined">
+										logout
+									</span>
+									<span class="text">
+										<a href="{{ path('app_logout')}}" style="color: white;">Déconnexion</a>
+									</span>
+								</button>
+							</div>
+						</div>
+
+						<div id="mySidenav" class="sidenav">
+							<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+							<h5 id="mescontacts">Mes contacts:
+								{{listFriends}}
+							</h5>
+							{% for friend in friends %}
+								{% if friend.user1.id is same as app.user.id and friend.active == 1  %}
+									<a href="{{ path('app_chat_create', {'userId': friend.user2.id}) }}">
+									<div class="friend_list" id="{{ friend.user2.id }}">
+										<img src="{{ asset('uploads/profiles/' ~ friend.user2.picture) }}" alt="{{ friend.user2.lastname }}" class="friend-pic"/>
+										<p class="friend__name">{{ friend.user2.firstname }}
+											{{friend.user2.lastname}}</p>
+										<button class="button_connect"></button>
+									</div>
+									</a>
+								{% elseif friend.user2.id is same as app.user.id and friend.active == 1 %}
+									<a href="{{ path('app_chat_create', {'userId': friend.user1.id}) }}">
+									<div class="friend_list" id="{{ friend.user1.id }}">
+										<img src="{{ asset('uploads/profiles/' ~ friend.user1.picture) }}" alt="{{ friend.user1.lastname }}" class="friend-pic"/>
+										<p class="friend__name">{{ friend.user1.firstname }}
+											{{friend.user1.lastname}}</p>
+										<button class="button_connect"></button>
+									</div>
+									</a>
+								{% endif %}
+							{% endfor %}
+						{% endif %}
+					</div>
+				</div>
+
+				{# Dark mode #}
+				<div>
+					<i class='bx bx-list-ul' id="header-toggle"></i>
+				</div>
+
+			</nav>
+		</div>
+
+		{% block JavaScript %}
+			<script>
+				const menu = document.getElementById("menu"),
+drop = document.getElementById("drop");
+
+const toggleDropdown = () => {
+menu.classList.toggle("open");
+drop.innerHTML = ! menu.classList.contains("open") ? "expand_more" : "close";
+};
+			</script>
+		{% endblock %}

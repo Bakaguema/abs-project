@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier un retour d'expérience • Generation Boomerang
+{% endblock %}
+{% block stylesheets %}
+	<style>
+		#container {
+			width: 1550px;
+			margin: 20px auto;
+		}
+		.ck-editor__editable[role="textbox"] {
+			/* editing area */
+			min-height: 200px;
+		}
+		.ck-content .image {
+			/* block images */
+			max-width: 80%;
+			margin: 20px auto;
+		}
+	</style>
+{% endblock %}
+{% block content %}
+	<section class="article ">
+		<h1 class="section__title">Modifier un retour d'expérience</h1>
+		<h3 class="section__subtitle">C'est dans cet espace que vous allez pouvoir modifier un nouvel retour d'expérience.</h3>
+
+		<div class="article__menu">
+			<a href="{{ path('user_experience') }}" class="article__menu-back">
+				<i class='bx bx-arrow-back'></i>
+				<span>retour aux retours d'expérience</span>
+			</a>
+		</div>
+
+		<div class="article__user-container">
+			<div class="article__add">
+				{{ form_start(form, {'attr' : {'class' : 'article__add-form'} }) }}
+
+				<div class="article__form-categories article__form">
+					<i class='bx bx-news'></i>
+					{{ form_widget(form.article) }}
+				</div>
+
+				<div class="article__form-illustration article__form">
+					<i class='bx bx-image-add'></i>
+					{{ form_widget(form.illustration, {'required' : false}) }}
+				</div>
+
+				<div class="article__edit-illustration">
+					{% for illustration in experience.illustrations %}
+						<div class="article__illustration-show">
+							<img src="{{ asset('/uploads/experiences/' ~ illustration.name) }}" alt="illustration">
+							<a href="{{ path('delete_experiences_illustration', {id: illustration.id}) }}" data-delete data-token="{{ csrf_token('delete' ~ illustration.id) }}" class="article__illustration-button">
+								<i class="uil uil-image-times"></i>
+								supprimer</a>
+						</div>
+					{% endfor %}
+				</div>
+
+				<div class="article__form-title article__form">
+					<i class='bx bx-edit-alt'></i>
+					{{ form_widget(form.title) }}
+				</div>
+
+				<div id="container">
+					<div id="editor"></div>
+				</div>
+
+				<div class="article__form-condition">
+					<span></span>
+					<label>
+						{{ form_widget(form.rgpd) }}Merci d'accepter les conditions de
+						<a href="{{ path('condition') }}#utilisateur" target="_blank">
+							&nbsp;publications.</a>
+					</label>
+				</div>
+
+				<button class="article__form-button" type="submit">Mettre à jour</button>
+
+				{{ form_end(form) }}
+			</div>
+		</div>
+	</section>
+{% endblock %}
+{% block JavaScript %}
+	{# Utilisation de ckEditor pour le contenue d'un retour d'expérience #}
+	<script src="https://cdn.ckeditor.com/ckeditor5/36.0.0/super-build/ckeditor.js"></script>
+	<script src="{{ asset('assets/js/ckeditorexperience.js') }}"></script>
+
+{% endblock %}

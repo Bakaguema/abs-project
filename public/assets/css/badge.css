@@ -1,0 +1,364 @@
+body{
+background-color: #FF6E00 !important; 
+}
+
+.section__title{
+color: white !important;
+margin-bottom: 0px !important;
+margin-top: 100px !important;
+}
+
+.article__menu-back{
+  color: rgba(255, 255, 255, 0.644) !important;
+}
+
+/* .image-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  justify-items: center;
+}
+
+.image-item {
+  padding: 10px;
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border: 2px solid wheat;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.image-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle-crop {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+}
+
+.circle-crop img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: rgb(34, 34, 34);
+  padding: 5px;
+  box-sizing: border-box;
+  font-size: 14px;
+  text-align: center;
+}
+
+.image-item:hover .caption {
+  display: block !important;
+} */
+
+.badge-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  margin: 4% 10%;
+}
+
+.badge-card {
+  color: white;
+  width: calc(25% - 20px);
+  background-color: #00000013;
+  /* border: 1px solid #ffffff8f; */
+  border-radius: 5px;
+  padding: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.badge-card-header {
+  text-align: center;
+  padding: 20px;
+  margin-top: 0.7em;
+  font-weight: bold;
+  font-size: 1.8em;
+  background-color: none;
+}
+
+.badge-card-edit-btn {
+  position: absolute;
+  top: 5px;
+  right: 1.4em;
+  font-size: 2em;
+  color: white;
+}
+
+.badge-card-delete-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 2em;
+  color: rgb(230, 49, 49);
+}
+
+.badge-card-body {
+  text-align: center;
+}
+
+.badge-img {
+  display: inline-block;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.badge-card-description {
+  font-style: italic;
+  margin: 0.5em;
+} 
+
+.threshold-nbr {
+font-weight: bold;
+}
+
+.modalButtons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  margin: auto 15%;
+}
+
+.buttonsBox{
+  margin: 0 auto !important;
+  position: relative;
+  display: inline-block;
+}
+
+#createBadgeModalButton,
+#editBadgeModalButton,
+#revokeBadgeModalButton,
+#grantBadgeModalButton {
+  /* width: calc(33.33% - 20px); */
+  /* border: 1px solid #ccc; */
+  /* overflow: hidden; */
+  /* width: 200px !important; */
+  height: 200px !important;
+  /* background-color: #ccc !important; */
+  /* border-radius: 50% !important; */
+  /* margin-top: 50px !important; */
+  cursor: pointer !important;
+}
+
+/* #createBadgeModalButton:hover,
+/* #editBadgeModalButton:hover,
+#revokeBadgeModalButton:hover,
+#grantBadgeModalButton:hover {
+  transform: translateY(-5px);
+  transition: all 0.2s ease-in-out;
+} */
+
+.tooltiptext {
+  visibility: hidden;
+  width: 150%;
+  background-color: black;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 45px;
+  padding: 1em 1em;
+  position: absolute;
+  z-index: 1;
+  bottom: 110%;
+  left: 0%;
+  margin-left: -50px;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.buttonsBox:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.badgeModal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+  opacity: 100%;
+}
+
+.badgeFormContainer {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+}
+
+.badgeForm {
+  width: 100%;
+}
+
+.badgeFormTextArea {
+  height: 85px !important;
+}
+
+#create_badge_description,
+#edit_badge_description {
+  display: block;
+  resize: none;
+  height: 95%;
+  width: 95%;
+  margin-top: 5%;
+}
+
+/* Style the modal content */
+.createBadgeModalContent, 
+.editBadgeModalContent, 
+.grantBadgeModalContent,
+  .revokeBadgeModalContent {
+  background-color: #fefefe !important;
+  margin: auto !important;
+  padding: 20px !important;
+  border: 1px solid #888 !important;
+  width: 80% !important;
+  max-width: 600px !important;
+  position: relative !important;
+  border-radius: 30px !important;
+  top: 4.5em;
+}
+
+/* Style the close button */
+#createBadgeClose, 
+#editBadgeClose, 
+#grantBadgeClose,
+#revokeBadgeClose {
+  color: #aaa !important;
+  float: right !important;
+  font-size: 3em;
+  font-weight: bold !important;
+  position: absolute;
+  top: 0;
+  right: 0.35em;
+  cursor: pointer;
+}
+
+#imgPreview,
+#editImgPreview,
+#user-profile-picture {
+  display: block;
+  width: 60%;
+  border-radius: 50%;
+  margin: auto;
+  margin-top: 2em;
+}
+
+#createBadgeClose:hover,
+#createBadgeClose:focus,
+#editBadgeClose:hover,
+#editBadgeClose:focus,
+#grantBadgeClose:hover,
+#grantBadgeClose:focus
+#revokeBadgeClose:hover,
+#revokeBadgeClose:focus {
+  color: black !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+}
+
+.badgeFormField {
+  max-width: 500px;
+  width: 90%;
+  border: 3px solid var(--first-color-light);
+  margin: 10px 0;
+  height: 55px;
+  border-radius: 0.5rem;
+  display: grid;
+  grid-template-columns: 15% 85%;
+  align-items: center;
+  padding: 0 0.4rem;
+  position: relative;
+}
+
+.badgeFormFieldhidden {
+  visibility: hidden;
+}
+
+.badgeFormField i {
+  text-align: center;
+  line-height: 55px;
+  color: var(--first-color-light);
+  transition: 0.5s;
+  font-size: 1.1rem;
+}
+
+.badgeFormField input,
+.badgeFormField input[type="file" i],
+.badgeFormField textarea,
+.badgeFormField select {
+  background: none;
+  outline: none;
+  border: none;
+  line-height: 1;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--first-color);
+  font-family: var(--body-font);
+}
+
+.badgeFormField input::placeholder,
+.badgeFormField textarea::placeholder {
+  color: var(--first-color-light);
+  font-weight: 600;
+  font-family: var(--body-font);
+}
+
+.badgeFormField div {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 10% 90%;
+  align-items: center;
+}
+
+@media (max-width: 1550px) {
+  .badge-card {
+    width: calc(33.33% - 20px);
+  }
+}
+
+@media (max-width: 900px) {
+  .badge-card {
+    width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 770px) {
+  .badge-card {
+    width: calc(100%);
+  }
+}
+
+@media (max-width: 710px) {
+  .article__menu{
+    margin:0% 0% 10% 0% !important;
+  }
+}

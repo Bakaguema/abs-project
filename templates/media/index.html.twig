@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Interview • Generation Boomerang{% endblock %}
+
+{% block content %}
+
+    <section class="account">
+        <h1 class="section__title">Nos interviews</h1>
+        <h3 class="section__subtitle">C'est dans cet espace que vous retrouverez les interviews de nos journalistes.</h3>
+
+ <div class="article__container">
+            <ul class="article__cards">
+                {% for media in medias %}
+                    <li class="article__card">
+                        <div class="article__card-content">
+                            <div>
+                                <span class="article__card-category"><i class='bx bx-purchase-tag' ></i> {{ media.categories.name }}</span>
+                                <span class="article__card-author">écrit par <a href="{{ path('profil', {id: media.user.id}) }}">{{ media.user.firstname }} {{ media.user.lastname }}</a></span>
+                                <h2 class="article__card-title"><a href="{{ path('media', {slug: media.slug}) }}">{{ media.title }}</a></h2>
+                                <p class="article__card-preview">{{ media.content|u.truncate(200, '...')|raw }}</p>
+                                <div class="article__card-button">
+                                    <a href="{{ path('media', {slug: media.slug}) }}">Lire l'interview</a>
+                                </div>
+                                <div class="article__card-reaction">
+
+
+                                    <a href="" class="article__reaction-button">
+                                        <i class='bx bx-share-alt' ></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <figure>
+                                <video class="video__section" src="{{ asset('uploads/interview/' ~ media.video) }}" alt="{{ media.title }}" controls preload >
+                            </figure>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+
+    </section>
+{% endblock %}
+
+
+

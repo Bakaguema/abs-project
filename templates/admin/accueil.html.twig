@@ -1,0 +1,261 @@
+{% extends 'admin.html.twig' %}
+{% block stylesheets %}<link rel="stylesheet" href="{{ asset('assets/css/admin.css') }}">{% endblock %}
+
+{% block title %}Administration • Generation Boomerang{% endblock %}
+
+{% block content %}
+	<section class="category">
+		<div class="gridadmin">
+			<div class="Signalement">
+				<div class="Signalements"><h3 class="h3__title" >Signalements</h3></div>
+				<div class="NombreSignalements number__top">{{ nbsignalement }}</div>
+			</div>
+			<div class="Article">
+				<div class="Articles"><h3 class="h3__title" >Articles</h3></div>
+				<div class="NombreArticles number__top">{{ article }}</div>
+			</div>
+			<div class="Message">
+				<div class="Messages"><h3 class="h3__title" >Messages</h3></div>
+				<div class="NombreMessages number__top">{{ message }}</div>
+			</div>
+			<div class="Coupon">
+				<div class="Coupons"><h3 class="h3__title" >Coupons</h3></div>
+				<div class="NombresCoupons number__top">{{ coupon }}</div>
+			</div>
+
+			<div class="Graphique"><canvas id="myChart"></canvas></div>
+
+			<div class="Visiteur_Unique">
+				<div class="Visiteur"><h3 class="h3__title_right">Nombre de visiteurs</h3></div>
+				<div class="Nombre-Visiteur number__right">{{ visiteur }}</div>
+			</div>
+			<div class="Temps">
+				<div class="Tempsmoyen "><h3 class="h3__title_right">Temps moyen d'une visite</h3></div>
+				<div class="Tempsvisite number__right">1h 12m</div>
+			</div>
+			<div class="Utilisateur">
+				<div class="Utilisateurs"><h3 class="h3__title_right">Nombre d'utilisateurs</h3></div>
+				<div class="Nombreutilisateurs number__right">{{ nbuser }}</div>
+			</div>
+            <div class="Dernier_event">
+                <div class="dernier-event"><h3 class="h3__title_bottom">Dernier evenement</h3></div>
+                <div class="butonevent"><a href="" class="plus__detail">Plus de détails </a></div>
+                <div class="user2"><h4>
+				{% if count >= 1 %}
+				
+					<small><i>Le {% if event.0.edate == null %}{{ event.0.createat|date("d/m/Y H:i") }} {% else %}{{ event.0.edate|date("d/m/Y H:i") }}{% endif %}: </small></i>
+					<a href="{{path('profil', {id:event.0.user.id}) }}" target="_blank" class="article__comment-button">{{ event.0.user.lastname }}&nbsp;{{ event.0.user.firstname }}</a> à 
+						{% if event.0.comment != null %}
+							{% if event.0.edate != null %}
+								{{ event.0.content }} un <a href="{{ path('article', {slug: event.0.comment.article.slug}) }}#comment__show" target="_blank" class="article__comment-button"> commentaire.</a>
+							{% else %}
+							{{ event.0.content }} un <a href="{{ path('article', {slug: event.0.comment.article.slug}) }}#comment__show" target="_blank" class="article__comment-button">commentaire</a>.
+							{% endif %}
+							
+						 {% elseif event.0.content == 'Supprimer comment' %}
+						 supprimé un commentaire.
+						{% endif %}
+						{% if event.0.hiring != null %}
+							{% if event.0.edate != null %}
+								{{ event.0.content }} un <a href="{{ path('work', {slug: event.0.hiring.slug}) }}" target="_blank" class="article__comment-button">emploi</a>.
+							{% else %}
+							{{ event.0.content }} un <a href="{{ path('work', {slug: event.0.hiring.slug}) }}" target="_blank" class="article__comment-button">emploi</a>.
+							{% endif %}
+						 {% elseif event.0.content == 'Supprimer hiring' %}
+						 supprimé une offre d'emploi.
+						{% endif %}			
+						{% if event.0.purpose != null %}
+							{% if event.0.edate != null %}
+								{{ event.0.content }} une recherche <a href="{{ path('purposeshow', {slug: event.0.purpose.slug}) }}" target="_blank" class="article__comment-button">emploi</a>.
+							{% else %}
+							{{ event.0.content }} une recherche <a href="{{ path('purposeshow', {slug: event.0.purpose.slug}) }}" target="_blank" class="article__comment-button">emploi</a>.
+							{% endif %}
+						 {% elseif event.0.content == 'Supprimer purpose' %}
+						 supprimé une recherche d'emploi.
+						{% endif %}	
+						{% if event.0.coupon != null %}
+							{{ event.0.content }} un <a href="{{ path('admin_coupon-edit', {id: event.0.coupon.id}) }}" target="_blank" class="article__comment-button">coupon</a>.
+						{% endif %}	
+						{% if event.0.article != null %}
+							{% if event.0.edate != null %}
+								{{ event.0.content }} un <a href="{{ path('article', {slug: event.0.article.slug}) }}" target="_blank" class="article__comment-button">article</a>.
+							{% else %}
+							{{ event.0.content }} un <a href="{{ path('article', {slug: event.0.article.slug}) }}" target="_blank" class="article__comment-button">article</a>.
+							{% endif %}
+						 {% elseif event.0.content == 'Supprimer article' %}
+						 supprimé un article.
+						{% endif %}
+						{% if event.0.experience != null %}
+							{% if event.0.edate != null %}
+								{{ event.0.content }} un retour d'<a href="{{ path('experience', {slug: event.0.experience.slug}) }}" target="_blank" class="article__comment-button">experience</a>.
+							{% else %}
+							{{ event.0.content }} un retour d'<a href="{{ path('experience', {slug: event.0.experience.slug}) }}" target="_blank" class="article__comment-button">experience</a>.
+							{% endif %}
+						 {% elseif event.0.content == 'Supprimer experience' %}
+						 supprimé un retour d'expérience.
+						{% endif %}
+				{% else %}
+				Aucun événement récent.
+				{% endif %}
+				</h4></div>
+                <div class="user3"><h4>
+				{% if count >= 2 %}
+				
+					<small><i>Le {% if event.1.edate == null %}{{ event.1.createat|date("d/m/Y H:i") }} {% else %}{{ event.1.edate|date("d/m/Y H:i") }}{% endif %}: </small></i>
+					<a href="{{path('profil', {id:event.1.user.id}) }}" target="_blank" class="article__comment-button">{{ event.1.user.lastname }}&nbsp;{{ event.1.user.firstname }}</a> à 
+						{% if event.1.comment != null %}
+							{% if event.1.edate != null %}
+								{{ event.1.content }} un <a href="{{ path('article', {slug: event.1.comment.article.slug}) }}#comment__show" target="_blank" class="article__comment-button"> commentaire.</a>
+							{% else %}
+							{{ event.1.content }} un <a href="{{ path('article', {slug: event.1.comment.article.slug}) }}#comment__show" target="_blank" class="article__comment-button">commentaire</a>.
+							{% endif %}
+						 {% elseif event.1.content == 'Supprimer comment' %}
+						 supprimé un commentaire.
+						{% endif %}		
+						{% if event.1.hiring != null %}
+							{% if event.1.edate != null %}
+								{{ event.1.content }} un <a href="{{ path('work', {slug: event.1.hiring.slug}) }}" target="_blank" class="article__comment-button">emploi</a>.
+							{% else %}
+							{{ event.1.content }} un <a href="{{ path('work', {slug: event.1.hiring.slug}) }}" target="_blank" class="article__comment-button">emploi</a>.
+							{% endif %}
+						 {% elseif event.1.content == 'Supprimer hiring' %}
+						 supprimé une offre d'emploi.
+						{% endif %}
+						{% if event.1.purpose != null %}
+							{% if event.1.edate != null %}
+								{{ event.1.content }} une recherche <a href="{{ path('purposeshow', {slug: event.1.purpose.slug}) }}" target="_blank" class="article__comment-button">emploi</a>.
+							{% else %}
+							{{ event.1.content }} une recherche <a href="{{ path('purposeshow', {slug: event.1.purpose.slug}) }}" target="_blank" class="article__comment-button">emploi</a>.
+							{% endif %}
+						 {% elseif event.1.content == 'Supprimer purpose' %}
+						 supprimé une recherche d'emploi.
+						{% endif %}	
+						{% if event.1.coupon != null %}
+							{{ event.1.content }} un <a href="{{ path('admin_coupon-edit', {id: event.1.coupon.id}) }}" target="_blank" class="article__comment-button">coupon</a>.
+						{% endif %}	
+						{% if event.1.article != null %}
+							{% if event.1.edate != null %}
+								{{ event.1.content }} un <a href="{{ path('article', {slug: event.1.article.slug}) }}" target="_blank" class="article__comment-button">article</a>.
+							{% else %}
+							{{ event.1.content }} un <a href="{{ path('article', {slug: event.1.article.slug}) }}" target="_blank" class="article__comment-button">article</a>.
+							{% endif %}
+						 {% elseif event.1.content == 'Supprimer article' %}
+						 supprimé un article.
+						{% endif %}
+						{% if event.1.experience != null %}
+							{% if event.1.edate != null %}
+								{{ event.1.content }} un retour d'<a href="{{ path('experience', {slug: event.1.experience.slug}) }}" target="_blank" class="article__comment-button">experience</a>.
+							{% else %}
+							{{ event.1.content }} un retour d'<a href="{{ path('experience', {slug: event.1.experience.slug}) }}" target="_blank" class="article__comment-button">experience</a>.
+							{% endif %}
+						 {% elseif event.1.content == 'Supprimer experience' %}
+						 supprimé un retour d'expérience.
+						{% endif %}
+				{% else %}
+				Aucun événement récent
+				{% endif %}
+				</h4></div>
+            </div>
+			<div class="ticket">
+                <div class="plusdetail"><a href={{ path("admin_signalement")}} class="plus__detail">Plus de détails </a></div>
+                <div class="titre"><h3 class="h3__title_bottom">Signalements</h3></div>
+                <div class="en-attente"> Nombre de Signalement en attente :
+                    <div class="en-attentenb"><strong>{{ asignalement }}</strong></div>
+                </div>
+                <div class="total">Nombre total de Signalement :
+                    <div class="totalnb"><strong>{{ nbsignalement }}</strong></div>
+                </div>
+            </div>
+		</div>
+	</section>
+
+	<div id="visiteurgraphique" style="display:none;">
+		<div id="actuel">
+			{% for visiteur in dateactu %}
+			
+				<p>{{ visiteur.nbvisit }}</p>
+			{% endfor %}
+		</div>
+		<div id="hier">
+			{% for visiteur in datehier %}
+			
+				<p>{{ visiteur.nbvisit }}</p>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}
+
+{% block JavaScript %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+
+<script> 
+let visiteactu = document.querySelectorAll('#actuel p');
+let visiteactutab = [];
+let visitehier = document.querySelectorAll('#hier p');
+let visitehiertab = [];
+let diff = 24;
+
+visiteactu.forEach(visiteactus => {
+  visiteactutab.push(visiteactus.innerHTML);
+});
+
+diff -= visiteactutab.length
+if (diff <= 24 ){
+  for (let i = 0; i < diff; i++) {
+      visiteactutab.push(0);
+  }
+}
+
+visitehier.forEach(visitehiers => {
+  visitehiertab.push(visitehiers.innerHTML);
+});
+
+diff = 24;
+diff -= visitehiertab.length;
+
+if (diff <= 24 ){
+  for (let i = 0; i < diff; i++) {
+      visitehiertab.push(0);
+  }
+}
+
+var xValues = ["00h","01h","02h", "03h","04h","05h", "06h","07h","08h", "09h","10h","11h", "12h","13h","14h", "15h","16h","17h", "18h","19h","20h", "21h","22h","23h"];
+
+new Chart("myChart", {
+  type: "line",
+  options: {
+    responsive: true,
+    plugins: {
+      tooltip: {
+        mode: 'index',
+        intersect: false
+      },
+      title: {
+        display: true,
+        text: 'évolution des visiteurs sous 48h'
+      }
+    },
+    hover: {
+      mode: 'index',
+      intersec: false
+    },
+},
+  data: {
+    labels: xValues,
+    datasets: [{
+    label: 'Hier',
+      data: visitehiertab,
+      borderColor: "red",
+      fill: false
+    },{
+      label: "Aujourd'hui",
+      data: visiteactutab,
+      borderColor: "green",
+      fill: false
+    }]
+  },
+});
+
+</script>
+{% endblock %}

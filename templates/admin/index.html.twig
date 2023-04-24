@@ -1,0 +1,160 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration • Generation Boomerang{% endblock %}
+
+{% block content %}
+    <section class="account__profil-section">
+        <div class="account__slider-container">
+            <div class="account__left-slide">
+                <div class="account__left-content" style="background-color: hsl(266, 24%, 21%)">
+                    <h1><i class='bx bxs-group' ></i></h1>
+                    <p>utilisateurs</p>
+                </div>
+                <div class="account__left-content" style="background-color: hsl(338, 30%, 21%)">
+                    <h1><i class='bx bxs-news' ></i></h1>
+                    <p>newsletter</p>
+                </div>
+                <div class="account__left-content" style="background-color: hsl(200, 26%, 21%)">
+                    <h1><i class='bx bxs-cog'></i></h1>
+                    <p>réglages</p>
+                </div>
+                <div class="account__left-content" style="background-color: hsl(213, 29%, 27%)">
+                    <h1><i class='bx bxs-spreadsheet' ></i></h1>
+                    <p>publications</p>
+                </div>
+            </div>
+
+            <div class="account__right-slide">
+                <div class="account__right-content" style="background-image: url({{ asset('assets/img/user/profil1.jpg') }});">
+                    <div class="account__right-button" style="background-color: hsl(213, 29%, 27%)">
+                        <a href="{{ path('admin_article') }}">
+                            <i class='bx bx-news' ></i>
+                            <span>Les articles</span>
+                        </a>
+                        <a href="{{ path('admin_experience') }}">
+                            <i class='bx bxs-book-content' ></i>
+                            <span>Les retours <br>d'expérience</span>
+                        </a>
+                        <a href="{{ path('admin_comment') }}">
+                            <i class='bx bxs-comment-detail bx-flip-horizontal' ></i>
+                            <span>Les commentaires</span>
+                        </a>
+                        <a href="{{ path('admin_signalement') }}">
+                            <i class='bx bxs-error bx-flip-horizontal' ></i>
+                            <span>Les signalements</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="account__right-content" style="background-image: url({{ asset('assets/img/user/profil2.jpg') }});">
+                    <div class="account__right-button" style="background-color: hsl(200, 26%, 21%)">
+                        {% if is_granted("ROLE_ADMIN") %}
+                        <a href="{{ path('admin_pole') }}">
+                            <i class='bx bx-pin'></i>
+                            <span>Pôles d'activités</span>
+                        </a>
+                        <a href="{{ path('category') }}">
+                            <i class='bx bxs-purchase-tag' ></i>
+                            <span>Les catégories</span>
+                        </a>
+                        {% endif %}
+                        <a href="{{ path('admin_faq') }}">
+                            <i class='bx bx-question-mark'></i>
+                            <span>Foire Aux Questions</span>
+                        </a>
+                        {% if is_granted("ROLE_ADMIN") %}
+                        <a href="{{ path('admin_home_detail') }}">
+                            <i class='bx bx-customize' ></i>
+                            <span>Détails de page d'accueil</span>
+                        </a>
+                        <a href="{{ path('admin_add_partner') }}">
+                            <i class='bx bx-cart'></i>
+                            <span>Ajout d'un partenaire</span>
+                        </a>
+                        <a href="{{ path('admin_partner') }}">
+                            <i class='bx bx-cart'></i>
+                            <span>Modifier un partenaire</span>
+                        </a>      
+                        {% endif %}                      
+                        <a href="{{ path('app_logout') }}">
+                            <i class='bx bx-log-out' ></i>
+                            <span>Déconnexion</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="account__right-content" style="background-image: url({{ asset('assets/img/user/profil3.jpg') }});">
+                    <div class="account__right-button" style="background-color: hsl(338, 30%, 21%)">
+                        <a href="{{ path('export') }}">
+                            <i class='bx bx-download' ></i>
+                            <span>Exporter la liste des abonnés à la newsletter</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="account__right-content" style="background-image: url({{ asset('assets/img/user/profil4.jpg') }});">
+                    <div class="account__right-button" style="background-color: hsl(266, 24%, 21%)">
+                    {% if is_granted("ROLE_ADMIN") %}
+                        <a href="{{ path('admin_user') }}">
+                            <i class='bx bx-group'></i>
+                            <span>Utilisateurs</span>
+                        </a>
+                    {% endif %}
+                        <a href="{{ path('admin_forum') }}">
+                            <i class='bx bx-comment-dots bx-flip-horizontal' ></i>
+                            <span>Discussions</span>
+                        </a>
+                        {% if is_granted("ROLE_ADMIN") %}
+                        <a href="{{ path('admin_product') }}">
+                            <i class='bx bx-cart'></i>
+                            <span>Abonnements</span>
+                        </a>
+                        {% endif %}
+                        <a href="{{ path('admin_user-ban') }}">
+                            <i class='bx bxs-user-x'></i>
+                            <span>Compte banni</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="account__button">
+                <button class="account__button-down">
+                    <i class='bx bx-down-arrow-alt'></i>
+                </button>
+                <button class="account__button-up">
+                    <i class='bx bx-up-arrow-alt' ></i>
+                </button>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block JavaScript %}
+    <script>
+        const sliderContainer = document.querySelector(".account__slider-container");
+        const slideRight = document.querySelector(".account__right-slide");
+        const slideLeft = document.querySelector(".account__left-slide");
+        const upButton = document.querySelector(".account__button-up");
+        const downButton = document.querySelector(".account__button-down");
+        const slidesLength = slideRight.querySelectorAll(".account__right-content").length;
+
+        let activeSlideIndex = 0;
+
+        slideLeft.style.top = `-${(slidesLength - 1) * 100}vh`;
+
+        const changeSlide = (direction) => {
+            const sliderHeight = sliderContainer.clientHeight;
+            if (direction === "up") {
+                activeSlideIndex++;
+                if (activeSlideIndex > slidesLength -1) activeSlideIndex = 0;
+            } else if (direction === "down") {
+                activeSlideIndex--;
+                if (activeSlideIndex < 0) activeSlideIndex = slidesLength - 1;
+            }
+            slideRight.style.transform = `translateY(-${activeSlideIndex * sliderHeight}px)`;
+            slideLeft.style.transform = `translateY(${activeSlideIndex * sliderHeight}px)`;
+        };
+
+        upButton.addEventListener("click", () => changeSlide("up"));
+        downButton.addEventListener("click", () => changeSlide("down"));
+    </script>
+{% endblock %}

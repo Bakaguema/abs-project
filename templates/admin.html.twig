@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!--========== ICONS ==========-->
+		<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'> 
+		{% block css %}{% endblock %}
+		{% block link %}{% endblock %}
+
+		<!--========== CSS ==========-->
+		<link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+		<link rel="stylesheet" href="{{ asset('assets/css/admin.css') }}">
+		{% block stylesheets %}{% endblock %}
+		
+		<!--========== FAVICON ==========-->
+		<link rel="shortcut icon" type="image/png" href="{{ asset('assets/img/favicon.png') }}">
+		
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-FY5BPYYG3E"></script>
+		
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', 'G-FY5BPYYG3E');
+		</script>
+		
+		<title>
+			{% block title %}Génération Boomerang{% endblock %}
+		</title>
+	</head>
+	
+	<body>
+	
+			<!--========== CONTENTS ==========-->
+			
+			{% block content %}{% endblock %}
+			<main class="main">
+				{% include "_partials/_navAdmin.html.twig" %}
+				{% include "_partials/_navLeftAdmin.html.twig" %} 
+			</main>
+				{# {% include "_partials/_footer.html.twig" %} #}
+
+						<!--========== MODAL ==========-->
+				{% block modal %}{% endblock %}
+				
+			<!--========== Block Javascript ==========-->
+				{% block JavaScript %}{% endblock %}
+			
+			<!--========== MAIN JS ==========-->
+			<script src="{{ asset('assets/js/main.js') }}"></script>
+	</body>
+</html>

@@ -1,0 +1,107 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Ajouter un article • Generation Boomerang
+{% endblock %}
+{% block stylesheets %}
+	{# Utilisation de select2 pour le des poles, multi choix #}
+	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
+
+
+	<style>
+		.select2 {
+			width: 100% !important;
+		}
+		#container {
+			width: 1550px;
+			margin: 20px auto;
+		}
+		.ck-editor__editable[role="textbox"] {
+			/* editing area */
+			min-height: 200px;
+		}
+		.ck-content .image {
+			/* block images */
+			max-width: 80%;
+			margin: 20px auto;
+		}
+	</style>
+{% endblock %}
+{% block content %}
+	<section
+		class="article">
+		{# <h1 class="section__title">Ajouter un article</h1>
+				<h3 class="section__subtitle">C'est dans cet espace que vous allez pouvoir ajouter un nouvel article.</h3> #}
+
+		<div class="article__menu">
+			<a href="{{ path('user_article') }}" class="article__menu-back">
+				<span></span>
+				<i class='bx bx-arrow-back'></i>
+				<span></span>
+				<span>retour aux articles</span>
+			</a>
+		</div>
+		<div class="article__user-container">
+			<div class="article__add">
+				{{ form_start(form, {'attr' : {'class' : 'article__add-form'} }) }}
+
+				<div class="article__form-categories article__form">
+					<i class='bx bxs-briefcase-alt-2'></i>
+					{{ form_widget(form.poles) }}
+				</div>
+
+				<div class="article__form-categories article__form">
+					<i class='bx bx-purchase-tag'></i>
+					{{ form_widget(form.categories) }}
+				</div>
+
+				<div class="article__form-illustration article__form">
+					<i class='bx bx-image-add'></i>
+					{{ form_widget(form.illustration) }}
+				</div>
+
+				<div class="article__form-video article__form">
+					<i class='bx bx-camera-movie'></i>
+					{{ form_widget(form.video) }}
+				</div>
+
+				<div class="article__form-title article__form">
+					<i class='bx bx-edit-alt'></i>
+					{{ form_widget(form.title) }}
+				</div>
+
+				<div id="container">
+					<div id="editor"></div>
+				</div>
+
+
+				<div class="article__form-condition">
+					<span></span>
+					<label>
+						{{ form_widget(form.rgpd) }}Merci d'accepter les conditions de
+						<a href="{{ path('condition') }}#utilisateur" target="_blank">
+							&nbsp;publications.</a>
+					</label>
+				</div>
+
+				<button class="article__form-button" type="submit">Ajouter</button>
+
+				{{ form_end(form) }}
+			</div>
+		</div>
+	</section>
+{% endblock %}
+
+{% block JavaScript %}
+	{# Utilisation de ckEditor pour le contenue d'un article #}
+	<script src="https://cdn.ckeditor.com/ckeditor5/36.0.0/super-build/ckeditor.js"></script>
+	<script src="{{ asset('assets/js/ckeditorarticle.js') }}"></script>
+	{# Utilisation de select2 pour le des poles, multi choix #}
+	<script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+	<script>
+		$(function () {
+$('.select-poles').select2();
+})
+	</script>
+{% endblock %}

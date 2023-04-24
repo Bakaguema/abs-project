@@ -1,0 +1,220 @@
+{% extends 'admin.html.twig' %}
+
+{% block css %}
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.css">
+	<link rel="stylesheet" href="{{ asset('assets/css/badge.css') }}">
+{% endblock %}
+
+{% block title %}Badges • Generation Boomerang
+{% endblock %}
+
+{% block content %}
+	<main>
+		<section>
+			<h1 class="section__title">Gérer les badges</h1>
+			<div class="article__menu">
+				<a href="{{ path('admin') }}" class="article__menu-back">
+					<i class='bx bx-arrow-back'></i>
+					<span>retour à l'administration</span>
+				</a>
+			</div>
+
+			{% for message in app.flashes('message') %}
+				<h3 class="section__subtitle-alert">{{ message }}</h3>
+			{% endfor %}
+			<div class="modalButtons">
+				<div class="buttonsBox"><img src="{{ asset('assets/img/badge/addbadge.png') }}" id="createBadgeModalButton" class=" bx-tada-hover buttonsBox"><span class="tooltiptext">Créer un nouveau badge !</span>
+				</div>
+				<div class="buttonsBox"><img src="{{ asset('assets/img/badge/awardbadge.png') }}" id="grantBadgeModalButton" class=" bx-tada-hover buttonsBox"><span class="tooltiptext">Attribuer un badge à un utilisateur !</span>
+				</div>
+				<div class="buttonsBox"><img src="{{ asset('assets/img/badge/revokebadge.png') }}" id="revokeBadgeModalButton" class=" bx-tada-hover buttonsBox"><span class="tooltiptext">Révoquer le badge d'un utilisateur !</span>
+				</div>
+			</div>
+		</section>
+		<div class="badge-card-container" id="badges_list">
+			{% include '/admin/badge/badges.html.twig' %}
+		</div>
+	</main>
+
+{% endblock %}
+
+{% block modal %}
+	<div id="createBadgeModal" class="badgeModal">
+		<div class="createBadgeModalContent">
+			<span id="createBadgeClose">&times;</span>
+			<div class="badgeFormContainer">
+				{{ form_start(createBadgeForm, {'attr' : {'class' : 'badgeForm', 'id' : 'form_createBadge'} }) }}
+				<h2 class="connexion__form-title">Nouveau Badge</h2>
+
+				<div class="badgeFormField">
+					<i class='bx bx-medal'></i>
+					{{ form_widget(createBadgeForm.name) }}
+					<span></span>
+					{{ form_errors(createBadgeForm.name) }}
+				</div>
+
+				<div class="badgeFormField badgeFormTextArea">
+					<i class='bx bx-message-detail'></i>
+					{{ form_widget(createBadgeForm.description) }}
+					<span></span>
+					{{ form_errors(createBadgeForm.description) }}
+				</div>
+
+				<div class="badgeFormField">
+					<i class='bx bx-category'></i>
+					{{ form_widget(createBadgeForm.badgeCategory) }}
+					<span></span>
+					{{ form_errors(createBadgeForm.badgeCategory) }}
+				</div>
+
+				<div class="badgeFormField" id="badgeThreshold" style="display: grid;">
+					<i class='bx bx-sort-up'></i>
+					{{ form_widget(createBadgeForm.threshold) }}
+					<span></span>
+					{{ form_errors(createBadgeForm.threshold) }}
+				</div>
+
+				<div class="badgeFormField">
+					<i class='bx bxs-image'></i>
+					{{ form_widget(createBadgeForm.image) }}
+				</div>
+
+				<div>
+					<img id="imgPreview" src="">
+				</div>
+
+				<div class="connexion__button">
+					<button class="connexion__form-button" id="createBadgeModalSubmit" type="submit">Créer</button>
+				</div>
+				{{ form_end(createBadgeForm) }}
+			</div>
+		</div>
+	</div>
+	<div id="editBadgeModal" class="badgeModal">
+		<div class="editBadgeModalContent">
+			<span id="editBadgeClose">&times;</span>
+			<div class="badgeFormContainer">
+				{{ form_start(editBadgeForm, {'attr' : {'class' : 'badgeForm', 'id' : 'form_editBadge'} }) }}
+				<h2 class="connexion__form-title">Éditer le Badge</h2>
+
+				<div class="badgeFormField">
+					<i class='bx bx-medal'></i>
+					{{ form_widget(editBadgeForm.name) }}
+					<span></span>
+					{{ form_errors(editBadgeForm.name) }}
+				</div>
+
+				<div class="badgeFormField badgeFormTextArea">
+					<i class='bx bx-message-detail'></i>
+					{{ form_widget(editBadgeForm.description) }}
+					<span></span>
+					{{ form_errors(editBadgeForm.description) }}
+				</div>
+
+				<div class="badgeFormField">
+					<i class='bx bx-category'></i>
+					{{ form_widget(editBadgeForm.badgeCategory) }}
+					<span></span>
+					{{ form_errors(editBadgeForm.badgeCategory) }}
+				</div>
+
+				<div class="badgeFormField" id="editbadgeThreshold" style="display: grid;">
+					<i class='bx bx-sort-up'></i>
+					{{ form_widget(editBadgeForm.threshold) }}
+					<span></span>
+					{{ form_errors(editBadgeForm.threshold) }}
+				</div>
+
+				<div class="badgeFormField">
+					<i class='bx bxs-image'></i>
+					{{ form_widget(editBadgeForm.image) }}
+				</div>
+
+				{{ form_widget(editBadgeForm.hiddenId) }}
+
+				<div>
+					<img id="editImgPreview" src="">
+				</div>
+
+				<div class="connexion__button">
+					<button class="connexion__form-button" id="editBadgeModalSubmit" type="submit">Éditer</button>
+				</div>
+				{{ form_end(editBadgeForm) }}
+			</div>
+		</div>
+	</div>
+	<div id="grantBadgeModal" class="badgeModal">
+		<div class="grantBadgeModalContent">
+			<span id="grantBadgeClose">&times;</span>
+			<div class="badgeFormContainer">
+				{{ form_start(grantBadgeForm, {'attr' : {'class' : 'badgeForm', 'id' : 'form_grantBadge'} }) }}
+				<h2 class="connexion__form-title">Attribuer un Badge</h2>
+
+				<div class="badgeFormField">
+					<i class='bx bx-user'></i>
+					{{ form_widget(grantBadgeForm.user) }}
+					<span></span>
+					{{ form_errors(grantBadgeForm.user) }}
+				</div>
+
+				<div class="badgeFormField">
+					<i class='bx bx-medal'></i>
+					{{ form_widget(grantBadgeForm.badge) }}
+					<span></span>
+					{{ form_errors(grantBadgeForm.badge) }}
+				</div>
+
+				<div>
+					<img id="user-profile-picture" src="">
+				</div>
+
+				<div class="connexion__button">
+					<button class="connexion__form-button" id="grantBadgeModalSubmit" type="submit">Attribuer</button>
+				</div>
+				{{ form_end(grantBadgeForm) }}
+			</div>
+		</div>
+	</div>
+	<div id="revokeBadgeModal" class="badgeModal">
+		<div class="revokeBadgeModalContent">
+			<span id="revokeBadgeClose">&times;</span>
+			<div class="badgeFormContainer">
+				{{ form_start(revokeBadgeForm, {'attr' : {'class' : 'badgeForm', 'id' : 'form_revokeBadge'} }) }}
+				<h2 class="connexion__form-title">Révoquer un Badge</h2>
+
+				<div class="badgeFormField">
+					<i class='bx bx-user'></i>
+					{{ form_widget(revokeBadgeForm.user) }}
+					<span></span>
+					{{ form_errors(revokeBadgeForm.user) }}
+				</div>
+
+				<div class="badgeFormField">
+					<i class='bx bx-medal'></i>
+					{{ form_widget(revokeBadgeForm.badge) }}
+					<span></span>
+					{{ form_errors(revokeBadgeForm.badge) }}
+				</div>
+
+				<div>
+					<img id="user-profile-picture" src="">
+				</div>
+
+				<div class="connexion__button">
+					<button class="connexion__form-button" id="revokeBadgeModalSubmit" type="submit">Révoquer</button>
+				</div>
+				{{ form_end(revokeBadgeForm) }}
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block JavaScript %}
+	{{ parent() }}
+	<script src="{{ asset('assets/js/badge/editBadgeManager.js') }}"></script>
+	<script src="{{ asset('assets/js/badge/revokeBadgeManager.js') }}"></script>
+	<script src="{{ asset('assets/js/badge/grandBadgeAjaxRequest.js') }}"></script>
+	<script src="{{ asset('assets/js/badge/badgeAjaxHandler.js') }}"></script>
+	<script src="{{ asset('assets/js/badge/badgeManager.js') }}"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.all.min.js"></script>
+{% endblock %}

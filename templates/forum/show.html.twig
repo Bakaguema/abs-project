@@ -1,0 +1,142 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ forums.name }} • Generation Boomerang{% endblock %}
+
+
+
+{% block content %}
+    <section class="forum scrollbar" style="height: 600px">
+        <div class="forum__container">
+            <ul class="forum__table">
+                <li class="forum__table-header">
+                    <div class="forum__table-col forum__back"><a href="{{ path('forum') }}"><i class='bx bx-arrow-back' ></i></a></div>
+                    <div class="forum__table-col forum__name">{{ forums.name }}</div>
+                </li>
+
+            <div class="container h-75 overflow-auto scrollbar" id="divmessage">
+                {% for message in forums.message %}
+                    {% if message.user == app.user %}
+                        <li class="forum__table-row">
+                            <div class="forum__table-col forum__table-getUser">
+                                <i class='bx bxs-user-voice bx-flip-horizontal' ></i> moi <br>
+                                <span>le {{ message.createdAt | date('d/m/Y H:i') }}</span>
+                            </div>
+                            <div class="forum__table-col forum__table-userMessage">{{ message.content }}</div>
+                        </li>
+                    {% else %}
+                    <li class="forum__table-row">
+                        <div class="forum__table-col forum__table-message">{{ message.content }}</div>
+                        <div class="forum__table-col forum__table-user">
+                            {{ message.user.firstname }} <i class='bx bxs-user-voice' ></i> <br>
+                            <span>le {{ message.createdAt | date('d/m/Y H:i') }}</span>
+                        </div>
+                    </li>
+                    {% endif %}
+                {% endfor %}
+            </div>
+                {{ form_start(form) }}
+                <li class="forum__table-row forum__message">
+                    <div class="forum__table-col forum__message-send">
+                        {{ form_widget(form.content) }}
+                        <button id="submit" type="submit"><i class='bx bx-send bx-rotate-270' ></i></button>
+                    </div>
+                </li>
+                {{ form_end(form) }}
+               
+            </ul>
+        </div>
+
+    </section>
+
+{% endblock %}
+
+
+{% block JavaScript %}
+{{ parent() }}
+
+
+<script src="{{ asset('assets/js/others/moment.min.js') }}"></script>
+<script src="{{ asset('assets/js/others/moment-with-locales.min.js') }}"></script>
+
+<script>
+
+            moment.locale(window.navigator.language); // Choix du format horaire suivant la langue du navigateur
+
+            let chatDiv = document.querySelector('.overflow-auto');
+            chatDiv.scrollTop = chatDiv.scrollHeight; // On souhaite scroller toujours jusqu'au dernier message du chat
+
+    {% if is_granted('ROLE_USER') %}
+
+            let form = document.getElementById('form');
+            function handleForm(event) {
+                event.preventDefault(); // Empêche la page de se rafraîchir après le submit du formulaire
+            }
+            form.addEventListener('submit', handleForm);
+            
+            {% set DiscussUrl = app.request.getSchemeAndHttpHost ~ '/discussions/' ~ forums.id %} //Choix du topic
+
+            const link = '{{ app.request.attributes.get('_links').getLinksbyRel('mercure')[0].getHref }}'
+            const url = new URL(link);
+
+
+            url.searchParams.append('topic', '{{DiscussUrl}}');
+
+            const eventSource = new EventSource(url, {withCredentials: true});
+
+
+            const appUser = {{ app.user.id }};
+
+        eventSource.onmessage = event => {
+            const message= JSON.parse(event.data);
+
+                document.getElementById('divmessage').insertAdjacentHTML(
+                    'beforeend',
+                    appUser === message.user.id ?
+                    `<li class="forum__table-row">
+                            <div class="forum__table-col forum__table-getUser">
+                                <i class="bx bxs-user-voice bx-flip-horizontal" ></i> moi <br>
+                                <span>le ${ moment(message.createdAt).format('L') } <br>
+							    ${ moment(message.createdAt).format('LT') } </span>
+                            </div>
+                            <div class="forum__table-col forum__table-userMessage">${message.content}</div>
+                    </li>` :
+                    `<li class="forum__table-row">
+                        <div class="forum__table-col forum__table-message">${message.content}</div>
+                            <div class="forum__table-col forum__table-user">${message.user.firstname}<i class='bx bxs-user-voice' ></i><br>
+                           <span>le ${ moment(message.createdAt).format('L') } <br>
+						    ${ moment(message.createdAt).format('LT') } </span>
+                        </div>
+                    </li>`
+                )
+                chatDiv.scrollTop = chatDiv.scrollHeight;
+            }
+
+            const submit = document.querySelector('form');
+            const subbutton = document.querySelector('button');
+
+            function sendMessage() {
+                const message = document.getElementById('forum_message_content'); // Récupération du message dans l'input correspondant
+                        const data = { // La variable data sera envoyée au controller
+                            'content': message.value, // On transmet le message...
+                            'channel': {{forums.id}} // ... Et le canal correspondant
+                        }
+                        fetch('/message', { // On envoie avec un post nos datas sur le endpoint /message de notre application
+                            method: 'POST',
+                            body: JSON.stringify(data) // On envoie les data sous format JSON
+                        }).then((response) => {
+                            message.value = '';
+                        });
+            }
+
+            // Si press Entrer envoyer message
+        submit.addEventListener("keydown", function(event) {
+            if (event.shiftKey && event.key === "Enter") {} 
+            else if (event.key === "Enter") { sendMessage() }})
+
+            // Si click sur bouton envoyer message
+        subbutton.onclick = e => { sendMessage() } 
+
+    {% endif %}
+
+</script>
+{% endblock %}

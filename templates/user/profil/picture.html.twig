@@ -1,0 +1,111 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Photo de profil • Generation Boomerang
+{% endblock %}
+{% block stylesheets %}
+        {# CSS photo de profil #}
+    <link rel="stylesheet" href="{{ asset('assets/css/picture.css') }}">
+{% endblock %}
+{% block content %}
+	<section class="account">
+		<h1 class="section__title">Changer photo de profil</h1>
+		<h3 class="section__subtitle">C'est dans cet espace que vous allez pouvoir changer de photo de profil.</h3>
+
+		<div class="article__menu">
+			<a href="{{ path('user') }}" class="article__menu-back">
+				<i class='bx bx-arrow-back'></i>
+				<span>retour au profil</span>
+			</a>
+		</div>
+
+		{% for message in app.flashes('message') %}
+			<h3 class="section__subtitle-alert">{{ message }}</h3>
+		{% endfor %}
+
+		<div class="account__container">
+			<div class="account__password-form">
+				{{ form_start(form) }}
+				<div class="form">
+					<i class='bx bx-image'></i>
+					<label>
+						<button id="myBtn">Selectionez votre photo de profil</button></label>
+						{{ form_widget(form.picture) }}
+				</div>
+				<button class="article__form-button" type="submit">Changer</button>
+
+				{{ form_end(form) }}
+			</div>
+		</div>
+		<!-- The Modal -->
+		<div
+			id="myModal" class="modal1">
+
+			<!-- Modal content -->
+			<div class="modal-content">
+				<span class="close">&times;</span>
+				<div class="clearfix"></div>
+				<h2>Selectionnez votre photo de profil</h2>
+				<h4 style="padding:6px;">choisissez votre avatar :
+				</h4>
+				<div class="responsive">
+					<div class="gallery">
+						<label>
+							<input type="radio" id="avatar" name="avatar" value="/assets/img/avatars/avatar.png" onchange="loadAvatar()">
+							<img src="/assets/img/avatars/avatar.png" alt="Avatar homme" width="600" height="400">
+						</label>
+					</div>
+				</div>
+				<div class="responsive">
+					<div class="gallery">
+						<label>
+							<input type="radio" id="avatar1" name="avatar" value="/assets/img/avatars/avatar1.png" onchange="loadAvatar()">
+							<img src="/assets/img/avatars/avatar1.png" alt="Avatar femme" width="600" height="400">
+						</label>
+
+					</div>
+				</div>
+				<div class="responsive">
+					<div class="gallery">
+						<label>
+							<input type="radio" id="avatar2" name="avatar" value="/assets/img/avatars/avatar2.png" onchange="loadAvatar()">
+							<img src="/assets/img/avatars/avatar2.png" alt="Avatar homme vieux" width="600" height="400">
+						</label>
+					</div>
+				</div>
+				<div class="responsive">
+					<div class="gallery">
+						<label>
+							<input type="radio" id="avatar3" name="avatar" value="/assets/img/avatars/avatar3.png" onchange="loadAvatar()">
+							<img src="/assets/img/avatars/avatar3.png" alt="Avatar femme vielle" width="600" height="400">
+						</label>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+				<div style="padding:6px;">
+					<h4 style="padding:6px;">Ou importez votre photo :
+					</h4>
+				</div>
+				<div style="padding:6px;" class="responsive">
+					<label id="labelfile" for="user_picture">Cliquez ici pour Importer votre photo de profil</label>
+				</div>
+				<div class="clearfix"></div>
+				<div style="padding:6px;" class="w3-center">
+					<div class="w3-bar">
+						<img src="" id="img-preview" alt="img-preview">
+					</div>
+				</div>
+				<div style="padding:6px;" class="w3-center">
+					<div class="w3-bar">
+						<button id="valider" class="w3-button w3-green">Valider</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!--========== Gerer photo de profil ==========-->
+{% block JavaScript %}
+<script src="{{ asset('assets/js/avatar.js') }}"></script>
+{% endblock %}
+{% endblock %}

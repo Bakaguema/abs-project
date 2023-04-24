@@ -1,0 +1,120 @@
+{% extends 'base.html.twig' %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('assets/css/pole.css') }}">
+{% endblock %}
+
+{% block title %}Évolutions des Savoirs • Generation Boomerang{% endblock %}
+
+{% block content %}
+    <!--===== HOME =====-->
+    <section class="home home__savoir" id="home">
+        <div class="home__container home__container-pole grid2">
+            <h1 class="home__title2"><img class="ban__pole"src="{{ asset('assets/img/pole/savoir/banniere.png') }}"></h1>
+        </div>
+    </section>
+
+    <!--===== ABOUT =====-->
+    <section class="about section" id="about">
+        <h2 class="section__title-pole section__title-savoir">À la découverte de ...</h2>
+
+        <div class="about__container grid">
+            <div class="about__img">
+                <img src="{{ asset('assets/img/pole/savoir/about1.png') }}" alt="">
+            </div>
+
+            <div>
+                <h2 class="about__subtitle about__subtitle-savoir">Xavier Tourillon</h2>
+                <span class="about__profession">Directeur Technique et de la Transition Numérique du Bâtiment chez PARIS OUEST CONSTRUCTION</span>
+                <p class="about__text">Dans l’entreprise être garant de la technicité, de l’expertise technique et réglementaire, responsable des choix constructifs des validations techniques et réglementaires tous corps d’état. Dans la vie sociale : renforcer les compétences des adultes. Considérer l'éducation et la culture, comme moteurs du développement.
+                    <br><br><a href="#about__popup"><i class='bx bx-expand-alt bx-burst' ></i> cliquez pour en voir plus...</a></p>
+
+                <div class="about__social">
+                    <a href="https://www.linkedin.com/in/xavier-tournillon-290849ab/" target="_blank" class="about__social-icon about__social-iconSavoir"><i class='bx bxl-linkedin' ></i></a>
+                    <a href="#" class="about__social-icon about__social-iconSavoir"><i class='bx bxl-facebook'></i></a>
+                    <a href="#" class="about__social-icon about__social-iconSavoir"><i class='bx bxl-twitter' ></i></a>
+                </div>
+            </div>
+            <div class="about__popup about__popup-savoir" id="about__popup">
+                <div class="about__popup-container">
+                    <a href="#about" class="about__popup-close">
+                        <i class='bx bx-x' ></i>
+                    </a>
+                    <div class="about__popup-content">
+                        <h1 class="about__popup-title">VOCATION</h1>
+                        <p>Réaliser le déploiement du BIM dans l'entreprise, manager la Technique et l'Innovation.</p>
+                        <h1 class="about__popup-title">CONVICTION</h1>
+                        <p>Dans l’entreprise être garant de la technicité, de l’expertise technique et réglementaire, responsable des choix constructifs des validations techniques et réglementaires tous corps d’état. Dans la vie sociale : renforcer les compétences des adultes. Considérer l'éducation et la culture, comme moteurs du développement. Eduquer, partager : la clé du développement, un enjeu majeur pour la construction de l’avenir. En réponse à la destruction accélérée de l'environnement : Affirmer ses choix préférentiels pour des solutions respectueuses et durables. = Ensemble, on va plus loin !</p>
+                        <h1 class="about__popup-title">PRESENTATION DU MEMBRE FONDATEUR</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisienim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praes ent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcor. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisienim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praes ent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+                        <h1 class="about__popup-title">L'EVOLUTION DES SAVOIRS SELON XAVIER TOURNILLON</h1>
+                        <p>Sans cesse se réinventer : <br><br>
+
+                            • répondre à la gestion et l’obsolescence des données <br>
+                            • à la virtualité qui évolue très vite <br>
+                            • à la consommation de la planète à outrance <br>
+                            • à la résilience humaine en réaction à des situations soudaines style pandémie <br>
+                            • être capable par notre contenu, de proposer, d’intéresser pour empêcher nos internautes de partir <br>
+                            • esprit «GENERATION BOOMERANG»© : être intuitif : les recherches ? Proposer ce que vous ne recherchez pas ! Proposer et mieux ce qu’il ne sait pas qu’il aurait pu demander ! Les anciens expliquent au profit des jeunes qui ont l’agilité et la clarté</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+    <h2 class="section__title-pole section__title-savoir">A propos de l'{{ desc.0.name }}</h2>
+    <div class="discovery__container">
+    <h5 class="about__text">{{ desc.0.description }}</h5>
+    </div>
+    </section>
+    <!--===== DISCOVERY =====-->
+    <section class="discovery section" id="discovery">
+        <h2 class="section__title-pole section__title-savoir">Découvrir</h2>
+
+        <div class="discovery__container grid">
+                    {% for article in articles %}
+            <div class="discovery__img">
+            <h5 class="discovery__title">{{ article.title}}</h5> 
+                <img src="{{ asset('uploads/articles/' ~ article.illustrations[0].name) }}" alt="{{ article.title }}" />
+
+                <div class="discovery__link">
+                    <a href="{{ path('article', {slug: article.slug}) }}" class="discovery__link-name discovery__link-nameCommunication">{{ article.content|raw|striptags|raw|u.truncate(100, '...')|raw }} <br> cliquez pour découvrir</a>
+                </div>
+            </div>
+        {% endfor %}
+        </div>        
+        <div class = "pole__paginator">
+            {% do articles.setPageRange(6) %}
+            {{ knp_pagination_render(articles, 'bundles/KnpPaginatorBundle/paginator.html.twig') }}
+        </div> 
+    </section>
+
+    <!--===== CONTACT =====-->
+    {# <section class="contact section" id="contact">
+        <h2 class="section__title-pole section__title-savoir">Contact</h2>
+
+        <div class="contact__container grid">
+            <div class="contact__info">
+                <h3 class="contact__subtitle contact__subtitle-savoir">EMAIL</h3>
+                <span class="contact__text">xavier@generation-boomerang.com</span>
+
+                <h3 class="contact__subtitle contact__subtitle-savoir">TÉLÉPHONE</h3>
+                <span class="contact__text">06 07 08 09 00</span>
+
+                <h3 class="contact__subtitle contact__subtitle-savoir">ADRESSE</h3>
+                <span class="contact__text">Roubaix</span>
+            </div>
+
+            <form action="" class="contact__form">
+                <div class="contact__inputs">
+                    <input type="text" placeholder="Votre nom" class="contact__input contact__input-savoir">
+                    <input type="email" placeholder="votre@email.com" class="contact__input contact__input-savoir">
+                </div>
+
+                <textarea name="" id="" cols="0" rows="10" class="contact__input contact__input-savoir"></textarea>
+
+                <input type="submit" value="Envoyer" class="contact__button contact__button-savoir">
+            </form>
+        </div>
+    </section> #}
+{% endblock %}

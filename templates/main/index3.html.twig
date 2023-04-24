@@ -1,0 +1,154 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Actualité • Generation Boomerang{% endblock %}
+
+{% block content %}
+<section class="article">
+        <div class="article__container">
+        <div class="article__menu">
+			<a href="{{ path('actu-xp') }}" class="article__menu-back"><i class='bx bx-left-arrow-alt'></i> <span>Les derniers retours d'expériences</span></a>
+            <h1>Retrouvez les derniers articles de vos contacts Generation Boomerang<small>©</small></h1>
+            <a href="{{ path('main') }}" class="article__menu-back"><i class='bx bx-right-arrow-alt'></i> <span>Les publications de mes contacts</span></a>
+			</div>
+		
+            <ul class="article__cards">
+                {% for friend in app.session.get('friends') %}
+                    {% for article in articles %}
+                    {% if article.users.id is same as friend.user1.id and friend.user2.id is same as app.user.id %}
+                    
+                        <div class="article__card-content">
+                            <div>
+                                <span class="article__card-category"><i class='bx bx-purchase-tag' ></i> {{ article.categories.name }}</span>
+                                <span class="article__card-author">écrit par <a href="{{ path('profil', {id: friend.user1.id}) }}">{{ friend.user1.firstname }} {{ friend.user1.lastname }}</a></span>
+                                <h2 class="article__card-title"><a href="{{ path('article', {slug: article.slug}) }}">{{ article.title }}</a></h2>
+                                <p class="article__card-preview">{{ article.content|raw|striptags('<h1><h2><h3><h4><h5><h6><p>')|raw|u.truncate(200, '...')|raw }}</p>
+                                <div class="article__card-button">
+                                    <a href="{{ path('article', {slug: article.slug}) }}">Lire l'article</a>
+                                </div>
+                                <div class="article__card-reaction">
+                                    <a href="{{ path('article_like', {id: article.id}) }}" class="article__reaction-button article__reaction-like">
+                                        {% if app.user and article.isLikedByUser(app.user) %}
+                                            <i class='bx bxs-heart' ></i>
+                                        {% else %}
+                                            <i class='bx bx-heart bx-tada' ></i>
+                                        {% endif %}
+                                        <span class="article__reaction-likeNumber">
+                                        {% for user in article.likes | slice (0,3) %}
+                                        {{user.user.firstname}} {{user.user.lastname}},
+                                        
+                                        {% endfor %}
+                                        {% if article.likes | length == '0' %}
+                                        Soyez le premier à aimer ceci </span>
+                                        {% elseif article.likes | length == '1' %}
+                                        {% elseif article.likes | length == '2' %}
+                                        {% elseif article.likes | length == '3' %}
+                                        {% elseif article.likes | length == '4' %}
+                                        et une autre personne</span>
+                                        {% else %}
+                                        et {{ article.likes | length | slice (3) }} personnes</span>
+                                        {% endif %}
+                                    </a>
+                                    <a href="{{ path('article', {slug: article.slug}) }}#comment__new" class="article__reaction-button">
+                                        <i class='bx bx-comment-dots' ></i>
+                                        <span>{{ article.comments | length }}</span>
+                                    </a>
+                                    <a href="{{ path('article_save', {id: article.id}) }}" class="article__reaction-button article__reaction-save">
+                                        {% if app.user and article.isSavedByUser(app.user) %}
+                                            <i class='bx bxs-bookmark' ></i>
+                                        {% else %}
+                                            <i class='bx bx-bookmark' ></i>
+                                        {% endif %}
+                                        <span class="article__reaction-saveNumber">{{ article.saves | length }}</span>
+                                    </a>
+                                    <a href="" class="article__reaction-button">
+                                        <i class='bx bx-share-alt' ></i>
+                                    </a>
+                                </div>
+                            </div>
+                            {% if article.illustrations is empty %}
+                            <figure>
+                                <img src="{{ asset('uploads/profiles/default.jpg') }}" alt="{{ article.title }}" />
+                            </figure>
+                            {% else %}
+                            <figure>
+                                <img src="{{ asset('uploads/articles/' ~ article.illustrations[0].name) }}" alt="{{ article.title }}" />
+                            </figure>
+                            {% endif %}
+                            </div>
+                            
+
+
+                    {% elseif friend.user1.id is same as app.user.id and article.users.id is same as friend.user2.id %}
+                    
+                        <div class="article__card-content">
+                            <div>
+                                <span class="article__card-category"><i class='bx bx-purchase-tag' ></i> {{ article.categories.name }}</span>
+                                <span class="article__card-author">écrit par <a href="{{ path('profil', {id: friend.user2.id}) }}">{{ friend.user2.firstname }} {{ friend.user2.lastname }}</a></span>
+                                <h2 class="article__card-title"><a href="{{ path('article', {slug: article.slug}) }}">{{ article.title }}</a></h2>
+                                <p class="article__card-preview">{{ article.content|raw|striptags('<h1><h2><h3><h4><h5><h6><p>')|raw|u.truncate(200, '...')|raw }}</p>
+                                <div class="article__card-button">
+                                    <a href="{{ path('article', {slug: article.slug}) }}">Lire l'article</a>
+                                </div>
+                                <div class="article__card-reaction">
+                                    <a href="{{ path('article_like', {id: article.id}) }}" class="article__reaction-button article__reaction-like">
+                                        {% if app.user and article.isLikedByUser(app.user) %}
+                                            <i class='bx bxs-heart' ></i>
+                                        {% else %}
+                                            <i class='bx bx-heart bx-tada' ></i>
+                                        {% endif %}
+                                        <span class="article__reaction-likeNumber">
+                                        {% for user in article.likes | slice (0,3) %}
+                                        {{user.user.firstname}} {{user.user.lastname}},
+                                        
+                                        {% endfor %}
+                                        {% if article.likes | length == '0' %}
+                                        Soyez le premier à aimer ceci </span>
+                                        {% elseif article.likes | length == '1' %}
+                                        {% elseif article.likes | length == '2' %}
+                                        {% elseif article.likes | length == '3' %}
+                                        {% elseif article.likes | length == '4' %}
+                                        et une autre personne</span>
+                                        {% else %}
+                                        et {{ article.likes | length | slice (3) }} personnes</span>
+                                        {% endif %}
+                                    </a>
+                                    <a href="{{ path('article', {slug: article.slug}) }}#comment__new" class="article__reaction-button">
+                                        <i class='bx bx-comment-dots' ></i>
+                                        <span>{{ article.comments | length }}</span>
+                                    </a>
+                                    <a href="{{ path('article_save', {id: article.id}) }}" class="article__reaction-button article__reaction-save">
+                                        {% if app.user and article.isSavedByUser(app.user) %}
+                                            <i class='bx bxs-bookmark' ></i>
+                                        {% else %}
+                                            <i class='bx bx-bookmark' ></i>
+                                        {% endif %}
+                                        <span class="article__reaction-saveNumber">{{ article.saves | length }}</span>
+                                    </a>
+                                    <a href="" class="article__reaction-button">
+                                        <i class='bx bx-share-alt' ></i>
+                                    </a>
+                                </div>
+                            </div>
+                            {% if article.illustrations is empty %}
+                            <figure>
+                                <img src="{{ asset('uploads/profiles/default.jpg') }}" alt="{{ article.title }}" />
+                            </figure>
+                            {% else %}
+                            <figure>
+                                <img src="{{ asset('uploads/articles/' ~ article.illustrations[0].name) }}" alt="{{ article.title }}" />
+                            </figure>
+                            {% endif %}
+
+
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                
+                {% endfor %}
+           </div>
+        </ul>
+    </section>
+{% endblock %}
+
+
+

@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Remarques et Suggestions • Generation Boomerang
+{% endblock %}
+
+{% block content %}
+	<style>
+		.footer__actuality {
+			display: none;
+		}
+	</style>
+
+	<section class="contact">
+
+		{{ form_start(form, {'attr' : {'class' : 'connexion__form-register'} }) }}
+		<h2 class="connexion__form-title">Nous faire part d'une remarque ou faire une suggestion</h2>
+
+		{% for message in app.flashes('notice') %}
+			<div class="contact__form-subtitle">{{ message }}</div>
+		{% endfor %}
+
+		<div class="form">
+			<i class='bx bx-user'></i>
+			{{ form_widget(form.fullname) }}
+			<span></span>
+			{{ form_errors(form.fullname) }}
+		</div>
+
+		<div class="form">
+			<i class='bx bx-envelope'></i>
+			{{ form_widget(form.email) }}
+			<span></span>
+			{{ form_errors(form.email) }}
+		</div>
+
+		<div class="contact__form-content">
+			<span></span>
+			{{ form_widget(form.content) }}
+			<span></span>
+			{{ form_errors(form.content) }}
+		</div>
+
+		<div class="connexion__button">
+			<button class="connexion__form-button" type="submit">Envoyer</button>
+		</div>
+		{{ form_end(form) }}
+
+
+		<div class="connexion__register-container">
+			<div class="register__content">
+				<div class="connexion__content-register">
+					<div class="connexion__content-text">
+						<img src="{{ asset('assets/img/logo2.png') }}" alt="Generation Boomerang">
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}

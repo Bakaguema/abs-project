@@ -1,0 +1,109 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Aide à l'accessibilité
+{% endblock %}
+
+{% block content %}
+
+	{# <style> .footer{display: none!important}</style>  #}
+
+	<link rel="stylesheet" href="{{asset('assets/css/accessibilite.css')}}">
+	<div class="access_wrapper">
+		<div class="access_container_left">
+			<h2 class="access_title">Accessibilité</h2>
+			<hr class="access_hr">
+			<img class="access_img" src="{{ asset('assets/img/test/reunion2.jpg') }}" alt="Reunion autour du handicape">
+			<div class="access_description">
+				<p>
+					L'accessibilité est au coeur de nos préoccupations et nous attachons beaucoup d'importance à rendre 
+										la navigation sur notre plateforme la plus agréable possible aux personnes en situations de handicape.
+				</p>
+				<br>
+				<p>
+					Voila pourquoi nous avons mis en place une aide a la navigation : une version plus contrastée, une autre pour les daltoniens 
+										ainsi qu'une police plus facile à lire pour les personnes atteintes de dyslexie.
+				</p>
+			</div>
+
+		</div>
+
+		<div
+			class="access_container_right">
+			{# NAVIGATION #}
+			<div class="access__card">
+				<h2 class="access__card__title">Navigation</h2>
+				<img class="access__card__img" src="{{ asset('assets/img/test/navigation.jpg') }}" alt="">
+				<div class="access__card__body">
+					<p>La touche "tabulation" permet d'accéder successivement à chaque lien du site.</p>
+					<footer class="access__card__footer">Naviguer entre les liens.</footer>
+				</div>
+			</div>
+
+			{# TAILLE D'AFFICHAGE #}
+			<div class="access__card">
+				<h2 class="access__card__title">Taille de l'affichage</h2>
+				<img class="access__card__img" src="{{ asset('assets/img/test/affichage2.jpg') }}" alt="">
+				<div class="access__card__body">
+					<p>Utilisez la touche "CTRL" et la molette de la souris pour modifier la taille de votre affichage.</p>
+					<footer class="access__card__footer">Agrandit/réduit la police d'écriture.</footer>
+				</div>
+			</div>
+
+
+			{# MENU ACCESSIBILITE #}
+			<div class="access__card">
+				<h2 class="access__card__title">Menu d'accessibilité</h2>
+				<img class="access__card__img" src="{{ asset('assets/img/test/barre.jpg') }}" alt="">
+				<div class="access__card__body">
+					<p>Le menu d'accessibilité situé tout en haut de page permet de modifier l'affichage en fonction de vos besoins.</p>
+					<footer class="access__card__footer">le Logo permet de revenir a cette page.</footer>
+				</div>
+			</div>
+
+			{# MODE SOMBRE #}
+			<div class="access__card">
+				<h2 class="access__card__title">Mode Sombre</h2>
+				<img class="access__card__img" src="{{ asset('assets/img/test/custom.jpg') }}" alt="">
+				<div class="access__card__body">
+					<p>Une version contrastée du site est disponible afin de faciliter l'accessibilité aux déficiants visuels.</p>
+					<footer class="access__card__footer">Le "Mode Sombre" permet de modifier l'affichage.</footer>
+				</div>
+			</div>
+
+
+			{# DYSLEXIE #}
+			<div class="access__card">
+				<h2 class="access__card__title">Mode Dyslexie</h2>
+				<img class="access__card__img" src="{{ asset('assets/img/test/dyslexie.jpg') }}" alt="">
+				<div class="access__card__body">
+					<p>Nous proposons une police de substitution permettant une meilleure lecture sur tout le site.</p>
+					<footer class="">Le "Mode Dyslexique" permet de modifier la police d'écriture.</footer>
+				</div>
+			</div>
+
+
+			{# DALTONISME #}
+			<div class="access__card">
+				<h2 class="access__card__title">Mode Daltonien</h2>
+				<img class="access__card__img" src="{{ asset('assets/img/test/daltonisme.jpg') }}" alt="">
+				<div class="access__card__body">
+					<p>Une version adaptée aux daltoniens, se basant peu sur les couleurs afin d'être lisible par tous.</p>
+					<footer class="access__card__footer">Le "Mode Daltonien" permet de modifier l'affichage.</footer>
+				</div>
+			</div>
+
+
+			{# CUBE #}
+			<div class="access__card">
+				<h2 class="access__card__title">Le Cube</h2>
+				<img class="photo mx-auto" src="{{ asset('img/test/cube.jpg') }}" alt="">
+				<div class="access__card__body">
+					<p>Un cube remplacera parfois la barre de navigation , n'hésitez pas a clicker dessus pour voir
+													ce qu'il se passera !</p>
+					<footer class="blockquote-footer">Le cube est accessible dans chaque page des pôles.</footer>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>{% endblock %}

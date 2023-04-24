@@ -1,0 +1,46 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Modifier une catégorie • Generation Boomerang{% endblock %}
+
+{% block content %}
+    <section class="category">
+        <h1 class="section__title">Modifier un pôle d'activité</h1>
+        <h3 class="section__subtitle">C'est dans cet espace que vous allez pouvoir modifier un pôle d'activité.</h3>
+
+        <div class="article__menu">
+            <a href="{{ path('admin_pole') }}" class="article__menu-back"><i class='bx bx-arrow-back' ></i> <span>retour aux poles d'activités</span></a>
+        </div>
+
+        <div class="category__container">
+            {% if pole.admin %}
+                <h3 class="section__subtitle">L'administateur actuel du pole est : {{ pole.admin.firstname }} {{ pole.admin.lastname }} avec l'id : {{ pole.admin.id }}</h3>
+            {% else %}
+                <h3 class="section__subtitle">Il n’y a aucun Administateur lié à ce pôle</h3>
+            {% endif %}
+            <div class="category__add-form">
+                {{ form_start(form) }}
+
+                <div class="form">
+                    <i class='bx bx-pin'></i>
+                    {{ form_widget(form.name) }}
+                </div>
+
+                <div class="form">
+                    <i class='bx bx-pin'></i>
+                    {{ form_widget(form.description) }}
+                </div>
+                {% if is_granted("ROLE_ADMIN") %}
+                    <div class="form">
+                {% else %}
+                    <div style="display:none;" class="form">
+                {% endif %}
+                    <i class='bx bx-pin'></i>
+                    {{ form_widget(form.admin) }}
+                </div>
+                <button class="article__form-button" type="submit">Mettre à jour</button>
+
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </section>
+{% endblock %}

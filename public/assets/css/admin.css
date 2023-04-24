@@ -1,0 +1,589 @@
+.gridadmin {  display: grid;
+    grid-template-columns: 0.8fr 1fr 1fr 1fr 1fr 0.3fr;
+    grid-template-rows: 0.1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-auto-columns: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      ". . . . . ."
+      ". Coupon Message Article Signalement ."
+      ". Graphique Graphique Graphique Visiteur_Unique ."
+      ". Graphique Graphique Graphique Temps ."
+      ". Graphique Graphique Graphique Utilisateur ."
+      ". ticket ticket Dernier_event Dernier_event ."
+      ". ticket ticket Dernier_event Dernier_event ."
+      ". . . . . .";
+      text-align: center;
+  }
+  
+  .Signalement {  display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "Signalements"
+      "NombreSignalements";
+    grid-area: Signalement;
+  }
+  
+  .Signalements {  display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      ".";
+    grid-area: Signalements;
+    
+  }
+  
+  .NombreSignalements {  display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      ".";
+    grid-area: NombreSignalements;
+  }
+  
+  .Article {  display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "Articles Articles Articles"
+      "NombreArticles NombreArticles NombreArticles";
+    grid-area: Article;
+  }
+  
+  .Articles {  display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      ".";
+    grid-area: Articles;
+  }
+  
+  .NombreArticles {  display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      ".";
+    grid-area: NombreArticles;
+  }
+  
+  .Message {  display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "Messages Messages Messages"
+      "NombreMessages NombreMessages NombreMessages";
+    grid-area: Message;
+  }
+  
+  .Messages {  display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      ".";
+    grid-area: Messages;
+  }
+  
+  .NombreMessages {  display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      ".";
+    grid-area: NombreMessages;
+  }
+  
+  .Coupon {  display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "Coupons Coupons Coupons"
+      "NombresCoupons NombresCoupons NombresCoupons";
+    grid-area: Coupon;
+  }
+  
+  .Coupons {  display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      ".";
+    grid-area: Coupons;
+  }
+  
+  .NombresCoupons {  display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      ".";
+    grid-area: NombresCoupons;
+  }
+  
+  .Graphique {  display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      ".";
+    grid-area: Graphique;
+  }
+  
+  .Visiteur_Unique {  display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "Visiteur Visiteur Visiteur"
+      "Nombre-Visiteur Nombre-Visiteur Nombre-Visiteur";
+    grid-area: Visiteur_Unique;
+  }
+  
+  .Visiteur {  display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      ".";
+    grid-area: Visiteur;
+  }
+  
+  .Nombre-Visiteur {  display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      ".";
+    grid-area: Nombre-Visiteur;
+  }
+  
+  .Temps {  display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "Tempsmoyen Tempsmoyen Tempsmoyen"
+      "Tempsvisite Tempsvisite Tempsvisite";
+    grid-area: Temps;
+  }
+  
+  .Tempsmoyen {  display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      ".";
+    grid-area: Tempsmoyen;
+  }
+  
+  .Tempsvisite {  display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      ".";
+    grid-area: Tempsvisite;
+  }
+  
+  .Utilisateur {  display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "Utilisateurs Utilisateurs Utilisateurs"
+      "Nombreutilisateurs Nombreutilisateurs Nombreutilisateurs";
+    grid-area: Utilisateur;
+  }
+  
+  .Utilisateurs {  display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      ".";
+    grid-area: Utilisateurs;
+  }
+  
+  .Nombreutilisateurs {  display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      ".";
+    grid-area: Nombreutilisateurs;
+  }
+  
+  .Dernier_event {  display: grid;
+    grid-template-columns: 1.4fr 0.6fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "dernier-event butonevent"
+      "user2 user2"
+      "user3 user3";
+    grid-area: Dernier_event;
+  }
+  
+  .dernier-event {  display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      ".";
+    grid-area: dernier-event;
+  }
+  
+  .butonevent {  display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      ".";
+    grid-area: butonevent;
+  }
+  
+  .user2 {  display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      ".";
+    grid-area: user2;
+  }
+  
+  .user3 {  display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      ".";
+    grid-area: user3;
+  }
+  
+  .ticket {  display: grid;
+    grid-template-columns: 1.4fr 0.6fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "titre plusdetail"
+      "en-attente en-attente"
+      "total total";
+    grid-area: ticket;
+  }
+  
+  .plusdetail {  display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      ".";
+    grid-area: plusdetail;
+  }
+  
+  .titre {  display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      ".";
+    grid-area: titre;
+  }
+  
+  .en-attente {  display: grid;
+    grid-template-columns: 1fr 0.2fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      ". en-attentenb";
+    grid-area: en-attente;
+  }
+  
+  .en-attentenb {  display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      ".";
+    grid-area: en-attentenb;
+  }
+  
+  .total {  display: grid;
+    grid-template-columns: 1fr 0.2fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      ". totalnb";
+    grid-area: total;
+  }
+  
+  .totalnb {  display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      ".";
+    grid-area: totalnb;
+  }
+
+  .number__top{
+    border-bottom: 1px solid;
+    margin-bottom: 30px;
+  }
+
+  .h3__title, .number__top{
+    box-shadow: 4px 6px var(--first-color);
+    border-left: 1px solid;
+    margin-right: 30px;
+    border-right: 1px solid;
+    border-color: var(--first-color);
+    background-color: var(--container-color);
+  }
+
+  .h3__title{
+    margin-top: auto;
+    border-top: 1px solid;
+  }
+
+  .h3__title, .h3__title_right {
+    padding-top: 15px;
+    color: var(--first-color);
+    font-size: var(--title-font-size);
+  }
+
+  .number__top, .number__right{
+    font-weight: bold;
+    color: var(--title-color);
+    font-size: var(--big-title-font-size);
+  }
+
+  .h3__title_right{
+    border-top: 1px solid;
+  }
+
+  .number__right{
+    border-bottom: 1px solid ;
+  }
+
+  .Graphique{
+    background-color: white;
+    padding-right: 10px;
+    border-top: 4px solid;
+    border-left: 4px solid;
+    border-bottom: 4px solid;
+    border-color: var(--first-color);
+  }
+
+  .number__right, .h3__title_right{
+    box-shadow: 4px 0px  var(--first-color);
+    border-left: 4px solid;
+    border-right: 1px solid;
+    margin-right: 30px;
+    border-color: var(--first-color);
+  }
+  
+  .Graphique, .Utilisateur{
+    margin-bottom: 30px;
+  }
+
+ .Nombreutilisateurs {
+    border-bottom: 4px solid;
+    border-color: var(--first-color);
+    box-shadow: 4px 0px  var(--first-color);
+  }
+
+  .Dernier_event, .ticket{
+    border-left: 1px solid;
+  }
+
+  .h3__title_bottom{
+    font-size: var(--big-font-size);
+  }
+
+  .dernier-event, .butonevent, .plusdetail, .titre{
+    border-top: 1px solid;
+    padding-top: 15px;
+  }
+    .plusdetail{
+      box-shadow: 4px 0px  var(--first-color);
+    }
+   .butonevent, .user2, .user3{
+    border-right: 1px solid;
+    margin-right: 30px;
+  }
+
+  .butonevent{
+    box-shadow: 4px 0px  var(--first-color);
+  }
+
+  .user3, .total{
+    border-bottom: 4px solid;
+    font-size: var(--subtitle-font-size);
+    padding-top: 50px;
+    box-shadow: 4px 0px  var(--first-color);
+  }
+
+  .user2, .en-attente{
+    font-size: var(--subtitle-font-size);
+    padding-top: 50px;
+    border-top: 1px solid;
+    box-shadow: 4px 0px  var(--first-color);
+  }
+
+  .Dernier_event, .dernier-event, .butonevent, .user2, .user3, .ticket, .plusdetail, .titre, .total, .en-attente{
+    border-color: var(--first-color);
+  }
+  
+  .ticket{
+    margin-right: 20px;
+  }
+
+  .plus__detail{
+    font-size: var(--small-font-size);
+  }
+
+  .plus__detail:visited{
+    color: blue;
+  }
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .gridadmin {  display: grid;
+      grid-template-columns: 0.8fr 1fr 1fr 1fr 1fr 0.3fr;
+      grid-template-rows: 0.1fr 1fr 1fr 0.9fr 0.6fr 0.6fr 1fr;
+      grid-template-areas:
+        ". . . . . ."
+        ". Coupon Message Article Signalement ."
+        ". Graphique Graphique Graphique . ."
+        ". Visiteur_Unique Temps Utilisateur . . "
+        ". ticket ticket Dernier_event Dernier_event ."
+        ". ticket ticket Dernier_event Dernier_event ."
+        ". . . . . .";
+    }
+    .Graphique{
+      border-right: 4px solid;
+      border-color: var(--first-color);
+      margin-left: 15%;
+    }
+
+    .number__right, .number__top {
+      font-size: var(--title-font-size);
+    }
+    .h3__title_right, .h3__title, .h3__title_bottom{
+      font-size: var(--subtitle-font-size);
+    }
+    .number__right, .h3__title_right{
+      margin-right: 10px;
+    }
+    .number__right{
+      margin-bottom: 50px;
+    }
+    .Visiteur, .Nombre-Visiteur{
+      margin-left: 10%;
+    }
+    .Utilisateur{
+      margin-bottom: 0;
+      margin-right: -50%;
+      margin-left: 50%;
+    }
+    .Temps{
+      margin-right: -25%;
+      margin-left: 25%;
+    }
+    .user2, .user3, .en-attente, .total{
+      font-size: var(--normal-font-size);
+    }
+    .user3, .total{
+      padding-bottom: 10%;
+    }
+  }
+
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .Graphique{
+    display: none;
+  }
+  
+  .gridadmin {  
+    display: grid;
+    grid-template-columns: 0.2fr 1fr 1fr 0.2fr;
+    grid-template-rows:  0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
+    grid-template-areas:
+      ". Coupon Coupon . "
+      ". Message Message . "
+      ". Article Article ."
+      ". Signalement Signalement ."
+      ". Visiteur_Unique Visiteur_Unique . "
+      ". Temps Temps . "
+      ". Utilisateur Utilisateur . "
+      ". Dernier_event Dernier_event ."
+      ". ticket ticket . "
+  }
+  .Dernier_event{
+    margin-bottom: 5%;
+    margin-right: 6%;
+  }
+  .butonevent, .user2, .user3{
+    margin-right: 0;
+  }
+  .user3{
+    padding-bottom: 10%;
+  }
+  .h3__title_bottom{
+    font-size: var(--subtitle-font-size);
+  }
+  .number__right, .number__top{
+    font-size: var(--big-font-size);
+  }
+}
+
+.stats__display{
+  display: none;
+}

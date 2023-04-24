@@ -1,0 +1,41 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Création d'utilisateur • Generation Boomerang{% endblock %}
+
+{% block content %}
+    <section class="category">
+        <h1 class="section__title">Création d'utilisateur</h1>
+        <h3 class="section__subtitle">C'est dans cet espace que vous allez pouvoir créer des utilisateur.</h3>
+
+        <div class="article__menu">
+            <a href="{{ path('admin_user') }}" class="article__menu-back"><i class='bx bx-arrow-back' ></i> <span>retour aux utilisateurs</span></a>
+            <a href="{{ path('admin_user-code') }}" class="article__menu-back"> <span>Créer un Coupon</span><i class='bx bx-right-arrow-alt' ></i></a>
+        </div>
+
+        <div class="category__container">
+            <div class="category__add-form">
+                {{ form_start(form) }}
+                <div class="form">
+                    <i class='bx bx-user' ></i>
+                    {{ form_widget(form.firstname) }}
+                </div>
+                <div class="form">
+                    <i class='bx bx-user' ></i>
+                    {{ form_widget(form.lastname) }}
+                </div>
+                <div class="form">
+                    <i class='bx bx-user' ></i>
+                    {{ form_widget(form.email) }}
+                </div>
+                <div class="form">
+                    <i class='bx bx-user' ></i>
+                    {{ form_widget(form.password) }}
+                </div>
+
+                <button class="article__form-button" type="submit">Création</button>
+
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </section>
+{% endblock %}

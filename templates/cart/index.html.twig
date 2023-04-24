@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Panier • Generation Boomerang{% endblock %}
+
+{% block content %}
+    <section class="cart">
+        <h1 class="section__title">Votre Panier</h1>
+        <h3 class="section__subtitle">C'est dans cet espace que vous allez pouvoir souscrire à un abonnement.</h3>
+
+        <div class="cart__container">
+            <div class="cart__containt">
+                {% set total = null %}
+                {% for product in cart %}
+                    <div class="cart__containt-left">
+                        <div class="cart__product-name">{{ product.product.name }}</div>
+                        <div class="cart__product-subtitle">{{ product.product.subtitle }}</div>
+                    </div>
+                    <div class="cart__containt-right">
+                        <div class="cart__product-price">
+                            {{ product.product.price|number_format(2, '€', '.') }} <br>
+                            <span>/ an</span>
+                        </div>
+                    </div>
+                    {% set total = total + product.product.price %}
+                {% endfor %}
+            </div>
+            <div class="cart__recap">
+                <div class="cart__recap-ht">Prix H.T : <span>{{ (total - (total * (20/100)))|number_format(2, '€', '.') }}</span></div>
+                <div class="cart__recap-total">Prix Total : <span>{{ total|number_format(2, '€', '.') }}</span></div>
+            </div>
+            <div class="cart__button">
+                <a href="{{ path('remove_cart') }}" class="cart__button-delete">Supprimer</a>
+                <a href="" class="cart__button-valid">Payer | {{ total|number_format(2, '€', '.') }}</a>
+            </div>
+        </div>
+    </section>
+{% endblock %}

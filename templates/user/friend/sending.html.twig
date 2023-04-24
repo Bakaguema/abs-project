@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ app.user.firstname}}
+	{{ app.user.lastname}}
+	• Generation Boomerang
+{% endblock %}
+
+{% block content %}
+
+	<section class="article">
+		<h1 class="section__title">Mes contacts</h1>
+		<h3 class="section__subtitle">C'est dans cet espace que vous allez pouvoir voir vos contact en attente.</h3>  
+		<div class="article__menu">
+        <a href="{{ path('my_contact') }}" class="article__menu-back"><i class='bx bx-left-arrow-alt'></i><span>Mes demandes en attente</span></a>
+            <a href="{{ path('is_accept') }}" class="article__menu-back"><i class='bx bx-right-arrow-alt'></i> <span>Ma liste</span></a>
+			</div>
+			{% for message in app.flashes('message') %}
+					<h3 class="section__subtitle-alert">{{ message }}</h3>
+				{% endfor %}
+		<div class="article__table-container">
+			{% for friend in app.session.get('friends') %}
+            {% if friend.user1.id is same as app.user.id %}
+				{% if friend.active == 0 %}                   
+					<div class="friend__table" id="{{ friend.user1.id }}">
+						<div class="article__table-left">
+							<div class="article__table-name" >
+								<h3 class="article__name">{{ friend.user2.firstname }} {{friend.user2.lastname}}</h3>
+							</div>
+						</div>
+						<div class="article__card-button">
+							<a href="{{ path('profil', {id: friend.user2.id}) }}">voir sa page</a>
+						</div>
+						<div class="article__table-right">
+						<figure>
+							<img src="{{ asset('uploads/profiles/' ~ friend.user2.picture) }}" alt="{{ friend.user2.lastname }}" class="friend-pic"/>
+						</figure>
+                        </div>
+                        <div class="button">
+						<p> Demande envoyée </p>
+						 <div class="article__table-delete">
+                            <a href="{{ path('delete_friend', {id: friend.id}) }}" class="article__delete"><i class='bx bx-trash'></i>supprimer </a>
+						</div>
+                        </div>
+					</div>
+				{% endif %}
+				{% endif %}
+			{% endfor %}
+		</div>
+	</section>
+
+{% endblock %}

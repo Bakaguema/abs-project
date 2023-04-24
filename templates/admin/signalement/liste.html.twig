@@ -1,0 +1,111 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Signalement • Generation Boomerang{% endblock %}
+
+{% block content %}
+    <section class="category">
+        <h1 class="section__title">Gérer les Signalements</h1>
+        <h3 class="section__subtitle">C'est dans cet espace que vous allez pouvoir gérer les différents signalement.</h3>
+
+        <div class="article__menu">
+            <a href="{{ path('admin') }}" class="article__menu-back"><i class='bx bx-arrow-back' ></i> <span>retour à l'administration</span></a>
+        </div>
+
+        {% for message in app.flashes('message') %}
+            <h3 class="section__subtitle-alert">{{ message }}</h3>
+        {% endfor %}
+
+            <div class="profil__menu"> 
+                <div id="résoludiv" class="profil__article">
+                    <a href="#résolu" spellcheck="false"><h5 class="profil__menu-icon">Résolu</h5> </a>
+                </div>
+                <div id="attentediv" class="profil__experience">
+                    <a href="#attente" spellcheck="false"><h5 class="profil__menu-icon">En Attente</h5> </a>
+                </div>
+            </div>
+
+
+            <div id="résolu" class="stats__display">
+                <div class="article__table-container">
+                    {% for signal in signalsok %}
+                        <div id="card_signal">
+                            <div class="article__table" id="{{ signal.id }}">
+                                <div class="article__table-left">
+                                    <div class="article__table-name">
+                                        <h4>Signalé par :</h4> <a href="{{path('profil' , {id:signal.user.id}) }}" class="article__name">{{ signal.user.firstname }} {{ signal.user.lastname }}</a>
+                                        <h5 class="article__user">{{ signal.comment.content }}
+                                        <h5>Commentaire de:<br><a href="{{path('profil' , {id:signal.comment.user.id}) }}" class="article__name">{{ signal.comment.user.firstname }} {{ signal.comment.user.lastname }}</a></h5>
+                                        <h5>Raison : <span class="color1">{{ signal.content }}</span><h5>
+                                        {% if signal.autre %}
+                                            <h5 class="article__user">{{ signal.autre }}</h5>
+                                        {% endif %}
+                                        {% if signal.comment.article is null %}
+                                            <h5 class="article__category">{{ signal.comment.experience }}</h5>
+                                            <a href="{{ path('experience', {slug: signal.comment.experience.slug}) }}#comment__show" class="article__comment-button"><button class="article__form-button">Voir le commentaire</button></a> 
+                                            {% else %} 
+                                            <h5 class="article__category">{{ signal.comment.article }}</h5>
+                                            <a href="{{ path('admin_signalement_attente', {id: signal.id}) }}" class="article__comment-button"><button class="article__form-button">Mettre en attente</button></a>
+                                            <a href="{{ path('article', {slug: signal.comment.article.slug}) }}#comment__show" class="article__comment-button"><button class="article__form-button">Voir le commentaire</button></a> 
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>  
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div id="attente" class="stats__display">
+                <div class="article__table-container">
+                    {% for signal in signalsatt %}
+                        <div id="card_signal">
+                            <div class="article__table" id="{{ signal.id }}">
+                                <div class="article__table-left">
+                                    <div class="article__table-name">
+                                        <h4>Signalé par :</h4> <a href="{{path('profil' , {id:signal.user.id}) }}" class="article__name">{{ signal.user.firstname }} {{ signal.user.lastname }}</a>
+                                        <h5 class="article__user">{{ signal.comment.content }}
+                                        <h5>Commentaire de:<br><a href="{{path('profil' , {id:signal.comment.user.id}) }}" class="article__name">{{ signal.comment.user.firstname }} {{ signal.comment.user.lastname }}</a></h5>
+                                        <h5>Raison : <span class="color1">{{ signal.content }}</span><h5>
+                                        {% if signal.autre %}
+                                            <h5 class="article__user">{{ signal.autre }}</h5>
+                                        {% endif %}
+                                        {% if signal.comment.article is null %}
+                                            <h5 class="article__category">{{ signal.comment.experience }}</h5>
+                                            <a href="{{ path('experience', {slug: signal.comment.experience.slug}) }}#comment__show" class="article__comment-button"><button class="article__form-button">Voir le commentaire</button></a> 
+                                            {% else %} 
+                                            <h5 class="article__category">{{ signal.comment.article }}</h5>
+                                            <a href="{{ path('admin_signalement_id', {id: signal.id}) }}" class="article__comment-button"><button class="article__form-button">Marquer comme résolu</button></a>
+                                            <a href="{{ path('article', {slug: signal.comment.article.slug}) }}#comment__show" class="article__comment-button"><button class="article__form-button">Voir le commentaire</button></a> 
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>  
+                    {% endfor %}
+                </div>
+            </div>
+    </section>
+
+{% endblock %}
+
+{% block JavaScript %}
+<script> 
+function openTab(tabName) {
+    let i;
+    let tabContent;
+
+    tabContent = document.getElementsByClassName("stats__display");
+
+    for (i = 0; i < tabContent.length; i++) {
+        tabContent[i].style.display = "none";
+    }
+
+    document.getElementById(tabName).style.display = "flex";
+}
+let tableau = document.getElementById("résoludiv");
+let total = document.getElementById("attentediv");
+
+tableau.addEventListener("click", function(){openTab("résolu")}, false);
+total.addEventListener("click", function(){openTab("attente")}, false);
+</script>
+{% endblock %}   

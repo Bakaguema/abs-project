@@ -1,0 +1,74 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Dashboard Coupon • Generation Boomerang{% endblock %}
+
+{% block content %}
+        <link rel="stylesheet" href="{{ asset('assets/css/table_dashboard.css') }}">
+        
+        <section class="category">
+        <h1 class="section__title">Gestion de coupon</h1>
+        <h3 class="section__subtitle">Dans cet espace vous allez pouvoir gérer les coupons créés</h3>
+
+        <div class="article__menu">
+            <a href="{{ path('admin_user') }}" class="article__menu-back"><i class='bx bx-arrow-back' ></i> <span>retour aux utilisateurs</span></a>
+            <a href="{{ path('admin_user-code') }}" class="article__menu-back"><span>Créer un Coupon</span><i class='bx bx-right-arrow-alt' ></i></a>
+        </div>
+
+        {% for message in app.flashes('message') %}
+            <h3 class="section__subtitle-alert">{{ message }}</h3>
+        {% endfor %}
+        {% if Codes != null %}
+            <table name="table">
+                <thead>
+                    <tr >
+                        <th >NOM de l'organisation</th>
+                        <th >CODE</th>
+                        <th >Utilisation restante</th>
+                        <th >Utilisation Initial </th>
+                        <th >Statistique </th>
+                    </tr>
+                </thead>
+                <tbody>
+            {% for Code in Codes %}
+            {% if Code.Utilisation != 0 %}
+                <tr onclick=Datatable(this) >
+                    <td name="comu_name">{{ Code.Nom }}</td>
+                    <td >{{ Code.Code }}</td>
+                    <td name="UsageCurrent">{{ Code.Utilisation }}</td>
+                    <td name="MaxUsage">{{ Code.MaxUsage }}</td>   
+                    <td><a class="code_link" href="{{ path('admin_coupon-edit', {id: Code.id}) }}">Détail</a></td>          
+                </tr>
+                {% else %}
+                <tr class="disabled" onclick=Datatable(this)>
+                    <td name="comu_name">{{ Code.Nom }}</td>
+                    <td >{{ Code.Code }}</td>
+                    <td name="UsageCurrent">{{ Code.Utilisation }}</td>
+                    <td name="MaxUsage">{{ Code.MaxUsage }}</td> 
+                    <td class="user__table-edit"><a href="{{ path('admin_coupon-edit', {id: Code.id}) }}"><i class='bx bxs-edit-alt'></i></a></td>     
+                </tr>
+                {% endif %}
+            {% endfor %}
+            <div class="articles__paginator">
+            {% do Codes.setPageRange(2) %}
+            {{ knp_pagination_render(Codes, 'bundles/KnpPaginatorBundle/paginator.html.twig') }}
+            </div> 
+            </tbody>
+            </table>
+        {% else %}
+
+        <h1 class="section__subtitle" style="color:red;">Le tableau des coupons est vide</h1>
+
+        {% endif %}
+        <h3 id="copy" class="section__subtitle"></h3>
+        </div>
+        <div class="grid">
+            <div class="graph_2"><canvas class="" id="myChart" style="width:100%;max-width:800px"></canvas></div>
+        </div>
+
+    </section>
+{% endblock %}
+
+{% block JavaScript %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<script src="{{ asset('assets/js/coderedeem.js') }}"></script>
+{% endblock %}

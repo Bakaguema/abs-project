@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}F.A.Q • Generation Boomerang{% endblock %}
+
+
+{% block content %}
+    <section class="faq">
+        <h1 class="section__title">Foire Aux Questions</h1>
+        <div class="faq__container">
+            <div class="faq__questions">
+                    <br />
+                {% for faq in faqs %}
+                    <details class="faq__question-response">
+                        <summary class="faq__question">{{ faq.question }}</summary>
+                        <h3 class="faq__response-title">{{ faq.title }}</h3>
+                        <p class="faq__response-content">{{ faq.response }}</p>
+                        {% if faq.linkUrl and faq.linkName%}
+                            <div class="faq__response-button">
+                                <a href="{{ faq.linkUrl }}" target="_blank">{{ faq.linkName }}</a>
+                            </div>
+                        {% endif %}
+                    </details>
+                {% endfor %}
+                </div>
+            </div>
+    </section>
+{% endblock %}
+
+
+{% block JavaScript %}
+    <script>
+        const details = Array.from(document.querySelectorAll("details"));
+
+        details.forEach(targetDetail => {
+            targetDetail.addEventListener("click", () => {
+                details.forEach(detail => {
+                    if (detail !== targetDetail) {
+                        detail.removeAttribute("open");
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}
+
+

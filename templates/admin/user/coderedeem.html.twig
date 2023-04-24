@@ -1,0 +1,37 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Création de Coupon • Generation Boomerang{% endblock %}
+
+{% block content %}
+    <section class="category">
+        <h1 class="section__title">Création d'un code Abonnée</h1>
+        <h3 class="section__subtitle">C'est dans cet espace que vous allez pouvoir créer un code permettant de donner le role Abonnée.</h3>
+
+        <div class="article__menu">
+            <a href="{{ path('admin_user') }}" class="article__menu-back"><i class='bx bx-arrow-back' ></i> <span>retour aux utilisateurs</span></a>
+            <a href="{{ path('admin_user-dashboard') }}" class="article__menu-back"> <span>Accéder au Dashboard</span><i class='bx bx-right-arrow-alt' ></i></a>
+        </div>
+
+        {% for message in app.flashes('message') %}
+            <h3 class="section__subtitle-alert">{{ message }}</h3>
+        {% endfor %}
+
+        <div class="category__container">
+            <div class="category__add-form">
+                {{ form_start(form) }}
+                <div class="form">
+                    <i class='bx bx-user' ></i>
+                    {{ form_widget(form.Utilisation) }}
+                </div>
+                <div class="form">
+                    <i class='bx bx-user' ></i>
+                    {{ form_widget(form.Nom) }}
+                </div>
+
+                <button class="article__form-button" type="submit">Création</button>
+
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </section>
+{% endblock %}

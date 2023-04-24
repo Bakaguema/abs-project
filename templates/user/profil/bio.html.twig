@@ -1,0 +1,205 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Éditer votre profil • Generation Boomerang
+{% endblock %}
+
+{% block content %}
+	<section class="account">
+		<script></script>
+		<h1 class="section__title">Dites nous tout !</h1>
+		<h3 class="section__subtitle">C'est dans cet espace que vous allez pouvoir gérer toutes vos informations personnelles.</h3>
+
+		<div class="article__menu">
+			<a href="{{ path('user') }}" class="article__menu-back">
+				<i class='bx bx-arrow-back'></i>
+				<span>retour au profil</span>
+			</a>
+		</div>
+
+        {% for message in app.flashes('message') %}
+            <h3 class="section__subtitle-alert">{{ message }}</h3>
+        {% endfor %}
+        <div class="account__container">
+            <div class="account__password-form">                
+                {{ form_start(form) }}
+                <div class="form faq__form-content">
+                    <i class='bx bx-user-voice' ></i>
+                    {{ form_widget(form.bio) }}
+                </div>
+                <div class="form">
+                    <i class='bx bxs-briefcase-alt-2'></i>
+                    {{ form_widget(form.profil) }}
+                </div>    
+                <div class="form">
+                    <i class='bx bxs-briefcase-alt-2'></i>
+                    {{ form_widget(form.metier) }}
+                </div>
+                <div class="form">
+                    <i class='bx bxs-briefcase-alt-2'></i>
+                    {{ form_widget(form.situation) }}
+                </div>
+                <div class="form">
+                    <i class='bx bxs-briefcase-alt-2'></i>
+                    {{ form_widget(form.ville) }}
+                </div>
+               
+                <div class="form">
+                    <i class='bx bxs-briefcase-alt-2'></i>
+                    {{ form_widget(form.caractere) }}
+                </div>
+                <div class="form">
+                    <i class='bx bxs-briefcase-alt-2'></i>
+                    {{ form_widget(form.interet) }}
+                </div>
+                <div class="form">
+                    <i class='bx bxs-briefcase-alt-2'></i>
+                    {{ form_widget(form.objectif) }}
+                </div>
+                <div class="form">
+                    <i class='bx bxs-briefcase-alt-2'></i>
+                    {{ form_widget(form.insight) }}
+                </div>    
+                <h2 class="section__subtitle">Vos réseaux sociaux:</h3>
+                <div class="form">
+                    <i class='bx bxl-facebook' ></i>
+                    {{ form_widget(form.facebook) }}
+                </div>
+                <div class="form">
+                    <i class='bx bxl-instagram' ></i>
+                    {{ form_widget(form.instagram) }}
+                </div>
+                <div class="form">
+                    <i class='bx bxl-twitter' ></i>
+                    {{ form_widget(form.twitter) }}
+                </div>
+                <div class="form">
+                    <i class='bx bxl-linkedin' ></i>
+                    {{ form_widget(form.linkedin) }}
+                </div>
+                <div class="form">
+                    <i class='bx bxl-pinterest' ></i>
+                    {{ form_widget(form.pinterest) }}
+                </div>
+                <div class="form">
+                    <i class='bx bxl-snapchat' ></i>
+                    {{ form_widget(form.snapchat) }}
+                </div>
+                <div class="form">
+                    <i class='bx bxl-tiktok' ></i>
+                    {{ form_widget(form.tiktok) }}
+                </div>
+                <div class="form">
+                    <i class='bx bxl-youtube' ></i>
+                    {{ form_widget(form.youtube) }}
+                </div>
+                <h2 class="section__subtitle">Les pôles qui vous interessent:</h2>
+                <div class="form">
+                    <i class='bx bxs-briefcase-alt-2'></i>
+                    {{ form_widget(form.pole) }}
+                </div>
+                <div class="form">
+                    <i class='bx bxs-briefcase-alt-2'></i>
+                    {{ form_widget(form.pole_1) }}
+                </div>
+                <div class="form">
+                    <i class='bx bxs-briefcase-alt-2'></i>
+                    {{ form_widget(form.pole_2) }}
+                </div>
+                <div class="form">
+                    <i class='bx bxs-briefcase-alt-2'></i>
+                    {{ form_widget(form.pole_3) }}
+                </div>
+                <div class="form">
+                    <i class='bx bxs-briefcase-alt-2'></i>
+                    {{ form_widget(form.pole_4) }}
+                </div>
+                <div class="form">
+                    <i class='bx bxs-briefcase-alt-2'></i>
+                    {{ form_widget(form.pole_5) }}
+                </div>
+                <div class="form">
+                    <i class='bx bxs-briefcase-alt-2'></i>
+                    {{ form_widget(form.region) }}
+                </div>
+                <div class="form">
+                    <i class='bx bxs-briefcase-alt-2'></i>
+                    {{ form_widget(form.departement) }}
+                </div>
+                <div class="form">
+                    <i class='bx bxs-briefcase-alt-2'></i>
+                    {{ form_widget(form.city) }}
+                </div>
+                <button class="article__form-button" type="submit">Mettre à jour</button>
+
+                {{ form_end(form) }}
+            </div>
+        </div>
+         <span class="profile_information">* Si vous êtes demandeur d'emploi, vous pouvez nous transmettre votre attestation via votre espace personnel afin de bénéficier de l'abonnement solidaire</span>
+       </section>
+
+       
+
+{% endblock %}
+
+{% block JavaScript %}
+<script>
+    let region = document.querySelector("#profil_region")
+    region.addEventListener("change", function(){
+      // mettre le select de la ville a null
+        document.querySelector("#profil_city").innerHTML = null
+            let form = this.closest("form")
+            const data = new URLSearchParams();
+            for (const pair of new FormData(form)) {
+              if (pair[0] != 'profil[_token]'){
+                data.append(pair[0], pair[1]);
+                }
+            }
+            // let data = this.name + "=" + this.value
+            fetch(form.action, {
+                method: 'post',
+                body: data,
+                headers: {
+                "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
+                }
+            })
+            .then(response => response.text())
+            .then(html => {
+            let content = document.createElement("html")
+            content.innerHTML = html
+            console.log(content)
+            let newSelect = content.querySelector("#profil_departement") 
+            document.querySelector("#profil_departement").replaceWith(newSelect)
+                let departement = document.querySelector("#profil_departement")
+                    if (typeof departement !== 'undefined' && departement !== null ) {
+                    departement.addEventListener("change", function(){  
+                          const data = new URLSearchParams();
+                            for (const pair of new FormData(form)) {
+                              if (pair[0] != 'profil[_token]'){
+                                data.append(pair[0], pair[1]);
+                                }
+                            }
+                            // data += '&' + this.name + "=" + this.value
+                        fetch(form.action, {
+                            method: 'post',
+                            body: data,
+                            headers: {
+                                "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
+                            }
+                        })
+                        .then(response => response.text())
+                        .then(html => {
+                            content = document.createElement("html")
+                            content.innerHTML = html
+                            let nouveauSelect = content.querySelector("#profil_city")
+                            document.querySelector("#profil_city").replaceWith(nouveauSelect)
+                        })
+    
+                    })
+                }
+                
+        
+        })
+    })  
+    
+</script>   
+{% endblock %}

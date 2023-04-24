@@ -1,0 +1,19 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Création d'utilisateur • Generation Boomerang{% endblock %}
+
+{% block content %}
+    <section class="category">
+        <h1 class="section__title">Utilisateur créé</h1>
+        <h3 style="color:red;font-size: 24px;" class="section__subtitle">Attention, ce mot de passe n'est pas retenu veuillez le noter précieusement.</h3>
+        <div class="category__container">
+        {% for message in app.flashes('message') %}
+            <h3 class="section__subtitle-alert">{{ message }}</h3>
+        {% endfor %}
+</div>
+
+        <div class="article__menu">
+            <a href="{{ path('admin_user-create') }}" class="article__menu-back"><i class='bx bx-arrow-back' ></i> <span>retour a la création d'utilisateur</span></a>
+        </div>
+    </section>
+{% endblock %}

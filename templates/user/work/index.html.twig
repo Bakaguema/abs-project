@@ -1,0 +1,122 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Articles • Generation Boomerang
+{% endblock %}
+
+{% block content %}
+
+<section class="article">
+	<h1 class="section__title">Les annonces de
+		{{ app.user.firstname }}</h1>
+	<h3 class="section__subtitle">C'est dans cet espace que vous allez pouvoir retrouver et modifier toute les annonces
+		que vous avez créé.</h3>
+
+	<div class="article__menu">
+		<a href="{{ path('user') }}" class="article__menu-back">
+			<i class='bx bx-arrow-back'></i>
+			<span>Retour au profil</span>
+		</a>
+		<a href="works" class="article__menu-article article__menu-active">Annonces</a>
+		<a href="{{ path('hiring') }}" class="article__menu-add">
+			<i class='bx bx-plus-medical'></i>
+			<span>Ajouter une annonce</span>
+		</a>
+	</div>
+
+	{% for message in app.flashes('message') %}
+	<h3 class="section__subtitle-alert">{{ message }}</h3>
+	{% endfor %}
+
+
+	<div class="article__container">
+
+		<ul class="article__cards">
+			{% for work in works %}
+			{% if work.users.id is same as users.id %}
+			<li class="article__card">
+				<div class="article__card-content">
+					<div>
+						<span>
+							<i class='bx bx-purchase-tag'></i>
+							{{ work.place }}<br>
+							{{work.revenu}}€
+						</span>
+						<span class="article__card-author">
+							par
+							<a href="{{ path('profil', {id: work.users.id}) }}">{{ work.users.firstname }}
+								{{ work.users.lastname }}</a>
+						</span>
+						<h2 class="work__card-title">
+							{{ work.name }}
+						</h2>
+						<p class="article__card-preview">{{ work.description|u.truncate(800, '...')|raw }}</p>
+						<div class="article__card-button">
+							<a href="{{ path('work', {slug: work.slug}) }}">Voir plus</a>
+						</div>
+						<div class="article__card-option">
+							<a href="{{ path('edit_work', {id: work.id}) }}" class="article__card-edit">
+								<i class='bx bxs-edit-alt'></i>
+								<span>Modifier</span>
+							</a>
+							<a href="{{ path('delete_annonce', {id: work.id}) }}" class="article__card-delete">
+								<i class='bx bxs-trash'></i>
+								<span>Supprimer</span>
+							</a>
+						</div>
+					</div>
+					<figure>
+						<img src="{{ asset('uploads/profiles/' ~ work.users.picture)}}" alt="{{ work.name }}" />
+					</figure>
+				</div>
+			</li>
+			{% endif %}
+			{% endfor %}
+
+			{% for purpose in purposes %}
+			{% if purpose.users.id is same as users.id %}
+			<li class="article__card">
+				<div class="article__card-content">
+					<div>
+						<span>
+							<i class='bx bx-purchase-tag'></i>
+							{{ purpose.place }}<br>
+						</span>
+						<span class="article__card-author">
+							par
+							<a href="{{ path('profil', {id: purpose.users.id}) }}">{{ purpose.users.firstname }}
+								{{ purpose.users.lastname }}</a>
+						</span>
+						<h2 class="work__card-title">
+							<p >{{ purpose.name }}</p>
+						</h2>
+						<p class="article__card-preview">{{ purpose.description|u.truncate(1000, '...')|raw }}</p>
+						<div class="article__card-button">
+							<a href="{{ path('purposeshow', {slug: purpose.slug}) }}">Voir plus</a>
+						</div>
+						<div class="article__card-option">
+							<a href="{{ path('edit_purpose', {id: purpose.id}) }}" class="article__card-edit">
+								<i class='bx bxs-edit-alt'></i>
+								<span>Modifier</span>
+							</a>
+							<a href="{{ path('delete_purpose', {id: purpose.id}) }}" class="article__card-delete">
+								<i class='bx bxs-trash'></i>
+								<span>Supprimer</span>
+							</a>
+						</div>
+					</div>
+					<figure>
+						<img src="{{ asset('uploads/profiles/' ~ purpose.users.picture)}}" alt="{{ purpose.name }}" />
+					</figure>
+				</div>
+			</li>
+			{% endif %}
+			{% endfor %}
+		</ul>
+	</div>
+</section>
+
+{% endblock %}
+
+{% block JavaScript %}
+<script type="text/javascript" src="{{ asset('bundles/fosckeditor/ckeditor.js') }}" charset="utf-8"></script>
+{% endblock %}

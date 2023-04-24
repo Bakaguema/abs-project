@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier votre mot de passe • Generation Boomerang{% endblock %}
+
+{% block content %}
+    <section class="account">
+        <h1 class="section__title">Modifier votre mot de passe</h1>
+        <h3 class="section__subtitle">C'est dans cet espace que vous allez pouvoir modifier votre mot de passe.</h3>
+
+        <div class="article__menu">
+            <a href="{{ path('user') }}" class="article__menu-back">
+                <i class='bx bx-arrow-back' ></i>
+                <span>retour au profil</span>
+            </a>
+        </div>
+
+        <div class="account__container">
+            <div class="account__password-form">
+                {{ form_start(form) }}
+
+                    <div class="form">
+                        <i class='bx bx-user' ></i>
+                        {{ form_widget(form.firstname) }}
+                    </div>
+
+                    <div class="form">
+                        <i class='bx bx-user' ></i>
+                        {{ form_widget(form.lastname) }}
+                    </div>
+
+                    <div class="form">
+                        <i class='bx bx-envelope' ></i>
+                        {{ form_widget(form.email) }}
+                    </div>
+
+                    <div class="form">
+                        <i class='bx bxs-lock' ></i>
+                        {{ form_widget(form.old_password) }}
+                        <span></span>
+                        {{ form_errors(form.old_password) }}
+                    </div>
+
+                    <div class="form">
+                        <i class='bx bxs-lock-open' ></i>
+                        {{ form_widget(form.new_password.first) }}
+                        <span></span>
+                        {{ form_errors(form.new_password.first) }}
+                    </div>
+
+                    <div class="form">
+                        <i class='bx bxs-lock-open' ></i>
+                        {{ form_widget(form.new_password.second) }}
+                        <span></span>
+                        {{ form_errors(form.new_password.second) }}
+                    </div>
+                    <button class="article__form-button" type="submit">Mettre à jour</button>
+
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block footer %}
+    <footer class="footer footer__innovation">
+        <div class="footer__container grid">
+            <div class="footer__data">
+                <h2 class="footer__title">Generation Boomerang<small>©</small></h2>
+                <ul>
+                    <li><a href="{{ path('condition') }}" class="footer__link">Conditions d'utilisations</a></li>
+                    <li><a href="#" class="footer__link">Qui sommes-nous ?</a></li>
+                    <li><a href="{{ path('partner') }}" class="footer__link">Nos partenaires</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__data">
+                <h2 class="footer__title">Explorer</h2>
+                <ul>
+                    <li><a href="{{ path('main') }}" class="footer__link">Accueil</a></li>
+                    <li><a href="{{ path('articles') }}" class="footer__link">Articles</a></li>
+                    <li><a href="{{ path('experiences') }}" class="footer__link">Retours d'expérience</a></li>
+                    <li><a href="#" class="footer__link">Pôle d'activités</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__data">
+                <h2 class="footer__title">Suivez-nous</h2>
+                <a href="#" class="footer__social footer__social-innovation"><i class='bx bxl-facebook' ></i></a>
+                <a href="#" class="footer__social footer__social-innovation"><i class='bx bxl-instagram' ></i></a>
+                <a href="#" class="footer__social footer__social-innovation"><i class='bx bxl-twitter' ></i></a>
+            </div>
+
+
+        </div>
+    </footer>
+{% endblock %}
+

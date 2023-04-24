@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ===== CSS ===== -->
+    <link rel="stylesheet" href="{{ asset('assets/css/pole.css') }}">
+
+    <!-- ===== BOX ICONS ===== -->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+    <title>Innovation • Generation Boomerang</title>
+</head>
+<body>
+<!--===== HEADER =====-->
+<header class="header__pole header__innovation">
+    <nav class="nav__pole">
+        <div>
+            <a href="#" class="nav__logo-poleInnovation"><img src="{{ asset('assets/img/home/dock/innovation.svg') }}" alt="Innovation"> Innovation</a>
+        </div>
+
+        <div class="nav__menu-pole" id="nav-menu">
+            <ul class="nav__list-pole">
+                <li class="nav__item-pole"><a href="#about" class="nav__link-poleInnovation nav__link-innovation">À propos</a></li>
+                <li class="nav__item-pole"><a href="#discovery" class="nav__link-poleInnovation nav__link-innovation">Découvrir</a></li>
+                <li class="nav__item-pole"><a href="#contact" class="nav__link-poleInnovation nav__link-innovation">Contact</a></li>
+                <li class="nav__item-pole"><a href="{{ path('home') }}" class="nav__link-poleInnovation nav__link-innovation">Generation Boomerang<small>©</small></a></li>
+            </ul>
+        </div>
+
+        <div class="nav__toggle-pole" id="nav-toggle">
+            <i class='bx bx-menu'></i>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <!--===== HOME =====-->
+    <section class="home home__innovation" id="home">
+        <div class="home__container grid">
+            <h1 class="home__title"><span>Innovation</span></h1>
+
+        </div>
+    </section>
+
+    <!--===== ABOUT =====-->
+    <section class="about section" id="about">
+        <h2 class="section__title-pole section__title-innovation">À la découverte de ...</h2>
+
+        <div class="about__container grid">
+            <div class="about__img">
+                <img src="{{ asset('assets/img/pole/innovation/about1.jpg') }}" alt="">
+            </div>
+
+            <div>
+                <h2 class="about__subtitle about__subtitle-innovation">Patrick Vrignon</h2>
+                <span class="about__profession">Fondateur Groupe BTP Consultants</span>
+                <p class="about__text">Permettre une plus grande réactivité et une analyse plus fiable et pointue des projets, pour des ouvrages sûrs et conformes sur un projet de construction ou de rénovation : solidité de l'ouvrage, sécurité des occupants, accessibilité aux personnes handicapées, sur performance énergétique et acoustique. Faire du numérique la passerelle entre le savoir des aînés et les jeunes générations, apporter l’expérience et la vision du savoir faire et vivre ensemble.
+                    <br><br><a href="#about__popup"><i class='bx bx-expand-alt bx-burst' ></i> cliquez pour en voir plus...</a></p>
+
+                <div class="about__social">
+                    <a href="#" class="about__social-icon about__social-iconInnovation"><i class='bx bxl-linkedin' ></i></a>
+                    <a href="#" class="about__social-icon about__social-iconInnovation"><i class='bx bxl-facebook'></i></a>
+                    <a href="#" class="about__social-icon about__social-iconInnovation"><i class='bx bxl-twitter' ></i></a>
+                </div>
+            </div>
+            <div class="about__popup about__popup-innovation" id="about__popup">
+                <div class="about__popup-container">
+                    <a href="#about" class="about__popup-closeInnovation">
+                        <i class='bx bx-x' ></i>
+                    </a>
+                    <div class="about__popup-contentInnovation">
+                        <h1 class="about__popup-title">VOCATION</h1>
+                        <p>Faire face aux enjeux associés à la conception, la construction ou la rénovation des bâtiments, et anticiper les aléas techniques liés à la construction</p>
+                        <h1 class="about__popup-title">CONVICTION</h1>
+                        <p>Permettre une plus grande réactivité et une analyse plus fiable et pointue des projets, pour des ouvrages sûrs et conformes sur un projet de construction ou de rénovation : solidité de l'ouvrage, sécurité des occupants, accessibilité aux personnes handicapées, sur performance énergétique et acoustique. Faire du numérique la passerelle entre le savoir des aînés et les jeunes générations, apporter l’expérience et la vision du savoir faire et vivre ensemble.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--===== DISCOVERY =====-->
+    <section class="discovery section" id="discovery">
+        <h2 class="section__title-pole section__title-innovation">Découvrir</h2>
+
+        <div class="discovery__container grid">
+            <div class="discovery__img">
+                <img src="{{ asset('assets/img/pole/innovation/discovery1.jpg') }}" alt="">
+
+                <div class="discovery__link">
+                    <a href="#" class="discovery__link-name discovery__link-nameInnovation">Projet #1 <br> cliquez pour découvrir</a>
+                </div>
+            </div>
+            <div class="discovery__img">
+                <img src="{{ asset('assets/img/pole/innovation/discovery2.jpg') }}" alt="">
+
+                <div class="discovery__link">
+                    <a href="#" class="discovery__link-name discovery__link-nameInnovation">Projet #2 <br> cliquez pour découvrir</a>
+                </div>
+            </div>
+            <div class="discovery__img">
+                <img src="{{ asset('assets/img/pole/innovation/discovery3.jpg') }}" alt="">
+
+                <div class="discovery__link">
+                    <a href="#" class="discovery__link-name discovery__link-nameInnovation">Projet #3 <br> cliquez pour découvrir</a>
+                </div>
+            </div>
+            <div class="discovery__img">
+                <img src="{{ asset('assets/img/pole/innovation/discovery4.jpg') }}" alt="">
+
+                <div class="discovery__link">
+                    <a href="#" class="discovery__link-name discovery__link-nameInnovation">Projet #4 <br> cliquez pour découvrir</a>
+                </div>
+            </div>
+            <div class="discovery__img">
+                <img src="{{ asset('assets/img/pole/innovation/discovery5.jpg') }}" alt="">
+
+                <div class="discovery__link">
+                    <a href="#" class="discovery__link-name discovery__link-nameInnovation">Projet #5 <br> cliquez pour découvrir</a>
+                </div>
+            </div>
+            <div class="discovery__img">
+                <img src="{{ asset('assets/img/pole/innovation/discovery6.jpg') }}" alt="">
+
+                <div class="discovery__link">
+                    <a href="#" class="discovery__link-name discovery__link-nameInnovation">Projet #6 <br> cliquez pour découvrir</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--===== CONTACT =====-->
+    <section class="contact section" id="contact">
+        <h2 class="section__title-pole section__title-innovation">Contact</h2>
+
+        <div class="contact__container grid">
+            <div class="contact__info">
+                <h3 class="contact__subtitle contact__subtitle-innovation">EMAIL</h3>
+                <span class="contact__text">patrick@generation-boomerang.com</span>
+
+                <h3 class="contact__subtitle contact__subtitle-innovation">TÉLÉPHONE</h3>
+                <span class="contact__text">06 07 08 09 00</span>
+
+                <h3 class="contact__subtitle contact__subtitle-innovation">ADRESSE</h3>
+                <span class="contact__text">Roubaix</span>
+            </div>
+
+            <form action="" class="contact__form">
+                <div class="contact__inputs">
+                    <input type="text" placeholder="Votre nom" class="contact__input contact__input-innovation">
+                    <input type="email" placeholder="votre@email.com" class="contact__input contact__input-innovation">
+                </div>
+
+                <textarea name="" id="" cols="0" rows="10" class="contact__input contact__input-innovation"></textarea>
+
+                <input type="submit" value="Envoyer" class="contact__button-innovation">
+            </form>
+        </div>
+    </section>
+</main>
+
+<!--===== FOOTER =====-->
+<footer class="footer footer__innovation section">
+    <div class="footer__container grid">
+        <div class="footer__data">
+            <h2 class="footer__title"><img src="{{ asset('assets/img/home/dock/innovation.svg') }}" alt="Innovation"> Innovation</h2>
+            <p class="footer__text">L'un des six pôles d'activités de la Generation Boomerang<small>©</small></p>
+        </div>
+
+        <div class="footer__data">
+            <h2 class="footer__title">Explorer</h2>
+            <ul>
+                <li><a href="#about" class="footer__link footer__link-innovation">À propos</a></li>
+                <li><a href="#discovery" class="footer__link footer__link-innovation">Découvrir</a></li>
+                <li><a href="#contact" class="footer__link footer__link-innovation">Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="footer__data">
+            <h2 class="footer__title">Suivez-nous</h2>
+            <a href="#" class="footer__social footer__social-innovation"><i class='bx bxl-facebook' ></i></a>
+            <a href="#" class="footer__social footer__social-innovation"><i class='bx bxl-instagram' ></i></a>
+            <a href="#" class="footer__social footer__social-innovation"><i class='bx bxl-twitter' ></i></a>
+        </div>
+
+
+    </div>
+</footer>
+
+<!--===== SCROLL REVEAL =====-->
+<script src="https://unpkg.com/scrollreveal"></script>
+
+<!--===== MAIN JS =====-->
+<script src="{{ asset('assets/js/pole.js') }}"></script>
+</body>
+</html>

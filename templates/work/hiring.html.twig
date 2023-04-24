@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer une offre d'emploi • Generation Boomerang{% endblock %}
+
+{% block content %}
+
+    <section class="article">
+        <h1 class="section__title">Recrutement</h1>
+        <h3 class="section__subtitle">Vous pouvez créer une offre d'emploi ici</h3>
+
+        <div class="article__menu">
+            <a href="{{ path('works') }}" class="article__menu-back"><i class='bx bx-arrow-back' ></i> <span>Retourner à la recherche</span></a>
+        </div>
+        {% for message in app.flashes('message') %}
+            <h3 class="section__subtitle-alert">{{ message }}</h3>
+        {% endfor %}
+        <div class="article__user-container">
+            <div class="article__add">
+                {{ form_start(form, {'attr' : {'class' : 'article__add-form'} }) }}
+
+                <div class="article__form-work">
+                    <i class='bx bx-message-dots'></i>
+                    {{ form_widget(form.name ) }}
+                </div>
+
+                <div class="article__form-work">
+                    <i class='bx bx-pin'></i>
+                    {{ form_widget(form.place) }}
+                </div>                
+
+                <div class="article__form-work">
+                    <i class='bx bx-time' ></i>
+                    {{ form_widget(form.datedebut) }}
+                </div>
+
+                <div class="article__form-work">
+                    <i class='bx bx-buildings'></i>
+                    {{ form_widget(form.entreprise) }}
+                </div>
+
+                <div class="article__form-work">
+                    <i class='bx bx-briefcase-alt-2'></i>
+                     {{ form_widget(form.contrat, {'attr':{'style':'color: var(--text-color-light);'}}) }}
+                </div>
+
+                 <div class="article__form-work">
+                    <i class='bx bx-book-open'></i>
+                    {{ form_widget(form.diplome, {'attr':{'style':'color: var(--text-color-light);'}}) }}
+                </div>
+
+                <div class="article__form-work">
+                    <i class='bx bx-phone'></i>
+                    {{ form_widget(form.contact) }}
+                </div>
+
+                <h3 class="section__subtitle">Description du poste:</h3>
+                <div class="article__form-content article__form">
+                    <span></span>
+                    {{ form_widget(form.description, {'attr':{'class':'text_area'}}) }}
+                </div>
+
+                <button class="article__form-button" type="submit">Ajouter</button>
+
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+
+

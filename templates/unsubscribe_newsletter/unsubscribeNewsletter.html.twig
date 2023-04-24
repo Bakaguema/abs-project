@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Désabonnement newsletter{% endblock %}
+
+{% block body %}
+{% block content %}
+	<section class="article">
+        <h1 class="section__title">Desabonnement newsletter</h1>
+        <h3 class="section__subtitle">En vous désabonnant à la newsletter, Vous ne serez plus informé de nos dernières actualités. </h3>
+		<div class="account__container">
+			
+			<div class="account__container">
+            <div class="account__password-form">
+                {{ form_start(form) }}
+                <div class="form">
+                    <i class='bx bx-news'></i>
+					<p>Souhaitez-vous vous désabonner à la Newsletter ? {{ form_widget(form.desabonner) }}</p>  
+                </div>
+                <button class="article__form-button" type="submit">Se desabonner</button>
+
+                {{ form_end(form) }}
+            </div>
+        </div>
+</section>
+{% endblock %}
+
+{% endblock %}

@@ -1,0 +1,101 @@
+{% extends 'base.html.twig' %}
+
+{% block css %}
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<link rel="stylesheet" href="{{ asset('assets/css/about.css') }}">
+{% endblock %}
+
+{% block title %}Trombinoscope • Generation Boomerang
+{% endblock %}
+
+{% block content %}
+
+<main class="main">
+
+<section class="pole section container" id="poles">
+			<h2 class="section__title-center">
+				L'équipe de développement
+			</h2>
+
+			<div class="pole__container grid">
+				<article class="pole__card">
+					<a href="https://www.linkedin.com/in/mathias-bardin-887122240/" target="_blank">
+						<div class="pole__circle"></div>
+
+						<img src="{{ asset('assets/img/discover/Mathias.jpg') }}" alt="" class="pole__img">
+
+						<h3 class="pole__title">Matthias Bardin</h3>
+						<span class="link__inno">Administrateur Base de données</span>
+					</a>
+				</article>
+
+				<article class="pole__card">
+					<a href="https://www.linkedin.com/in/charles-casabianca/" target="_blank">
+						<div class="pole__circle"></div>
+
+						<img src="{{ asset('assets/img/discover/Charles.jpg') }}" alt="" class="pole__img">
+
+						<h3 class="pole__title">Charles Casabianca</h3>
+						<span class="link__savoir">Développeur</span>
+					</a>
+				</article>
+
+				<article class="pole__card">
+					<a href="https://www.linkedin.com/in/aurelien-fribourg-232aa1243/" target="_blank">
+						<div class="pole__circle"></div>
+
+						<img src="{{ asset('assets/img/discover/Aurelien.jpg') }}" alt="" class="pole__img">
+
+						<h3 class="pole__title">Aurélien Fribourg</h3>
+						<span class="link__metier">Développeur</span>
+					</a>
+				</article>
+
+				<article class="pole__card">
+					<a href="https://www.linkedin.com/in/dan-hannay/" target="_blank">
+						<div class="pole__circle"></div>
+
+						<img src="{{ asset('assets/img/discover/Dan.jpg') }}" alt="" class="pole__img">
+
+						<h3 class="pole__title">Dan Hannay</h3>
+						<span class="link__design">Développeur</span>
+					</a>
+				</article>
+
+				<article class="pole__card">
+					<a href="https://www.linkedin.com/in/le-alexandre/" target="_blank">
+						<div class="pole__circle"></div>
+
+						<img src="{{ asset('assets/img/discover/AlexL.jpg') }}" alt="" class="pole__img">
+
+						<h3 class="pole__title">Alexandre Le</h3>
+						<span class="link__immo">Développeur</span>
+					</a>
+				</article>
+
+				<article class="pole__card">
+					<a href="https://www.linkedin.com/in/paul-livrieri-4434a6239/" target="_blank">
+						<div class="pole__circle"></div>
+
+						<img src="{{ asset('assets/img/discover/Paul.jpg') }}" alt="" class="pole__img">
+
+						<h3 class="pole__title">Paul Livrieri</h3>
+						<span class="link__RD">Développeur</span>
+					</a>
+				</article>
+
+                <article class="pole__card">
+					<a href="https://www.linkedin.com/in/alexandre-mary-/" target="_blank">
+						<div class="pole__circle"></div>
+
+						<img src="{{ asset('assets/img/discover/AlexM.jpg') }}" alt="" class="pole__img">
+
+						<h3 class="pole__title">Alexandre Mary</h3>
+						<span class="link__RD">Administrateur Réseau</span>
+					</a>
+				</article>
+			</div>
+		</section>
+	</main>
+
+{% endblock %}

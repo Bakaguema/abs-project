@@ -1,0 +1,46 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Modifier un role • Generation Boomerang{% endblock %}
+
+{% block content %}
+    <section class="category">
+        <h1 class="section__title">Modifier un role</h1>
+        <h3 class="section__subtitle">C'est dans cet espace que vous allez pouvoir modifier un role d'utilisateur.</h3>
+
+        <div class="article__menu">
+            <a href="{{ path('admin_user') }}" class="article__menu-back"><i class='bx bx-arrow-back' ></i> <span>retour aux utilisateurs</span></a>
+        </div>
+
+        <div class="category__container">
+            <div class="category__add-form">
+                {{ form_start(form) }}
+
+                <div class="form">
+                    <i class='bx bx-user' ></i>
+                    {{ form_widget(form.firstname) }}
+                </div>
+
+                <div class="form">
+                    <i class='bx bx-user' ></i>
+                    {{ form_widget(form.lastname) }}
+                </div>
+
+                <div class="form">
+                    <i class='bx bx-at' ></i>
+                    {{ form_widget(form.email) }}
+                </div>
+
+                <div class="user__form form">
+                    <i class='bx bxs-user-badge'></i>
+                    {{ form_widget(form.roles) }}
+                </div>
+
+                <button class="article__form-button" type="submit">Mettre à jour</button>
+
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+

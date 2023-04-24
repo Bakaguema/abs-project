@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Utiliser Coupon • Generation Boomerang{% endblock %}
+
+{% block content %}
+    <section class="account">
+        <h1 class="section__title">Enregistrer un Code Cadeau</h1>
+        <h3 class="section__subtitle">C'est dans cet espace que vous allez pouvoir Utiliser un Code Cadeau .</h3>
+   
+        {% for message in app.flashes('message') %}
+            <h3 class="section__subtitle-alert">{{ message }}</h3>
+        {% endfor %}
+        
+        {% if user.redeem == null %}
+        <div class="account__container">
+            <div class="account__password-form">
+                {{ form_start(form) }}
+                <div class="form">
+                    <i class='bx bx-gift' ></i>
+                    {{ form_widget(form.Code) }}
+                </div>
+
+                <button class="article__form-button" type="submit">Envoyer</button>
+
+                {{ form_end(form) }}
+            </div>
+        </div>
+
+        {% else %}
+        <h1 class="section__subtitle-alert">Vous avez déjà rentré un Code Cadeau</h1>
+        {% endif %}
+    </section>
+{% endblock %}

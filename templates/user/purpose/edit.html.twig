@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier un article • Generation Boomerang{% endblock %}
+
+{% block content %}
+    <section class="article">
+        <h1 class="section__title">Modifier une annonce</h1>
+        <h3 class="section__subtitle">C'est dans cet espace que vous allez pouvoir modifier une annonce.</h3>
+
+        <div class="article__user-container">
+            <div class="article__add">
+                {{ form_start(form, {'attr' : {'class' : 'article__add-form'} }) }}
+
+                <div class="article__form-categories article__form">
+                    <i class='bx bx-message-dots'></i>
+                    {{ form_widget(form.name) }}
+                </div>
+
+                <div class="article__form-categories article__form">
+                    <i class='bx bx-pin'></i>
+                    {{ form_widget(form.place) }}
+                </div>                
+
+                <div class="article__form-title article__form">
+                    <i class='bx bxs-contact' ></i>
+                    {{ form_widget(form.contact) }}
+                </div>
+
+                <h3 class="section__subtitle">Vos expériences :</h3>
+                <div class="article__form-content article__form">
+                    <span></span>
+                    {{ form_widget(form.experience) }}
+                </div>
+
+                <h3 class="section__subtitle">Vos diplômes :</h3>
+                <div class="article__form-content article__form">
+                    <span></span>
+                    {{ form_widget(form.diplome) }}
+                </div>
+
+
+                <h3 class="section__subtitle">Decrivez vous en quelques lignes :</h3>
+                <div class="article__form-content article__form">
+                    <span></span>
+                    {{ form_widget(form.description) }}
+                </div>
+
+                <button class="article__form-button" type="submit">Ajouter</button>
+
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </section>
+{% endblock %}

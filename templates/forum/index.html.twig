@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Salon de discussions • Generation Boomerang{% endblock %}
+
+{% block content %}
+    <section class="forum">
+        <h1 class="section__title">Les salons de discussions</h1>
+        <h3 class="section__subtitle">C'est dans cet espace que vous allez pouvoir converser autour de différents sujets.</h3>
+
+        {% for message in app.flashes('message') %}
+            <h3 class="section__subtitle-alert">{{ message }}</h3>
+        {% endfor %}
+
+        <div class="forum__container">
+            <ul class="forum__table">
+                <li class="forum__table-header">
+                {% if is_granted('ROLE_USER') %}
+                    <div class="forum__table-col forum__table-add"><a href="{{ path('add_forum') }}" class="forum__table-icon"><i class='bx bx-plus forum__table-icon'></i></a></div>
+                {% else %}
+                    <div class="forum__table-col forum__table-add"><a href="{{ path('app_login') }}" class="forum__table-icon"><i class='bx bx-plus forum__table-icon'></i></a></div>
+                {% endif %}
+                    <div class="forum__table-col forum__table-name">Salons</div>
+                    <div class="forum__table-col forum__table-show"><i class='bx bx-conversation forum__table-icon' ></i></div>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <div class="forum__table-col forum__table-edit"><i class='bx bxs-edit forum__table-icon' ></i></div>
+                    {% endif %}
+                </li>
+                {% for forum in forums %}
+                    <li class="forum__table-row">
+                        <div class="forum__table-col forum__table-add">
+                            {% if forum.user == app.user %}
+                                <a href="{{ path('edit_forum', {id: forum.id}) }}" class="forum__table-iconEdit">
+                                    <i class='bx bx-edit-alt' ></i>
+                                </a>
+                                |
+                                <a href="{{ path('delete_forum', {id: forum.id}) }}" class="forum__table-iconDelete">
+                                    <i class='bx bx-trash' ></i>
+                                </a>
+                            {% endif %}
+                        </div>
+                        <div class="forum__table-col forum__table-name">{{ forum.name }}</div>
+                        <div class="forum__table-col forum__table-show"><a href="{{ path('show_forum', {id: forum.id}) }}">Cliquez ici pour discuter</a></div>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <div class="forum__table-col forum__table-edit"><a href="{{ path('edit_forum', {id: forum.id}) }}"><i class="bx bx-edit-alt"></i></a>  <a href="{{ path('delete_forum', {id: forum.id}) }}"><i class="bx bx-trash"></i></a></div>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+{% endblock %}

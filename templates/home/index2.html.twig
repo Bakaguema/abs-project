@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="{{ asset('assets/css/swiper-bundle.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/home.css') }}">
+    <link rel="shortcut icon" type="image/png" href="{{ asset('assets/img/favicon.png') }}">
+    <title>Génération Boomerang</title>
+    <style>
+    .home_container{
+        display:grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    .col1,.col2,.col3{
+    }
+    
+    </style>
+</head>
+<body style="background-color:black">
+<main class="main">
+    {% for homeDetail in homeDetails %}
+        <section class="swiper-slide">                
+            {# <div class="home_container ">
+                <div class="home__data">
+                    <h2 class="home__subtitle">Bienvenue</h2>
+                    <h1 class="home__title">Generation Boomerang<span class="copyright">©</span></h1>
+                    <p class="home__description">{{ homeDetail.generation }}</p>
+                    <a href="{{ path('about') }}" class="home__button">Découvrir</a>
+                    <a href="{{ path('app_login') }}" class="home__button">Connectez vous</a>
+                </div>
+
+                <div class="home__video">
+                    <div class="home__video-content">
+                        <i class='bx bx-play home__video-icon'></i>
+                    </div>
+                </div> #}
+
+                <div class="col1">
+                    <div class="home__dock-metier swiper-slide detailsPole ft" >
+                        <span class="home__dock-metierTitle">Évolution des métiers</span>
+                        <img src="{{ asset('assets/img/home/dock/metiers.svg') }}" alt="metier" class="home__dock-img home__dock-imgMetier" id="front">
+                    </div>
+                    <div class="home__dock-immobilier swiper-slide detailsPole lt" >
+                        <span class="home__dock-immobilierTitle">Immobilier & S E</span>
+                        <img src="{{ asset('assets/img/home/dock/immobilier.svg') }}" alt="immobilier" class="home__dock-img" id="left">
+                    </div>
+                            
+                </div>
+
+                <div class="col2">
+                    <div class="home__dock-communication swiper-slide detailsPole rt" >
+                        <span class="home__dock-communicationTitle">Communication R & D</span>
+                        <img src="{{ asset('assets/img/home/dock/communication.svg') }}" alt="communication" class="home__dock-img home__dock-imgCommunication" id="back">
+                    </div>
+                    <div class="home__cube">
+                        <div class="home__cube-container">
+                            <a href="{{ path('preview_metier') }}" class="home__cube-face home__cube-front" style="background: url({{ asset('assets/img/home/cube/metiers.jpg') }}); background-size: cover;"></a>
+                            <a href="{{ path('preview_communication') }}" class="home__cube-face home__cube-back" style="background: url({{ asset('assets/img/home/cube/communication.jpg') }}); background-size: cover;"></a>
+                            <a href="{{ path('preview_savoir') }}" class="home__cube-face home__cube-right" style="background: url({{ asset('assets/img/home/cube/savoirs.jpg') }}); background-size: cover;"></a>
+                            <a href="{{ path('preview_immobilier') }}" class="home__cube-face home__cube-left" style="background: url({{ asset('assets/img/home/cube/immobilier.jpg') }}); background-size: cover;"></a>
+                            <a href="{{ path('preview_design') }}" class="home__cube-face home__cube-top" style="background: url({{ asset('assets/img/home/cube/design.jpg') }}); background-size: cover;"></a>
+                            <a href="{{ path('preview_innovation') }}" class="home__cube-face home__cube-bottom" style="background: url({{ asset('assets/img/home/cube/innovation.jpg') }}); background-size: cover;"></a>
+                        </div>
+                    </div>
+
+                    <div class="home__dock-design swiper-slide detailsPole tp" >
+                        <span class="home__dock-designTitle">UI Design</span>
+                        <img src="{{ asset('assets/img/home/dock/design.svg') }}" alt="design" class="home__dock-img" id="top">
+                    </div>
+                </div>
+
+                <div class="col3">
+                    <div class="home__dock-savoir swiper-slide detailsPole bk" >
+                        <span class="home__dock-savoirTitle">Évolution des savoirs</span>
+                        <img src="{{ asset('assets/img/home/dock/savoirs.svg') }}" alt="savoirs" class="home__dock-img" id="right">
+                    </div>
+                    <div class="home__dock-innovation swiper-slide detailsPole bm" >
+                        <span class="home__dock-innovationTitle">Innovation</span>
+                        <img src="{{ asset('assets/img/home/dock/innovation.svg') }}" alt="innovation" class="home__dock-img" id="bottom">
+                    </div>
+
+                </div>
+
+            </div>
+            </section>
+    {% endfor %}
+
+
+</main>

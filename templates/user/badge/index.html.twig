@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block css %}<link rel="stylesheet" href="{{ asset('assets/css/badge.css') }}">
+{% endblock %}
+
+{% block title %}Mes badges
+{% endblock %}
+
+{% block content %}
+	<main class="main">
+		<section class="discover">
+			<div class="discover__container">
+				<header class="discover__header">
+					<h1>Vous trouverez ici les divereses récompenses durement acquises durant votre séjour au sein de la communauté Génération Boomerang</h1>
+				</header>
+			</div>
+		</section>
+		<section class="pole section container" id="poles">
+			<h2 class="section__title-center">
+				Vos badges
+			</h2>
+			<div class="image-grid">
+				{% for badge in badges %}
+					<div class="image-item">
+						<div class="image-wrapper">
+							<div class="circle-crop">
+								<img src="{{ asset('uploads/badges/'~ badge.image|e ) }}" alt="{{ badge.name|e}}"/>
+							</div>
+							<div class="caption">{{ badge.name|e}}</div>
+						</div>
+					</div>
+				{% else %}
+					<div class="image-item">
+						<em>no user found</em>
+					</div>
+				{% endfor %}
+			</div>
+		</section>
+	</main>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les besoins et offres de nos adhérents!
+{% endblock %}
+
+{% block content %}
+	<section class="article">
+		{{ form_start(searchForm,{'attr':{'class':'search_article'}}) }}
+		<div class="form__search">
+			{{ form_row(searchForm.query) }}
+			{{ form_row(searchForm.submit) }}
+		</div>
+		{{ form_end(searchForm) }}
+		{% for message in app.flashes('message') %}
+			<h3 class="section__subtitle-alert">{{ message }}</h3>
+		{% endfor %}
+		<div class="article__container-work">
+			<ul class="article__cards-work">
+				{% for work in works %}
+					<li class="article__card">
+						<div class="article__card-content">
+							<div>
+								<span>
+									<i class='bx bx-purchase-tag'></i>
+									{{ work.place }}<br>
+								<span class="article__card-author">
+									par
+									<a href="{{ path('profil', {id: work.users.id}) }}">{{ work.users.firstname }}
+										{{ work.users.lastname }}</a>
+								</span>
+								<h2 class="work__card-title">
+									{{ work.name }}
+								</h2>
+								{# git pu #}
+								<p class="article__card-preview">{{ work.description|u.truncate(1000, '...')|raw }}</p>
+
+								<div class="article__card-work">
+									<a href="{{ path('work', {slug: work.slug}) }}">Voir plus</a>
+								</div>
+							</div>
+							<figure>
+							 	<img src="{{ asset('uploads/profiles/' ~ work.users.picture)}}" alt="{{ work.name }}" class="work__figure" />
+							</figure>
+						</div>
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</section>
+{% endblock %}

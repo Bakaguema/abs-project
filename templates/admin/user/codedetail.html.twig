@@ -1,0 +1,116 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Dashboard Coupon • Generation Boomerang{% endblock %}
+{% block stylesheets %}<link rel="stylesheet" href="{{ asset('assets/css/table_dashboard.css') }}">{% endblock %}
+
+{% block content %}
+    <section class="category">
+        <h1 class="section__title">Gestion de coupon</h1>
+        <h3 class="section__subtitle">C’est dans cet espace que vous allez pouvoir voir les statistiques de la communauté {{ Code.Nom }}.</h3>
+
+        <div class="article__menu">
+            <a href="{{ path('admin_user-dashboard') }}" class="article__menu-back"> <span>Retour au Dashboard</span></a>
+        </div>
+
+        {% for message in app.flashes('message') %}
+            <h3 class="section__subtitle-alert">{{ message }}</h3>
+        {% endfor %}
+        <div class="category__add-form">
+            {{ form_start(form)}}
+                <div class="form">
+                    <i class='bx bx-user' ></i>
+                    {{ form_widget(form.Utilisation) }}
+                </div>
+                <button class="article__form-button" type="submit">Ajouter</button>
+            {{ form_end(form) }}
+        </div>
+        <div class="profil__menu"> 
+            <div id="tableaudiv" class="profil__article">
+                <a href="#tableau" spellcheck="false"><h5 class="profil__menu-icon"><i class='bx bx-table'></i> </h5> </a>
+            </div>
+            <div id="totaldiv" class="profil__experience">
+                <a href="#total" spellcheck="false"><h5 class="profil__menu-icon"><i class='bx bx-bar-chart-square'></i></h5> </a>
+            </div>
+        </div>
+        <h3 class="code__text"></h3>
+        <div id="tableau" class="code_container tableau_display">
+            <table class="table">
+                <thead>
+                    <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Email</th>
+                    <th>Profil</th>
+                    <th>Messages</th>
+                    <th>Commentaires</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in Code.users %}
+                    
+                        <tr>
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.lastname }}</td>
+                        <td>{{ user.firstname }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.profil }}</td>
+                        <td>{{ user.forumMessages | length }}</td>
+                        <td>{{ user.comments | length }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+        </table>       
+        </div>
+
+        <div id="total" class="code_container table_total tableau_display">
+            <table>
+                    <tr>
+                        <th>Nombre de coupons utilisés</th>
+                        <td> {{ Code.MaxUsage - Code.Utilisation }}  sur {{  Code.MaxUsage }}</th>
+                    </tr>
+                    <tr>
+                        <th>Nombre de commentaires</th>
+                        <td>{{ Donnee.nbcommentaire }}</th>
+                    </tr>
+                    <tr>
+                        <th>Nombre d'articles</th>
+                        <td>{{ Donnee.nbarticle }}</th>
+                    </tr>
+                    <tr>
+                        <th>Nombre de discussions</th>
+                        <td>{{ Donnee.channel }}</th>
+                    </tr>
+                    <tr>
+                        <th>Nombre de messages forum</th>
+                        <td>{{ Donnee.message }}</th>
+                    </tr>
+                    <tr>
+                        <th>Nombre de likes article</th>
+                        <td>{{ Donnee.like }}</th>
+                    </tr>
+                    <tr>
+                        <th>Nombre de likes expérience</th>
+                        <td>{{ Donnee.likexps }}</th>
+                    </tr>
+                    <tr>
+                        <th>Nombre de favoris article</th>
+                        <td>{{ Donnee.favoris }}</th>
+                    </tr>
+                    <tr>
+                        <th>Nombre de favoris expérience</th>
+                        <td>{{ Donnee.favorisExp }}</th>
+                    </tr>
+                    <tr>
+                        <th>Abonnées à la newsletter</th>
+                        <td>{{ Donnee.newsletter }}</th>
+                    </tr>
+            </table>
+        </div>
+    </section>
+{% endblock %}
+
+{% block JavaScript %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<script src="{{ asset('assets/js/codedetail.js') }}"></script>
+{% endblock %}

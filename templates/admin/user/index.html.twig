@@ -1,0 +1,48 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Utilisateur • Generation Boomerang{% endblock %}
+
+{% block content %}
+    <section >
+        <h1 class="section__title">Gérer les utilisateurs</h1>
+        <h3 class="section__subtitle">C'est dans cet espace que vous allez pouvoir gérer les différentes utilisateurs.</h3>
+
+        <div class="article__menu">
+            <a href="{{ path('admin') }}" class="article__menu-back"><i class='bx bx-arrow-back' ></i> <span>retour à l'administration</span></a>
+            <a href="{{ path('admin_user-create') }}" class="article__menu-back"><span>Créer un utilisateur (abonné)</span><i class='bx bx-right-arrow-alt'></i></a>
+        </div>
+
+        {% for message in app.flashes('message') %}
+            <h3 class="section__subtitle-alert">{{ message }}</h3>
+        {% endfor %}
+
+        <div class="user__container">
+            {% for user in users %}
+                <div class="user__table">
+                    <div class="user__table-name">
+                        {{ user.firstname }} {{ user.lastname }}
+                    </div>
+                    <div class="user__table-email">
+                        {{ user.email }}
+                    </div>
+                    <div class="user__table-role">
+                        {% for role in user.roles %}
+                            {% if role == "ROLE_ADMIN" %}
+                                Administrateur
+                            {% elseif role == "ROLE_POLE" %}
+                                Éditeur
+                            {% elseif role == "ROLE_SUB" %}
+                                Abonné(e)s
+                            {% elseif role == "ROLE_USER" %}
+                                Utilisateur
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="user__table-edit">
+                        <a href="{{ path('admin_edit_user', {id: user.id}) }}"><i class='bx bxs-edit-alt'></i></a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}
